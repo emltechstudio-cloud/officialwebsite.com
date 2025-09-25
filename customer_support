@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html> 
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="RocketCake">
+    <title>EML Tech Studio — Support</title>
+    <meta name="description" content="Customer support portal for EML Tech Studio — chat with support or access self-help resources.">
+	<link rel="stylesheet" type="text/css" href="customer_support.css?h=6553d62f">
+</head>
+<body>
+<div class="textstyle1">
+<div id="container_19e12fcd"><div id="container_19e12fcd_padding" ><div class="textstyle2"><div id="menu_2641576f"><div  id="menu_2641576f_menualignmentwrapper" ><div  class="menuholder1"><a href="javascript:void(0);" tabindex="-1" aria-label="&#8801;" >
+	<div id="menuentry_4a6c0c45"  class="menustyle1 menu_2641576f_mainMenuEntry mobileEntry">
+		<div class="menuentry_text1">
+  <span class="textstyle3">&#8801;</span>
+		</div>
+	</div>
+</a>
+<a href="javascript:void(0);" tabindex="-1" aria-label="Home &#9660;" >
+	<div id="menuentry_59afa598"  class="menustyle2 menu_2641576f_mainMenuEntry normalEntry">
+		<div class="menuentry_text2">
+  <span class="textstyle4">Home </span>
+  <span class="textstyle5">&#9660;</span>
+		</div>
+	</div>
+</a>
+<a href="about.html" style="text-decoration:none" tabindex="-1">
+	<div id="menuentry_74acef95"  class="menustyle3 menu_2641576f_mainMenuEntry normalEntry">
+		<div class="menuentry_text2">
+  <span class="textstyle4">About</span>
+		</div>
+	</div>
+</a>
+<a href="contact.html" style="text-decoration:none" tabindex="-1">
+	<div id="menuentry_657642d1"  class="menustyle4 menu_2641576f_mainMenuEntry normalEntry">
+		<div class="menuentry_text2">
+  <span class="textstyle4">Contact</span>
+		</div>
+	</div>
+</a>
+<a href="javascript:void(0);" tabindex="-1" aria-label="Products" >
+	<div id="menuentry_8facf5d"  class="menustyle5 menu_2641576f_mainMenuEntry normalEntry">
+		<div class="menuentry_text2">
+  <span class="textstyle4">Products</span>
+		</div>
+	</div>
+</a>
+
+	<script type="text/javascript" src="rc_images/wsp_menu.js"></script>
+	<script type="text/javascript">
+		var js_menu_2641576f= new wsp_menu('menu_2641576f', 'menu_2641576f', 10, null, true, {generateAriaLabels: true, setUsefulTabIndices: true, mobileMenuIsFullscreen: true, mobileMenuCloseButtonColor: '#0A0A0A', menuPaddingUsed: 10, mobileMenuAnimations: ['fadeMenus'], closeWhenMouseOut: false} );
+
+		js_menu_2641576f.createMenuForItem('menuentry_4a6c0c45', ["  <span class=\"textstyle6\">Home &#9660;</span> ", 'javascript:void(0);', '',
+		                                   "  <span class=\"textstyle6\">&#160;&#160;&#160;Main Page</span> ", 'index.html', '',
+		                                   "  <span class=\"textstyle6\">&#160;&#160;&#160;Service Section</span> ", 'index.html', '',
+		                                   "  <span class=\"textstyle6\">About</span> ", 'about.html', '',
+		                                   "  <span class=\"textstyle6\">Contact</span> ", 'contact.html', '',
+		                                   "  <span class=\"textstyle6\">Products</span> ", 'javascript:void(0);', '']
+		                                   , true);
+		js_menu_2641576f.createMenuForItem('menuentry_59afa598', ["  <span class=\"textstyle6\">Main Page</span> ", 'index.html', '',
+		                                   "  <span class=\"textstyle6\">Service Section</span> ", 'index.html', '']);
+		js_menu_2641576f.createMenuForItem('menuentry_74acef95', []);
+		js_menu_2641576f.createMenuForItem('menuentry_657642d1', []);
+		js_menu_2641576f.createMenuForItem('menuentry_8facf5d', []);
+
+	</script>
+</div></div></div></div>
+<div class="textstyle1">
+    <header id="site-header" class="site-header">
+        <div id="container_153d0912"><div id="container_153d0912_padding" ><div class="textstyle1">
+            <a href="index.html" aria-label="EML Tech Studio home" style="text-decoration:none">
+                <img src="rc_images/y.jpeg" id="site-logo" class="site-logo" alt="EML Tech Studio logo" loading="lazy" />
+            </a>
+            <span class="textstyle7">EML TECH STUDIO&#174;</span>
+        </div>
+        <div style="clear:both"></div></div></div>
+    </header>
+</div>
+<div style="clear:both"></div></div></div>  </div>
+<iframe name="IFrame1" frameBorder="0" src="" scrolling="auto" id="iframe_22e24068">
+	<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Support A.S</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 0; }
+        .chat-container { max-width: 500px; margin: 40px auto; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); padding: 20px; }
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 18px;
+            background: linear-gradient(90deg, #1976d2 60%, #42a5f5 100%);
+            border-radius: 8px 8px 0 0;
+            padding: 18px 18px 12px 18px;
+            box-shadow: 0 2px 8px rgba(25,118,210,0.08);
+        }
+        .header-logo {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: #fff;
+            object-fit: contain;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+        }
+        .header-text h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+        .header-text .subtitle {
+            color: #e3f2fd;
+            font-size: 1rem;
+        }
+        .messages { min-height: 300px; max-height: 400px; overflow-y: auto; margin-bottom: 16px; }
+        .message { display: flex; margin: 8px 0; }
+        .bubble {
+            padding: 12px 16px;
+            border-radius: 20px;
+            max-width: 80%;
+            word-break: break-word;
+            font-size: 1rem;
+            display: inline-block;
+        }
+        .user { justify-content: flex-end; }
+        .user .bubble {
+            background: #1976d2;
+            color: #fff;
+            border-bottom-right-radius: 4px;
+        }
+        .bot { justify-content: flex-start; }
+        .bot .bubble {
+            background: #f0f0f0;
+            color: #222;
+            border-bottom-left-radius: 4px;
+        }
+        .input-row { display: flex; align-items: flex-end; }
+        textarea#user-input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: none;
+            min-height: 40px;
+            max-height: 120px;
+            font-size: 1rem;
+            line-height: 1.4;
+            transition: border 0.2s;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+        textarea#user-input:focus {
+            border: 1.5px solid #1976d2;
+            outline: none;
+        }
+        button { padding: 10px 18px; margin-left: 8px; background: #1976d2; color: #fff; border: none; border-radius: 4px; cursor: pointer; }
+        button:disabled { background: #aaa; }
+        @media (max-width: 600px) {
+            .chat-container { max-width: 100vw; margin: 0; border-radius: 0; box-shadow: none; min-height: 100vh; }
+            .messages { min-height: 60vh; max-height: 60vh; }
+        }
+        /* Meta AI style dots animation */
+        .typing {
+            display: inline-block;
+            width: 40px;
+            height: 20px;
+        }
+        .typing span {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            margin: 0 2px;
+            background: #bbb;
+            border-radius: 50%;
+            opacity: 0.7;
+            animation: blink 1.4s infinite both;
+        }
+        .typing span:nth-child(2) { animation-delay: 0.2s; }
+        .typing span:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes blink {
+            0%, 80%, 100% { opacity: 0.7; }
+            40% { opacity: 1; }
+        }
+        /* Embedded browser modal */
+        .iframe-modal {
+            position: fixed;
+            inset: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+        }
+        .iframe-box {
+            width: 95%;
+            max-width: 900px;
+            height: 80vh;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+            display: flex;
+            flex-direction: column;
+        }
+        .iframe-toolbar { padding: 8px; background: #f7f7f7; display:flex; gap:8px; align-items:center; }
+        .iframe-toolbar button { margin-left: auto; }
+        .iframe-frame { flex: 1 1 auto; border: 0; width: 100%; }
+        .iframe-loader-inner { display:flex; align-items:center; justify-content:center; gap:12px; padding:12px; }
+        .spinner {
+            width:28px; height:28px; border-radius:50%; border:4px solid rgba(0,0,0,0.08); border-top-color:#1976d2; animation: spin 0.9s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .iframe-error { color:#b00020; font-weight:600; }
+        .iframe-actions { margin-left:auto; display:flex; gap:8px; }
+    /* Confirmation modal for external links */
+    .confirm-modal { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; background: rgba(0,0,0,0.4); z-index: 1100; }
+    .confirm-box { background:#fff; padding:16px; border-radius:8px; width:90%; max-width:540px; box-shadow:0 8px 30px rgba(0,0,0,0.25); }
+    .confirm-box p { margin:0 0 12px 0; word-break:break-word; }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="header">
+            <img src="send_icon.png" alt="Logo" class="header-logo">
+            <div class="header-text">
+                <h1>Customer Support A.S</h1>
+                <span class="subtitle">with <b>BEST 2.0</b></span>
+            </div>
+        </div>
+        <div class="messages" id="messages"></div>
+        <form id="chat-form" class="input-row">
+            <textarea id="user-input" placeholder="Type your message..." autocomplete="off" required rows="1"></textarea>
+            <button type="submit">>_></button>
+        </form>
+    </div>
+    <script>
+        const form = document.getElementById('chat-form');
+        const input = document.getElementById('user-input');
+        const messages = document.getElementById('messages');
+
+
+        // Detect URLs and convert to clickable links
+        function linkify(text) {
+            const urlRegex = /(https?:\/\/[^\s]+)/g;
+            return text.replace(urlRegex, function(url) {
+                return `<a href="${url}" target="_blank" rel="noopener">${url}</a>`;
+            });
+        }
+
+        function addMessage(text, sender) {
+            const div = document.createElement('div');
+            div.className = 'message ' + sender;
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            if (sender === 'bot') {
+                bubble.innerHTML = linkify(text);
+            } else {
+                bubble.textContent = text;
+            }
+            div.appendChild(bubble);
+            messages.appendChild(div);
+            messages.scrollTop = messages.scrollHeight;
+        }
+
+        // Add animated typing indicator
+        function addTypingIndicator() {
+            const div = document.createElement('div');
+            div.className = 'message bot';
+            div.id = 'typing-indicator';
+            div.innerHTML = '<div class="bubble"><span class="typing"><span></span><span></span><span></span></span></div>';
+            messages.appendChild(div);
+            messages.scrollTop = messages.scrollHeight;
+        }
+
+        function removeTypingIndicator() {
+            const typing = document.getElementById('typing-indicator');
+            if (typing) typing.remove();
+        }
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const userText = input.value.trim();
+            if (!userText) return;
+            addMessage(userText, 'user');
+            input.value = '';
+            input.style.height = '40px'; // Reset height after send
+            addTypingIndicator();
+            try {
+                const res = await fetch('http://127.0.0.1:5000/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: userText })
+                });
+                const data = await res.json();
+                removeTypingIndicator();
+                addMessage(data.response, 'bot');
+            } catch (err) {
+                removeTypingIndicator();
+                addMessage('Error: Could not reach server.', 'bot');
+            }
+        });
+
+        // Auto-expand textarea as user types
+        input.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = (this.scrollHeight) + 'px';
+        });
+
+        // Create iframe modal elements
+        const iframeModal = document.createElement('div');
+        iframeModal.className = 'iframe-modal';
+        iframeModal.innerHTML = `
+            <div class="iframe-box">
+                <div class="iframe-toolbar">
+                    <span style="font-weight:600">Embedded Browser</span>
+                    <button id="iframe-back" title="Back">◀</button>
+                    <button id="iframe-forward" title="Forward">▶</button>
+                    <button id="iframe-open-new">Open in new tab</button>
+                    <button id="iframe-close">Close</button>
+                </div>
+                <div id="iframe-loader" style="display:none;text-align:center;padding:0;background:#fff;">
+                    <div class="iframe-loader-inner">
+                        <div class="spinner" id="iframe-spinner"></div>
+                        <div id="iframe-status">Loading…</div>
+                        <div class="iframe-actions">
+                            <button id="iframe-retry" style="display:none;">Retry</button>
+                            <button id="iframe-open-new-2" style="display:none;">Open in new tab</button>
+                        </div>
+                    </div>
+                </div>
+                <iframe class="iframe-frame" id="iframe-frame"></iframe>
+            </div>
+        `;
+        document.body.appendChild(iframeModal);
+
+        // Confirmation modal
+        const confirmModal = document.createElement('div');
+        confirmModal.className = 'confirm-modal';
+        confirmModal.innerHTML = `
+            <div class="confirm-box">
+                <p id="confirm-text">Open external link?</p>
+                <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:8px;">
+                    <button id="confirm-cancel">Cancel</button>
+                    <button id="confirm-open">Open</button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(confirmModal);
+        const confirmText = document.getElementById('confirm-text');
+        const confirmCancel = document.getElementById('confirm-cancel');
+        const confirmOpen = document.getElementById('confirm-open');
+        let pendingUrl = null;
+
+        confirmCancel.addEventListener('click', () => {
+            pendingUrl = null;
+            confirmModal.style.display = 'none';
+        });
+        confirmOpen.addEventListener('click', () => {
+            if (pendingUrl) openInIframe(pendingUrl);
+            pendingUrl = null;
+            confirmModal.style.display = 'none';
+        });
+
+        const iframeFrame = document.getElementById('iframe-frame');
+        const iframeClose = document.getElementById('iframe-close');
+        const iframeOpenNew = document.getElementById('iframe-open-new');
+        const iframeBack = document.getElementById('iframe-back');
+        const iframeForward = document.getElementById('iframe-forward');
+        const iframeLoader = document.getElementById('iframe-loader');
+
+        // Helper to enable/disable nav buttons
+        function setNav(enabled) {
+            iframeBack.disabled = !enabled;
+            iframeForward.disabled = !enabled;
+        }
+
+        function openInIframe(url) {
+            try {
+                iframeFrame.src = url;
+                iframeModal.style.display = 'flex';
+                iframeLoader.style.display = 'block';
+                iframeStatus.textContent = 'Loading…';
+                iframeStatus.classList.remove('iframe-error');
+                setNav(false);
+                // start timeout to detect framing issues; if framing fails, open in new tab and close modal
+                if (iframeLoadTimeout) clearTimeout(iframeLoadTimeout);
+                iframeLoadTimeout = setTimeout(() => {
+                    const urlToOpen = iframeFrame.src;
+                    iframeLoader.style.display = 'none';
+                    closeIframe();
+                    if (urlToOpen && urlToOpen !== 'about:blank') {
+                        window.open(urlToOpen, '_blank');
+                    }
+                }, 6000);
+            } catch (e) {
+                // fallback
+                window.open(url, '_blank');
+            }
+        }
+
+        function closeIframe() {
+            iframeFrame.src = 'about:blank';
+            iframeModal.style.display = 'none';
+        }
+
+        iframeClose.addEventListener('click', closeIframe);
+        iframeOpenNew.addEventListener('click', () => {
+            const url = iframeFrame.src;
+            if (url && url !== 'about:blank') window.open(url, '_blank');
+        });
+        const iframeRetry = document.getElementById('iframe-retry');
+        const iframeOpenNew2 = document.getElementById('iframe-open-new-2');
+        const iframeStatus = document.getElementById('iframe-status');
+
+        iframeRetry.addEventListener('click', () => {
+            // retry loading current src
+            iframeStatus.textContent = 'Retrying…';
+            iframeRetry.style.display = 'none';
+            iframeOpenNew2.style.display = 'none';
+            iframeLoader.style.display = 'block';
+            iframeFrame.src = iframeFrame.src; // reload
+        });
+        iframeOpenNew2.addEventListener('click', () => {
+            const url = iframeFrame.src;
+            if (url && url !== 'about:blank') window.open(url, '_blank');
+        });
+
+        // Detect iframe load and framing errors
+        let iframeLoadTimeout = null;
+        iframeFrame.addEventListener('load', () => {
+            iframeLoader.style.display = 'none';
+            iframeStatus.textContent = '';
+            // Try to access contentWindow to see if same-origin
+            try {
+                const cw = iframeFrame.contentWindow;
+                // If accessible, enable nav
+                setNav(true);
+            } catch (err) {
+                // Cross-origin - disable nav
+                setNav(false);
+            }
+            // hide retry/open buttons
+            iframeRetry.style.display = 'none';
+            iframeOpenNew2.style.display = 'none';
+            if (iframeLoadTimeout) {
+                clearTimeout(iframeLoadTimeout);
+                iframeLoadTimeout = null;
+            }
+        });
+
+        // Timeout to detect framing issues (some sites block embedding)
+        // Some browsers don't support loadstart on iframe; start timeout when setting src instead
+        // We'll set a timeout whenever we set src (handled in openInIframe)
+
+        // As some browsers don't fire loadstart, also set a general timeout when setting src
+        iframeFrame.addEventListener('error', () => {
+            iframeLoader.style.display = 'none';
+            const url = iframeFrame.src;
+            closeIframe();
+            if (url && url !== 'about:blank') window.open(url, '_blank');
+        });
+
+        // Navigation (best-effort; only works same-origin)
+        iframeBack.addEventListener('click', () => {
+            try { iframeFrame.contentWindow.history.back(); } catch (e) { }
+        });
+        iframeForward.addEventListener('click', () => {
+            try { iframeFrame.contentWindow.history.forward(); } catch (e) { }
+        });
+
+        // Intercept clicks on links inside bot messages to open in iframe (with confirmation)
+        messages.addEventListener('click', (e) => {
+            const a = e.target.closest('a');
+            if (!a) return;
+            // Only intercept bot links
+            const msg = a.closest('.message');
+            if (msg && msg.classList.contains('bot')) {
+                e.preventDefault();
+                const url = a.href;
+                // ask for confirmation
+                pendingUrl = url;
+                confirmText.textContent = `Open this link inside the chatbot?\n${url}`;
+                confirmModal.style.display = 'flex';
+            }
+        });
+    </script>
+</body>
+</html>
+
+</iframe>
+<div class="textstyle8">
+<div id="container_25b8112d"><div class="textstyle1"><div id="container_7a495f19"><div id="container_7a495f19_padding" ><div class="textstyle8"><span class="textstyle9"><br/></span></div>
+<div class="textstyle1"><span class="textstyle10"><br/></span><iframe name="IFrame1" frameBorder="0" src="" scrolling="auto" id="iframe_22e24068"></iframe></div>
+<div style="clear:both"></div></div></div><div id="container_798620fa"><div id="container_798620fa_padding" ><div class="textstyle1"><span class="textstyle11"><br/><br/></span></div>
+<div class="textstyle8"><div id="container_343b5305"><div id="container_343b5305_padding" ><div class="textstyle1">  <span class="textstyle12"><br/>We are at your service always.To contact us click the cotact button, we would respond to your calls as soon as posible .Follow us on facebook </span>
+  <span class="textstyle12"><a href="https://www.facebook.com/profile.php?id=61578739676871">Eml Tech  Studio </a></span>
+<span class="textstyle12"> .<br/><br/></span></div>
+<div class="textstyle8"><span class="textstyle12">Call us any time:<br/></span><span class="textstyle13">+234 808 411 5775<br/></span>  <a href="about.html" style="text-decoration:none"><div id="button_70dca2ac">
+    <div class="vcenterstyle1"><div class="vcenterstyle2">      <div class="textstyle8">
+        <span class="textstyle14">About</span>
+        </div>
+      <div class="textstyle1">
+        </div>
+      </div></div>
+    </div></a>
+<span class="textstyle13"><br/></span></div>
+<div class="textstyle1"><span class="textstyle13"><br/><br/></span></div>
+<div style="clear:both"></div></div></div></div>
+<div class="textstyle1"><h3 id="heading_5db5a622"></h3></div>
+<div class="textstyle8"><span class="textstyle15"><br/></span></div>
+<div class="textstyle1"><h3 id="heading_66882640">Copyrights&#169; 2025 Eml Tech Studio</h3></div>
+<div style="clear:both"></div></div></div></div>
+</div>  </div>
+</body>
+</html>
