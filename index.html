@@ -129,8 +129,8 @@
             sendBtn.disabled = true;
             loader.style.display = 'inline-block';
             try {
-                const res = await fetch("https://emmanuel154-customer24-7support.hf.space/chat", {
-                    method: 'POST',
+                const res = await fetch(endpoint, {
+                    method: 'GET',
                     headers: {
                         'Content-Type': 'application/json'
                     },
