@@ -1,166 +1,151 @@
 <!DOCTYPE html>
-<html> 
+<html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="generator" content="RocketCake">
-	<title></title>
-  <title>EML Tech Studio — Home</title>
-  <meta name="description" content="EML Tech Studio: Development, Planning & Support for tech products and services. Contact us for custom software, AI solutions and support.">
-	<link rel="stylesheet" type="text/css" href="index_html.css?h=0b301ff1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AGPT Style Chatbot</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #181818;
+            color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            background: #222;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+            padding: 24px;
+        }
+        .chat {
+            min-height: 300px;
+            margin-bottom: 16px;
+        }
+        .message {
+            margin: 12px 0;
+            padding: 12px;
+            border-radius: 8px;
+            background: #333;
+            word-break: break-word;
+        }
+        .user {
+            background: #0057ff;
+            color: #fff;
+            text-align: right;
+        }
+        .bot {
+            background: #444;
+            color: #f5f5f5;
+            text-align: left;
+        }
+        .input-row {
+            display: flex;
+        }
+        input[type="text"] {
+            flex: 1;
+            padding: 12px;
+            border-radius: 8px 0 0 8px;
+            border: none;
+            outline: none;
+            font-size: 1rem;
+            background: #2a2a2a;
+            color: #f5f5f5;
+        }
+        button {
+            padding: 12px 24px;
+            border-radius: 0 8px 8px 0;
+            border: none;
+            background: #0057ff;
+            color: #fff;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        button:disabled {
+            background: #444;
+            cursor: not-allowed;
+        }
+        .loader {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            border: 3px solid #0057ff;
+            border-radius: 50%;
+            border-top: 3px solid #444;
+            animation: spin 1s linear infinite;
+            margin-left: 8px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        a {
+            color: #00bfff;
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-<div class="textstyle1">
-<div id="container_29ee7549"><div id="container_29ee7549_padding" ><div class="textstyle2"><div id="menu_15070e93"><div  id="menu_15070e93_menualignmentwrapper" ><div  class="menuholder1"><a href="javascript:void(0);" tabindex="-1" aria-label="&#8801;" >
-	<div id="menuentry_65d20358"  class="menustyle1 menu_15070e93_mainMenuEntry mobileEntry">
-		<div class="menuentry_text1">
-  <span class="textstyle3">&#8801;</span>
-		</div>
-	</div>
-</a>
-<a href="javascript:void(0);" tabindex="-1" aria-label="Home &#9660;" >
-	<div id="menuentry_5687a04e"  class="menustyle2 menu_15070e93_mainMenuEntry normalEntry">
-		<div class="menuentry_text2">
-  <span class="textstyle4">Home </span>
-  <span class="textstyle5">&#9660;</span>
-		</div>
-	</div>
-</a>
-<a href="about.html" style="text-decoration:none" tabindex="-1">
-	<div id="menuentry_1ac047bb"  class="menustyle3 menu_15070e93_mainMenuEntry normalEntry">
-		<div class="menuentry_text2">
-  <span class="textstyle4">About</span>
-		</div>
-	</div>
-</a>
-<a href="contact.html" style="text-decoration:none" tabindex="-1">
-	<div id="menuentry_18f46d01"  class="menustyle4 menu_15070e93_mainMenuEntry normalEntry">
-		<div class="menuentry_text2">
-  <span class="textstyle4">Contact</span>
-		</div>
-	</div>
-</a>
-<a href="javascript:void(0);" tabindex="-1" aria-label="Products" >
-	<div id="menuentry_6fc79f0f"  class="menustyle5 menu_15070e93_mainMenuEntry normalEntry">
-		<div class="menuentry_text2">
-  <span class="textstyle4">Products</span>
-		</div>
-	</div>
-</a>
-
-	<script type="text/javascript" src="wsp_menu.js"></script>
-	<script type="text/javascript">
-		var js_menu_15070e93= new wsp_menu('menu_15070e93', 'menu_15070e93', 10, null, true, {generateAriaLabels: true, setUsefulTabIndices: true, closeWhenMouseOut: false} );
-
-		js_menu_15070e93.createMenuForItem('menuentry_65d20358', ["  <span class=\"textstyle6\">Home &#9660;</span> ", 'javascript:void(0);', '',
-		                                   "  <span class=\"textstyle6\">&#160;&#160;&#160;Main Page</span> ", 'javascript:void(0);', '',
-		                                   "  <span class=\"textstyle6\">&#160;&#160;&#160;Service Section</span> ", 'javascript:void(0);', '',
-		                                   "  <span class=\"textstyle6\">About</span> ", 'about.html', '',
-		                                   "  <span class=\"textstyle6\">Contact</span> ", 'contact.html', '',
-		                                   "  <span class=\"textstyle6\">Products</span> ", 'javascript:void(0);', '']
-		                                   , true);
-		js_menu_15070e93.createMenuForItem('menuentry_5687a04e', ["  <span class=\"textstyle6\">Main Page</span> ", 'javascript:void(0);', '',
-		                                   "  <span class=\"textstyle6\">Service Section</span> ", 'javascript:void(0);', '']);
-		js_menu_15070e93.createMenuForItem('menuentry_1ac047bb', []);
-		js_menu_15070e93.createMenuForItem('menuentry_18f46d01', []);
-		js_menu_15070e93.createMenuForItem('menuentry_6fc79f0f', []);
-
-	</script>
-</div></div></div></div>
-<div class="textstyle1"><div id="container_23dd7d16"><div id="container_23dd7d16_padding" ><div class="textstyle1"><img src="y.jpeg" width="604" height="600" id="img_450824da" alt="" title="" /><span class="textstyle7">EML TECH STUDIO&#174;</span></div>
-<div style="clear:both"></div></div></div></div>
-<div style="clear:both"></div></div></div>  </div>
-<div class="textstyle8">
-<div id="container_a8bef60"><div class="textstyle1"><div id="container_7b56f8c2"><div id="container_7b56f8c2_padding" ><div class="textstyle1"><h1 id="heading_5367cd03">The Tech Studio</h1><div id="carousel_7f894697">
-    <div class="textstyle1">
-      <header id="site-header" class="site-header">
-        <div id="container_23dd7d16"><div id="container_23dd7d16_padding" ><div class="textstyle1">
-          <a href="index.html" aria-label="EML Tech Studio home" style="text-decoration:none">
-            <img src="rc_images/y.jpeg" id="site-logo" class="site-logo" alt="EML Tech Studio logo" loading="lazy" />
-          </a>
-          <span class="textstyle7">EML TECH STUDIO&#174;</span>
-        </div>
-        <div style="clear:both"></div></div></div>
-      </header>
-    <div class="textstyle1">
-<h1 id="heading_4710ac38">To Power Your<br/>Dreams...</h1>      </div>
-    <div class="textstyle8">
-      <span class="textstyle9"><br/><br/></span>
-      </div>
+    <div class="container">
+        <h2>AGPT Style Chatbot</h2>
+        <div class="chat" id="chat"></div>
+        <form id="chatForm" class="input-row">
+            <input type="text" id="messageInput" placeholder="Type your message..." required />
+            <button type="submit" id="sendBtn">Send</button>
+        </form>
+        <div id="loader" class="loader" style="display:none;"></div>
     </div>
-  <div id="carousel_7f894697_page2">
-    <div class="textstyle1">
-<h1 id="heading_2fd91754">For You....</h1>      </div>
-    <div class="textstyle8">
-      <span class="textstyle9"><br/></span>
-      </div>
-    </div>
+    <script>
+        const chat = document.getElementById('chat');
+        const chatForm = document.getElementById('chatForm');
+        const messageInput = document.getElementById('messageInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const loader = document.getElementById('loader');
+        const endpoint = "https://emmanuel154-customer24-7support.hf.space/chat";
 
-	<script type="text/javascript" src="wsp_slideshow.js"></script>
-	<script type="text/javascript">
-		var js_carousel_7f894697= new wsp_slideshow('carousel_7f894697',['', ''], 'slide', 2000, 500, 'cover', null, 'top', null,
-		{startPage: 0} );
-	</script>
-</div></div>
-<div class="textstyle8"><a href="about.html" style="text-decoration:none"><div id="button_146ea582"><div class="vcenterstyle1"><div class="vcenterstyle2"><div class="textstyle8">  <span class="textstyle10">About</span>
-</div>
-<div class="textstyle1"></div>
-</div></div></div></a><span class="textstyle11"><br/></span><a href="contact.html" style="text-decoration:none"><div id="button_323ee83"><div class="vcenterstyle1"><div class="vcenterstyle2"><div class="textstyle8">  <span class="textstyle12">Contact</span>
-</div>
-<div class="textstyle1"></div>
-</div></div></div></a><span class="textstyle11"> </span></div>
-<div style="clear:both"></div></div></div><div id="container_438337b7"><div id="container_438337b7_padding" ><div class="textstyle8"><span class="textstyle13"><br/></span><div id="container_7912be8c"><div id="container_7912be8c_padding" ><div class="textstyle8"><div id="container_780a4201"><div id="container_780a4201_padding" ><div class="textstyle1"></div>
-<div class="textstyle8"><span class="textstyle14">Development</span><span class="textstyle15"><br/><br/><br/></span><span class="textstyle16">We implement any project quickly and with high relibility.<br/><br/></span>  <a href="contact.html" style="text-decoration:none"><div id="button_4e2dc648">
-    <div class="vcenterstyle1"><div class="vcenterstyle2">      <div class="textstyle8">
-        <span class="textstyle17">Contact</span>
-        </div>
-      <div class="textstyle1">
-        </div>
-      </div></div>
-    </div></a>
-</div>
-<div style="clear:both"></div></div></div><div id="container_552b321a"><div id="container_552b321a_padding" ><div class="textstyle1"></div>
-<div class="textstyle8"><span class="textstyle14">Planning</span><span class="textstyle15"><br/><br/><br/></span><span class="textstyle16">With our years long experience in the field, we know what we do.</span><span class="textstyle18"><br/><br/></span>  <a href="contact.html" style="text-decoration:none"><div id="button_5a3d431b">
-    <div class="vcenterstyle1"><div class="vcenterstyle2">      <div class="textstyle8">
-        <span class="textstyle17">Contact</span>
-        </div>
-      <div class="textstyle1">
-        </div>
-      </div></div>
-    </div></a>
-</div>
-<div style="clear:both"></div></div></div><div id="container_6b4db2e2"><div id="container_6b4db2e2_padding" ><div class="textstyle1"></div>
-<div class="textstyle8"><span class="textstyle14">Support</span><span class="textstyle15"><br/><br/><br/></span><span class="textstyle16">If something goes wrong, you can count on us.</span><span class="textstyle18"><br/><br/></span>  <a href="contact.html" style="text-decoration:none"><div id="button_34839493">
-    <div class="vcenterstyle1"><div class="vcenterstyle2">      <div class="textstyle8">
-        <span class="textstyle17">Contact</span>
-        </div>
-      <div class="textstyle1">
-        </div>
-      </div></div>
-    </div></a>
-</div>
-<div style="clear:both"></div></div></div></div>
-<div style="clear:both"></div></div></div></div>
-<div class="textstyle1"><span class="textstyle9"><br/></span></div>
-<div style="clear:both"></div></div></div><div id="container_433edc8a"><div id="container_433edc8a_padding" ><div class="textstyle1"><span class="textstyle19"><br/><br/></span></div>
-<div class="textstyle8"><div id="container_3479b30e"><div id="container_3479b30e_padding" ><div class="textstyle1">  <span class="textstyle20"><br/>We are at your service always.To contact us click the cotact button, we would respond to your calls as soon as posible .Follow us on facebook </span>
-  <span class="textstyle20"><a href="https://www.facebook.com/profile.php?id=61578739676871">Eml Tech  Studio </a></span>
-<span class="textstyle20"> .<br/><br/></span></div>
-<div class="textstyle8"><span class="textstyle20">Call us any time:<br/></span><span class="textstyle21">+234 808 411 5775<br/></span>  <a href="about.html" style="text-decoration:none"><div id="button_316a72c3">
-    <div class="vcenterstyle1"><div class="vcenterstyle2">      <div class="textstyle8">
-        <span class="textstyle10">About</span>
-        </div>
-      <div class="textstyle1">
-        </div>
-      </div></div>
-    </div></a>
-<span class="textstyle21"><br/></span></div>
-<div class="textstyle1"><span class="textstyle21"><br/><br/></span></div>
-<div style="clear:both"></div></div></div></div>
-<div class="textstyle1"><h3 id="heading_5e11d928"></h3></div>
-<div class="textstyle8"><span class="textstyle22"><br/></span></div>
-<div class="textstyle1"><h3 id="heading_7a7cbcc2">Copyrights&#169; 2025 Eml Tech Studio</h3></div>
-<div style="clear:both"></div></div></div></div>
-</div>  </div>
+        function linkify(text) {
+            const urlPattern = /(https?:\/\/[^\s]+)/g;
+            return text.replace(urlPattern, '<a href="$1" target="_blank">$1</a>');
+        }
+
+        function addMessage(text, sender) {
+            const msgDiv = document.createElement('div');
+            msgDiv.className = `message ${sender}`;
+            msgDiv.innerHTML = linkify(text);
+            chat.appendChild(msgDiv);
+            chat.scrollTop = chat.scrollHeight;
+        }
+
+        chatForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const message = messageInput.value.trim();
+            if (!message) return;
+            addMessage(message, 'user');
+            messageInput.value = '';
+            sendBtn.disabled = true;
+            loader.style.display = 'inline-block';
+            try {
+                const res = await fetch(endpoint, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ message })
+                });
+                const data = await res.json();
+                addMessage(data.response, 'bot');
+            } catch (err) {
+                addMessage('Error: Unable to reach chatbot.', 'bot');
+            } finally {
+                sendBtn.disabled = false;
+                loader.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
+
