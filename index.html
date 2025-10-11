@@ -3,22 +3,27 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CHAT SEM </title>
-    <meta name="description" content="Automated Customer Support System" />
+    <title>CHAT SEM - Automated Business System</title>
+    <meta name="description" content="Business Automation System" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary: #10a37f;
             --primary-dark: #0d8a6a;
+            --primary-light: #e6f3f0;
             --bg-primary: #ffffff;
             --bg-secondary: #f7f7f8;
             --bg-sidebar: #202123;
+            --bg-input: #ffffff;
             --text-primary: #343541;
             --text-secondary: #6e6e80;
             --text-muted: #8e8ea0;
             --border: #e5e5e7;
+            --border-light: #f0f0f0;
             --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+            --gradient: linear-gradient(135deg, #10a37f 0%, #0d8a6a 100%);
         }
 
         @media (prefers-color-scheme: dark) {
@@ -26,10 +31,12 @@
                 --bg-primary: #343541;
                 --bg-secondary: #444654;
                 --bg-sidebar: #202123;
+                --bg-input: #40414f;
                 --text-primary: #ececf1;
                 --text-secondary: #d1d5db;
                 --text-muted: #9ca3af;
                 --border: #565869;
+                --border-light: #4a4b59;
             }
         }
 
@@ -56,7 +63,7 @@
             color: white;
             display: flex;
             flex-direction: column;
-            padding: 16px;
+            padding: 8px;
             border-right: 1px solid var(--border);
             overflow-y: auto;
         }
@@ -70,46 +77,72 @@
         }
 
         .logo-icon {
-            width: 32px;
-            height: 32px;
-            background: var(--primary);
-            border-radius: 6px;
+            width: 40px;
+            height: 40px;
+            background: var(--gradient);
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 600;
+            font-weight: 700;
+            color: white;
+            font-size: 16px;
         }
 
         .logo-text {
-            font-size: 16px;
-            font-weight: 600;
+            font-size: 18px;
+            font-weight: 700;
         }
 
-        .chat-history {
-            flex: 1;
-            overflow-y: auto;
+        .logo-subtitle {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        .new-chat-btn {
+            background: transparent;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 6px;
+            padding: 12px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 8px;
+            transition: all 0.2s;
+        }
+
+        .new-chat-btn:hover {
+            background: rgba(255,255,255,0.1);
         }
 
         .history-item {
             padding: 12px;
             border-radius: 6px;
             cursor: pointer;
-            margin-bottom: 4px;
+            margin: 2px 8px;
             font-size: 14px;
             transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .history-item:hover {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255,255,255,0.1);
         }
 
         .history-item.active {
-            background: var(--primary);
+            background: rgba(255,255,255,0.15);
         }
 
         .footer {
             margin-top: auto;
-            padding: 16px 0;
+            padding: 16px 8px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
@@ -120,7 +153,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            padding: 8px 12px;
+            padding: 8px;
             border-radius: 4px;
             transition: color 0.2s;
         }
@@ -136,123 +169,152 @@
             display: flex;
             flex-direction: column;
             overflow: hidden;
+            background: var(--bg-primary);
         }
 
         .chat-header {
-            padding: 16px 24px;
+            padding: 12px 20px;
             border-bottom: 1px solid var(--border);
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            gap: 12px;
+            background: var(--bg-primary);
+        }
+
+        .chat-avatar {
+            width: 32px;
+            height: 32px;
+            background: var(--gradient);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: white;
+            font-size: 14px;
         }
 
         .chat-title {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 600;
+        }
+
+        .chat-subtitle {
+            font-size: 12px;
+            color: var(--text-muted);
         }
 
         .chat-container {
             flex: 1;
             overflow-y: auto;
-            padding: 24px;
+            padding: 0;
             display: flex;
             flex-direction: column;
-            gap: 24px;
         }
 
         .message {
             display: flex;
             gap: 16px;
-            max-width: 800px;
-            margin: 0 auto;
+            padding: 24px;
             width: 100%;
+            border-bottom: 1px solid var(--border-light);
         }
 
         .message.user {
-            margin-left: auto;
-            flex-direction: row-reverse;
+            background: var(--bg-secondary);
         }
 
         .avatar {
             width: 32px;
             height: 32px;
-            border-radius: 4px;
+            border-radius: 6px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 14px;
             font-weight: 600;
             flex-shrink: 0;
+            background: var(--gradient);
+            color: white;
         }
 
         .user .avatar {
             background: var(--primary);
-            color: white;
-        }
-
-        .assistant .avatar {
-            background: #8b5cf6;
-            color: white;
+            order: 2;
         }
 
         .message-content {
-            background: var(--bg-secondary);
-            padding: 16px;
-            border-radius: 8px;
-            line-height: 1.6;
             flex: 1;
+            max-width: calc(100% - 48px);
+            line-height: 1.6;
         }
 
-        .user .message-content {
-            background: var(--primary);
-            color: white;
+        .message-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 4px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .message-time {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 400;
         }
 
         .input-container {
-            padding: 24px;
+            padding: 20px;
             border-top: 1px solid var(--border);
+            background: var(--bg-primary);
         }
 
         .input-wrapper {
-            max-width: 800px;
+            max-width: 768px;
             margin: 0 auto;
             position: relative;
+            background: var(--bg-input);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 8px;
+            box-shadow: var(--shadow);
         }
 
         .message-input {
             width: 100%;
-            padding: 16px 48px 16px 16px;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            background: var(--bg-primary);
+            padding: 12px 16px;
+            border: none;
+            background: transparent;
             color: var(--text-primary);
             font-size: 16px;
             resize: none;
-            min-height: 56px;
+            min-height: 24px;
             max-height: 200px;
             outline: none;
-            transition: border-color 0.2s;
+            line-height: 1.5;
         }
 
-        .message-input:focus {
-            border-color: var(--primary);
+        .input-actions {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 0 0;
         }
 
         .send-button {
-            position: absolute;
-            right: 12px;
-            bottom: 12px;
             background: var(--primary);
             color: white;
             border: none;
-            border-radius: 4px;
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            border-radius: 6px;
+            padding: 8px 16px;
+            font-size: 14px;
+            font-weight: 500;
             cursor: pointer;
             transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .send-button:hover {
@@ -271,8 +333,8 @@
         }
 
         .typing-dot {
-            width: 8px;
-            height: 8px;
+            width: 6px;
+            height: 6px;
             background: var(--text-muted);
             border-radius: 50%;
             animation: typing 1.4s infinite ease-in-out;
@@ -289,16 +351,17 @@
         /* Quick Actions */
         .quick-actions {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 12px;
-            max-width: 800px;
+            max-width: 768px;
             margin: 0 auto 24px;
+            padding: 0 24px;
         }
 
         .action-btn {
-            background: var(--bg-secondary);
+            background: var(--bg-primary);
             border: 1px solid var(--border);
-            border-radius: 8px;
+            border-radius: 12px;
             padding: 16px;
             text-align: center;
             cursor: pointer;
@@ -307,24 +370,77 @@
             flex-direction: column;
             align-items: center;
             gap: 8px;
+            box-shadow: var(--shadow);
         }
 
         .action-btn:hover {
-            background: var(--primary);
-            color: white;
+            background: var(--primary-light);
             border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
         }
 
         .action-icon {
-            font-size: 20px;
+            font-size: 24px;
+            width: 48px;
+            height: 48px;
+            background: var(--gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
         }
 
         .action-text {
             font-size: 14px;
-            font-weight: 500;
+            font-weight: 600;
         }
 
-        /* Link Styling */
+        /* Welcome Screen */
+        .welcome-screen {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 24px;
+            gap: 32px;
+        }
+
+        .welcome-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: white;
+            margin-bottom: 16px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .welcome-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .welcome-subtitle {
+            font-size: 16px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        /* Message styling */
         .message-content a {
             color: var(--primary);
             text-decoration: none;
@@ -341,37 +457,6 @@
             border-bottom-color: rgba(255, 255, 255, 0.5);
         }
 
-        /* Welcome Screen */
-        .welcome-screen {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 40px;
-            gap: 24px;
-        }
-
-        .welcome-icon {
-            font-size: 48px;
-            color: var(--primary);
-            margin-bottom: 16px;
-        }
-
-        .welcome-title {
-            font-size: 28px;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .welcome-subtitle {
-            font-size: 16px;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin-bottom: 32px;
-        }
-
         /* Responsive */
         @media (max-width: 768px) {
             .sidebar {
@@ -379,10 +464,6 @@
             }
             
             .message {
-                max-width: 100%;
-            }
-            
-            .chat-container {
                 padding: 16px;
             }
             
@@ -392,7 +473,30 @@
             
             .quick-actions {
                 grid-template-columns: 1fr;
+                padding: 0 16px;
             }
+            
+            .welcome-screen {
+                padding: 24px 16px;
+            }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-muted);
         }
     </style>
 </head>
@@ -400,13 +504,21 @@
     <!-- Sidebar -->
     <div class="sidebar">
         <div class="logo">
-            <div class="logo-icon">CHAT SEM </div>
-            <div class="logo-text">A.S</div>
+            <div class="logo-icon">SEM</div>
+            <div>
+                <div class="logo-text">CHAT SEM</div>
+                <div class="logo-subtitle">A. S</div>
+            </div>
         </div>
         
-        <div class="chat-history">
-            <div class="history-item active">Current Session</div>
-            <!-- Chat history would be populated here -->
+        <button class="new-chat-btn">
+            <i class="fas fa-plus"></i>
+            New chat
+        </button>
+        
+        <div class="history-item active">
+            <i class="fas fa-comment"></i>
+            Today's Chat
         </div>
         
         <div class="footer">
@@ -420,38 +532,44 @@
     <!-- Main Content -->
     <div class="main-content">
         <div class="chat-header">
-            <div class="chat-title">Automated Support System</div>
+            <div class="chat-avatar">A.S</div>
+            <div>
+                <div class="chat-title">Automated System</div>
+                <div class="chat-subtitle">Online • Business Automation</div>
+            </div>
         </div>
 
         <div class="chat-container" id="chatContainer">
-            <!-- Quick Actions -->
-            <div class="quick-actions">
-                <div class="action-btn" onclick="sendPredefinedMessage('I want to mail your support team')">
-                    <div class="action-icon">📧</div>
-                    <div class="action-text">Mail Us</div>
-                </div>
-                <div class="action-btn" onclick="sendPredefinedMessage('I need to speak with a live agent')">
-                    <div class="action-icon">👨‍💼</div>
-                    <div class="action-text">Contact Live Agent</div>
-                </div>
-                <div class="action-btn" onclick="sendPredefinedMessage('I want to place an order')">
-                    <div class="action-icon">🛒</div>
-                    <div class="action-text">Place Order</div>
-                </div>
-                <div class="action-btn" onclick="sendPredefinedMessage('What are your business hours?')">
-                    <div class="action-icon">⏰</div>
-                    <div class="action-text">Business Hours</div>
-                </div>
-            </div>
-
-            <!-- Welcome message -->
+            <!-- Welcome Screen -->
             <div class="welcome-screen" id="welcomeScreen">
                 <div class="welcome-icon">
                     <i class="fas fa-robot"></i>
                 </div>
-                <div class="welcome-title">Automated Support System</div>
-                <div class="welcome-subtitle">
-                    How can I help you today? Use the quick actions above or type your question below.
+                <div>
+                    <div class="welcome-title">CHAT SEM</div>
+                    <div class="welcome-subtitle">
+                        Automated business support system. Get instant answers to common queries and quick access to services.
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="quick-actions">
+                    <div class="action-btn" onclick="sendPredefinedMessage('I want to contact your support team via email')">
+                        <div class="action-icon">📧</div>
+                        <div class="action-text">Email Support</div>
+                    </div>
+                    <div class="action-btn" onclick="sendPredefinedMessage('Connect me with a live support agent')">
+                        <div class="action-icon">👨‍💼</div>
+                        <div class="action-text">Live Agent</div>
+                    </div>
+                    <div class="action-btn" onclick="sendPredefinedMessage('I want to place a new order')">
+                        <div class="action-icon">🛒</div>
+                        <div class="action-text">Place Order</div>
+                    </div>
+                    <div class="action-btn" onclick="sendPredefinedMessage('What are your operating hours and contact information?')">
+                        <div class="action-icon">🏢</div>
+                        <div class="action-text">Business Info</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -461,12 +579,15 @@
                 <textarea 
                     class="message-input" 
                     id="messageInput" 
-                    placeholder="Type your message here..." 
+                    placeholder="Message CHAT SEM..." 
                     rows="1"
                 ></textarea>
-                <button class="send-button" id="sendButton">
-                    <i class="fas fa-paper-plane"></i>
-                </button>
+                <div class="input-actions">
+                    <button class="send-button" id="sendButton">
+                        <i class="fas fa-paper-plane"></i>
+                        Send
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -481,13 +602,20 @@
         // Configuration
         const endpoint = "https://emmanuel154-customer24-7support.hf.space/chat";
 
+        // Get current time for messages
+        function getCurrentTime() {
+            return new Date().toLocaleTimeString('en-US', { 
+                hour: '2-digit', 
+                minute: '2-digit',
+                hour12: true 
+            });
+        }
+
         // Enhanced text processing with smart links
         function processText(text) {
             const fragment = document.createDocumentFragment();
             
-            // Patterns for different types of content
             const patterns = [
-                // Email addresses
                 {
                     regex: /([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/g,
                     handler: (match) => {
@@ -498,7 +626,6 @@
                         return link;
                     }
                 },
-                // Phone numbers (international format)
                 {
                     regex: /(\+?[\d\s\-\(\)]{10,})/g,
                     handler: (match) => {
@@ -512,7 +639,6 @@
                         return document.createTextNode(match);
                     }
                 },
-                // URLs
                 {
                     regex: /(https?:\/\/[^\s]+)/g,
                     handler: (match) => {
@@ -524,7 +650,6 @@
                         return link;
                     }
                 },
-                // Facebook profile links
                 {
                     regex: /(?:https?:\/\/)?(?:www\.)?facebook\.com\/[^\s]+/gi,
                     handler: (match) => {
@@ -540,24 +665,20 @@
 
             let lastIndex = 0;
             let textToProcess = text;
-
-            // Create a combined pattern to find the earliest match
             const allPatterns = patterns.map(p => p.regex);
             const combinedPattern = new RegExp(allPatterns.map(p => p.source).join('|'), 'gi');
 
             let match;
             while ((match = combinedPattern.exec(textToProcess)) !== null) {
-                // Add text before the match
                 if (match.index > lastIndex) {
                     fragment.appendChild(document.createTextNode(
                         textToProcess.slice(lastIndex, match.index)
                     ));
                 }
 
-                // Determine which pattern matched and handle accordingly
                 let handled = false;
                 for (const pattern of patterns) {
-                    pattern.regex.lastIndex = 0; // Reset regex
+                    pattern.regex.lastIndex = 0;
                     const patternMatch = pattern.regex.exec(match[0]);
                     if (patternMatch) {
                         fragment.appendChild(pattern.handler(patternMatch[0]));
@@ -566,7 +687,6 @@
                     }
                 }
 
-                // If no specific pattern handled it, add as plain text
                 if (!handled) {
                     fragment.appendChild(document.createTextNode(match[0]));
                 }
@@ -574,7 +694,6 @@
                 lastIndex = match.index + match[0].length;
             }
 
-            // Add remaining text
             if (lastIndex < textToProcess.length) {
                 fragment.appendChild(document.createTextNode(
                     textToProcess.slice(lastIndex)
@@ -586,7 +705,6 @@
 
         // Add message to chat
         function addMessage(text, sender) {
-            // Hide welcome screen on first message
             if (welcomeScreen.style.display !== 'none') {
                 welcomeScreen.style.display = 'none';
             }
@@ -596,19 +714,27 @@
 
             const avatar = document.createElement('div');
             avatar.className = 'avatar';
-            avatar.textContent = sender === 'user' ? 'Y' : 'A.S';
+            avatar.textContent = sender === 'user' ? 'You' : 'A.S';
 
             const content = document.createElement('div');
             content.className = 'message-content';
 
-            // Process text for smart links
-            content.appendChild(processText(String(text)));
+            const header = document.createElement('div');
+            header.className = 'message-header';
+            header.innerHTML = `
+                ${sender === 'user' ? 'You' : 'Automated System'}
+                <span class="message-time">${getCurrentTime()}</span>
+            `;
 
+            const textContent = document.createElement('div');
+            textContent.appendChild(processText(String(text)));
+
+            content.appendChild(header);
+            content.appendChild(textContent);
             messageDiv.appendChild(avatar);
             messageDiv.appendChild(content);
             chatContainer.appendChild(messageDiv);
 
-            // Scroll to bottom
             chatContainer.scrollTop = chatContainer.scrollHeight;
         }
 
@@ -625,6 +751,13 @@
             const content = document.createElement('div');
             content.className = 'message-content';
             
+            const header = document.createElement('div');
+            header.className = 'message-header';
+            header.innerHTML = `
+                Automated System
+                <span class="message-time">${getCurrentTime()}</span>
+            `;
+
             const typing = document.createElement('div');
             typing.className = 'typing-indicator';
             for (let i = 0; i < 3; i++) {
@@ -633,6 +766,7 @@
                 typing.appendChild(dot);
             }
 
+            content.appendChild(header);
             content.appendChild(typing);
             messageDiv.appendChild(avatar);
             messageDiv.appendChild(content);
@@ -657,7 +791,7 @@
         // Auto-resize textarea
         messageInput.addEventListener('input', function() {
             this.style.height = 'auto';
-            this.style.height = Math.min(this.scrollHeight, 200) + 'px';
+            this.style.height = Math.min(this.scrollHeight, 120) + 'px';
         });
 
         // Send message
@@ -715,6 +849,13 @@
 
         // Focus input on load
         messageInput.focus();
+
+        // Add welcome message from bot
+        setTimeout(() => {
+            if (welcomeScreen.style.display !== 'none') {
+                addMessage("Hello! I'm your Automated Business System. How can I assist you today? You can use the quick actions above or type your question.", 'assistant');
+            }
+        }, 1000);
     </script>
 </body>
-    </html> 
+    </html>
