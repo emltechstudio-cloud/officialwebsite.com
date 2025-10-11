@@ -3,255 +3,718 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CHAT SEM</title>
-    <meta name="description" content="SEM DEMO UI. " />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    <title>CHAT SEM </title>
+    <meta name="description" content="Automated Customer Support System" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg: #181818;
-            --card: #222;
-            --muted: #333;
-            --accent: #0057ff;
-            --text: #f5f5f5;
+            --primary: #10a37f;
+            --primary-dark: #0d8a6a;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f7f7f8;
+            --bg-sidebar: #202123;
+            --text-primary: #343541;
+            --text-secondary: #6e6e80;
+            --text-muted: #8e8ea0;
+            --border: #e5e5e7;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
-        body {
-            font-family: 'Roboto', sans-serif;
-            background: var(--bg);
-            color: var(--text);
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-primary: #343541;
+                --bg-secondary: #444654;
+                --bg-sidebar: #202123;
+                --text-primary: #ececf1;
+                --text-secondary: #d1d5db;
+                --text-muted: #9ca3af;
+                --border: #565869;
+            }
+        }
+
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
-        .container {
-            max-width: 600px;
-            margin: 40px auto;
-            background: var(--card);
-            border-radius: 12px;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.4);
-            padding: 24px;
-        }
-        .chat {
-            min-height: 300px;
-            margin-bottom: 16px;
-            overflow-y: auto;
-            padding: 8px;
-        }
-        .message {
-            margin: 12px 0;
-            padding: 12px;
-            border-radius: 8px;
-            background: #333;
-            word-break: break-word;
-            line-height: 1.4;
-        }
-        .user {
-            background: var(--accent);
-            color: #fff;
-            text-align: right;
-        }
-        .bot {
-            background: #444;
-            color: var(--text);
-            text-align: left;
-        }
-        .input-row {
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.5;
             display: flex;
-            gap: 0;
+            height: 100vh;
+            overflow: hidden;
         }
-        input[type="text"] {
-            flex: 1;
+
+        /* Sidebar */
+        .sidebar {
+            width: 260px;
+            background: var(--bg-sidebar);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            padding: 16px;
+            border-right: 1px solid var(--border);
+            overflow-y: auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
             padding: 12px;
-            border-radius: 8px 0 0 8px;
-            border: none;
-            outline: none;
-            font-size: 1rem;
-            background: #2a2a2a;
-            color: var(--text);
+            margin-bottom: 16px;
         }
-        button {
-            padding: 12px 24px;
-            border-radius: 0 8px 8px 0;
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--primary);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+        .logo-text {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .chat-history {
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .history-item {
+            padding: 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-bottom: 4px;
+            font-size: 14px;
+            transition: background 0.2s;
+        }
+
+        .history-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .history-item.active {
+            background: var(--primary);
+        }
+
+        .footer {
+            margin-top: auto;
+            padding: 16px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-link {
+            color: var(--text-muted);
+            font-size: 12px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: color 0.2s;
+        }
+
+        .footer-link:hover {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .chat-header {
+            padding: 16px 24px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .chat-title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .chat-container {
+            flex: 1;
+            overflow-y: auto;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .message {
+            display: flex;
+            gap: 16px;
+            max-width: 800px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .message.user {
+            margin-left: auto;
+            flex-direction: row-reverse;
+        }
+
+        .avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .user .avatar {
+            background: var(--primary);
+            color: white;
+        }
+
+        .assistant .avatar {
+            background: #8b5cf6;
+            color: white;
+        }
+
+        .message-content {
+            background: var(--bg-secondary);
+            padding: 16px;
+            border-radius: 8px;
+            line-height: 1.6;
+            flex: 1;
+        }
+
+        .user .message-content {
+            background: var(--primary);
+            color: white;
+        }
+
+        .input-container {
+            padding: 24px;
+            border-top: 1px solid var(--border);
+        }
+
+        .input-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .message-input {
+            width: 100%;
+            padding: 16px 48px 16px 16px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-size: 16px;
+            resize: none;
+            min-height: 56px;
+            max-height: 200px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .message-input:focus {
+            border-color: var(--primary);
+        }
+
+        .send-button {
+            position: absolute;
+            right: 12px;
+            bottom: 12px;
+            background: var(--primary);
+            color: white;
             border: none;
-            background: var(--accent);
-            color: #fff;
-            font-size: 1rem;
+            border-radius: 4px;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             cursor: pointer;
             transition: background 0.2s;
         }
-        button:disabled {
-            background: #444;
+
+        .send-button:hover {
+            background: var(--primary-dark);
+        }
+
+        .send-button:disabled {
+            background: var(--text-muted);
             cursor: not-allowed;
         }
-        .loader {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid var(--accent);
+
+        .typing-indicator {
+            display: flex;
+            gap: 4px;
+            padding: 8px 0;
+        }
+
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--text-muted);
             border-radius: 50%;
-            border-top: 3px solid #444;
-            animation: spin 1s linear infinite;
-            margin-left: 8px;
-            vertical-align: middle;
+            animation: typing 1.4s infinite ease-in-out;
         }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+
+        .typing-dot:nth-child(1) { animation-delay: -0.32s; }
+        .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+
+        @keyframes typing {
+            0%, 80%, 100% { transform: scale(0.8); opacity: 0.5; }
+            40% { transform: scale(1); opacity: 1; }
         }
-        a {
-            color: #00bfff;
-            text-decoration: underline;
+
+        /* Quick Actions */
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            max-width: 800px;
+            margin: 0 auto 24px;
         }
-        /* Visually hidden (accessible label) */
-        .sr-only {
-            position: absolute !important;
-            height: 1px; width: 1px;
-            overflow: hidden;
-            clip: rect(1px, 1px, 1px, 1px);
-            white-space: nowrap;
+
+        .action-btn {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .action-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .action-icon {
+            font-size: 20px;
+        }
+
+        .action-text {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* Link Styling */
+        .message-content a {
+            color: var(--primary);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        .message-content a:hover {
+            border-bottom-color: var(--primary);
+        }
+
+        .user .message-content a {
+            color: rgba(255, 255, 255, 0.9);
+            border-bottom-color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Welcome Screen */
+        .welcome-screen {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px;
+            gap: 24px;
+        }
+
+        .welcome-icon {
+            font-size: 48px;
+            color: var(--primary);
+            margin-bottom: 16px;
+        }
+
+        .welcome-title {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .welcome-subtitle {
+            font-size: 16px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-bottom: 32px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+            
+            .message {
+                max-width: 100%;
+            }
+            
+            .chat-container {
+                padding: 16px;
+            }
+            
+            .input-container {
+                padding: 16px;
+            }
+            
+            .quick-actions {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h2>CHAT SEM </h2>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">
+            <div class="logo-icon">CHAT SEM </div>
+            <div class="logo-text">A.S</div>
+        </div>
+        
+        <div class="chat-history">
+            <div class="history-item active">Current Session</div>
+            <!-- Chat history would be populated here -->
+        </div>
+        
+        <div class="footer">
+            <a href="https://www.facebook.com/profile.php?id=61578739676871&mibextid=rS40aB7S9Ucbxw6v" class="footer-link" target="_blank">
+                <i class="fab fa-facebook"></i>
+                EML TECH STUDIO
+            </a>
+        </div>
+    </div>
 
-        <!-- chat container: aria-live for screen readers, role="log" to indicate it's a live log -->
-        <div class="chat" id="chat" role="log" aria-live="polite" aria-atomic="false"></div>
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="chat-header">
+            <div class="chat-title">Automated Support System</div>
+        </div>
 
-        <form id="chatForm" class="input-row" autocomplete="off">
-            <label for="messageInput" class="sr-only">Message</label>
-            <input type="text" id="messageInput" name="message" placeholder="Type your message..." required />
-            <button type="submit" id="sendBtn">^</button>
-        </form>
+        <div class="chat-container" id="chatContainer">
+            <!-- Quick Actions -->
+            <div class="quick-actions">
+                <div class="action-btn" onclick="sendPredefinedMessage('I want to mail your support team')">
+                    <div class="action-icon">📧</div>
+                    <div class="action-text">Mail Us</div>
+                </div>
+                <div class="action-btn" onclick="sendPredefinedMessage('I need to speak with a live agent')">
+                    <div class="action-icon">👨‍💼</div>
+                    <div class="action-text">Contact Live Agent</div>
+                </div>
+                <div class="action-btn" onclick="sendPredefinedMessage('I want to place an order')">
+                    <div class="action-icon">🛒</div>
+                    <div class="action-text">Place Order</div>
+                </div>
+                <div class="action-btn" onclick="sendPredefinedMessage('What are your business hours?')">
+                    <div class="action-icon">⏰</div>
+                    <div class="action-text">Business Hours</div>
+                </div>
+            </div>
 
-        <!-- loader is visually separate; it's toggled on while waiting for reply -->
-        <div id="loader" class="loader" style="display:none;" aria-hidden="true" title="Loading"></div>
+            <!-- Welcome message -->
+            <div class="welcome-screen" id="welcomeScreen">
+                <div class="welcome-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="welcome-title">Automated Support System</div>
+                <div class="welcome-subtitle">
+                    How can I help you today? Use the quick actions above or type your question below.
+                </div>
+            </div>
+        </div>
+
+        <div class="input-container">
+            <div class="input-wrapper">
+                <textarea 
+                    class="message-input" 
+                    id="messageInput" 
+                    placeholder="Type your message here..." 
+                    rows="1"
+                ></textarea>
+                <button class="send-button" id="sendButton">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
     </div>
 
     <script>
-        // Configuration
-        const chat = document.getElementById('chat');
-        const chatForm = document.getElementById('chatForm');
+        // DOM Elements
+        const chatContainer = document.getElementById('chatContainer');
+        const welcomeScreen = document.getElementById('welcomeScreen');
         const messageInput = document.getElementById('messageInput');
-        const sendBtn = document.getElementById('sendBtn');
-        const loader = document.getElementById('loader');
+        const sendButton = document.getElementById('sendButton');
 
-        // NOTE: This endpoint is an external Hugging Face Spaces URL.
-        // If your browser is blocked by CORS, you will need to enable CORS server-side
-        // or use a proxy. This script attempts a POST JSON call and handles errors gracefully.
+        // Configuration
         const endpoint = "https://emmanuel154-customer24-7support.hf.space/chat";
 
-        // Safer linkify that does NOT inject HTML (prevents XSS).
-        // It builds DOM nodes: text nodes for plain text and <a> elements for URLs.
-        function buildSafeMessageNodes(text) {
-            const urlPattern = /(https?:\/\/[^\s]+)/g;
-            const frag = document.createDocumentFragment();
+        // Enhanced text processing with smart links
+        function processText(text) {
+            const fragment = document.createDocumentFragment();
+            
+            // Patterns for different types of content
+            const patterns = [
+                // Email addresses
+                {
+                    regex: /([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/g,
+                    handler: (match) => {
+                        const link = document.createElement('a');
+                        link.href = `mailto:${match}`;
+                        link.textContent = match;
+                        link.target = '_blank';
+                        return link;
+                    }
+                },
+                // Phone numbers (international format)
+                {
+                    regex: /(\+?[\d\s\-\(\)]{10,})/g,
+                    handler: (match) => {
+                        const cleanNumber = match.replace(/[\s\-\(\)]/g, '');
+                        if (cleanNumber.length >= 10) {
+                            const link = document.createElement('a');
+                            link.href = `tel:${cleanNumber}`;
+                            link.textContent = match;
+                            return link;
+                        }
+                        return document.createTextNode(match);
+                    }
+                },
+                // URLs
+                {
+                    regex: /(https?:\/\/[^\s]+)/g,
+                    handler: (match) => {
+                        const link = document.createElement('a');
+                        link.href = match;
+                        link.textContent = match;
+                        link.target = '_blank';
+                        link.rel = 'noopener noreferrer';
+                        return link;
+                    }
+                },
+                // Facebook profile links
+                {
+                    regex: /(?:https?:\/\/)?(?:www\.)?facebook\.com\/[^\s]+/gi,
+                    handler: (match) => {
+                        const link = document.createElement('a');
+                        link.href = match.startsWith('http') ? match : `https://${match}`;
+                        link.textContent = 'Facebook Profile';
+                        link.target = '_blank';
+                        link.rel = 'noopener noreferrer';
+                        return link;
+                    }
+                }
+            ];
+
             let lastIndex = 0;
+            let textToProcess = text;
+
+            // Create a combined pattern to find the earliest match
+            const allPatterns = patterns.map(p => p.regex);
+            const combinedPattern = new RegExp(allPatterns.map(p => p.source).join('|'), 'gi');
+
             let match;
-            while ((match = urlPattern.exec(text)) !== null) {
-                const url = match[0];
-                const before = text.slice(lastIndex, match.index);
-                if (before) frag.appendChild(document.createTextNode(before));
-                const a = document.createElement('a');
-                a.href = url;
-                a.textContent = url;
-                a.target = '_blank';
-                // security for external links
-                a.rel = 'noopener noreferrer';
-                frag.appendChild(a);
-                lastIndex = match.index + url.length;
+            while ((match = combinedPattern.exec(textToProcess)) !== null) {
+                // Add text before the match
+                if (match.index > lastIndex) {
+                    fragment.appendChild(document.createTextNode(
+                        textToProcess.slice(lastIndex, match.index)
+                    ));
+                }
+
+                // Determine which pattern matched and handle accordingly
+                let handled = false;
+                for (const pattern of patterns) {
+                    pattern.regex.lastIndex = 0; // Reset regex
+                    const patternMatch = pattern.regex.exec(match[0]);
+                    if (patternMatch) {
+                        fragment.appendChild(pattern.handler(patternMatch[0]));
+                        handled = true;
+                        break;
+                    }
+                }
+
+                // If no specific pattern handled it, add as plain text
+                if (!handled) {
+                    fragment.appendChild(document.createTextNode(match[0]));
+                }
+
+                lastIndex = match.index + match[0].length;
             }
-            const rest = text.slice(lastIndex);
-            if (rest) frag.appendChild(document.createTextNode(rest));
-            return frag;
+
+            // Add remaining text
+            if (lastIndex < textToProcess.length) {
+                fragment.appendChild(document.createTextNode(
+                    textToProcess.slice(lastIndex)
+                ));
+            }
+
+            return fragment;
         }
 
-        // Create and append a message element safely
+        // Add message to chat
         function addMessage(text, sender) {
-            const msgDiv = document.createElement('div');
-            msgDiv.className = `message ${sender}`;
-            msgDiv.appendChild(buildSafeMessageNodes(String(text)));
-            chat.appendChild(msgDiv);
-            // keep scroll at bottom
-            chat.scrollTop = chat.scrollHeight;
+            // Hide welcome screen on first message
+            if (welcomeScreen.style.display !== 'none') {
+                welcomeScreen.style.display = 'none';
+            }
+
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}`;
+
+            const avatar = document.createElement('div');
+            avatar.className = 'avatar';
+            avatar.textContent = sender === 'user' ? 'Y' : 'A.S';
+
+            const content = document.createElement('div');
+            content.className = 'message-content';
+
+            // Process text for smart links
+            content.appendChild(processText(String(text)));
+
+            messageDiv.appendChild(avatar);
+            messageDiv.appendChild(content);
+            chatContainer.appendChild(messageDiv);
+
+            // Scroll to bottom
+            chatContainer.scrollTop = chatContainer.scrollHeight;
         }
 
-        // Helper to show an inline error message to user
-        function showError(text) {
-            addMessage('Error: ' + text, 'bot');
+        // Show typing indicator
+        function showTyping() {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message assistant';
+            messageDiv.id = 'typingIndicator';
+
+            const avatar = document.createElement('div');
+            avatar.className = 'avatar';
+            avatar.textContent = 'A.S';
+
+            const content = document.createElement('div');
+            content.className = 'message-content';
+            
+            const typing = document.createElement('div');
+            typing.className = 'typing-indicator';
+            for (let i = 0; i < 3; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'typing-dot';
+                typing.appendChild(dot);
+            }
+
+            content.appendChild(typing);
+            messageDiv.appendChild(avatar);
+            messageDiv.appendChild(content);
+            chatContainer.appendChild(messageDiv);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
         }
 
-        // Submit handler with improved error handling and response checks
-        chatForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
+        // Hide typing indicator
+        function hideTyping() {
+            const indicator = document.getElementById('typingIndicator');
+            if (indicator) {
+                indicator.remove();
+            }
+        }
+
+        // Send predefined message from quick actions
+        function sendPredefinedMessage(message) {
+            messageInput.value = message;
+            sendMessage();
+        }
+
+        // Auto-resize textarea
+        messageInput.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = Math.min(this.scrollHeight, 200) + 'px';
+        });
+
+        // Send message
+        async function sendMessage() {
             const message = messageInput.value.trim();
             if (!message) return;
+
             addMessage(message, 'user');
             messageInput.value = '';
-            sendBtn.disabled = true;
-            loader.style.display = 'inline-block';
-            loader.setAttribute('aria-hidden', 'false');
+            messageInput.style.height = 'auto';
+            sendButton.disabled = true;
 
-            // Use AbortController to timeout the request if it takes too long
-            const controller = new AbortController();
-            const timeout = setTimeout(() => controller.abort(), 20000); // 20s timeout
+            showTyping();
 
             try {
-                const res = await fetch(endpoint, {
+                const response = await fetch(endpoint, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ message }),
-                    signal: controller.signal
+                    body: JSON.stringify({ message })
                 });
 
-                clearTimeout(timeout);
-
-                if (!res.ok) {
-                    // Try to read any server message, otherwise provide generic error
-                    let text = `Server responded with ${res.status} ${res.statusText}`;
-                    try {
-                        const errData = await res.json();
-                        if (errData && errData.error) text = errData.error;
-                    } catch (_) { /* ignore json parse errors */ }
-                    showError(text);
-                    return;
+                if (!response.ok) {
+                    throw new Error(`Server responded with ${response.status}`);
                 }
 
-                // Parse JSON safely
-                let data;
-                try {
-                    data = await res.json();
-                } catch (parseErr) {
-                    showError('Invalid JSON response from server.');
-                    return;
-                }
-
-                // Accept multiple possible response shapes
-                const reply = data?.response ?? data?.reply ?? data?.message ?? data?.result;
-                if (typeof reply === 'string' && reply.trim()) {
-                    addMessage(reply, 'bot');
-                } else if (reply && typeof reply === 'object') {
-                    // stringify non-string replies
-                    addMessage(JSON.stringify(reply), 'bot');
+                const data = await response.json();
+                hideTyping();
+                
+                if (data.response) {
+                    addMessage(data.response, 'assistant');
                 } else {
-                    showError('Empty response from chatbot.');
+                    addMessage('I apologize, but I encountered an issue processing your request.', 'assistant');
                 }
-            } catch (err) {
-                if (err.name === 'AbortError') {
-                    showError('Request timed out.');
-                } else {
-                    showError('Unable to reach chatbot. ' + (err.message || 'Network error'));
-                }
+            } catch (error) {
+                hideTyping();
+                addMessage('Sorry, our automated system is currently unavailable. Please try again later.', 'assistant');
+                console.error('Error:', error);
             } finally {
-                clearTimeout();
-                sendBtn.disabled = false;
-                loader.style.display = 'none';
-                loader.setAttribute('aria-hidden', 'true');
+                sendButton.disabled = false;
                 messageInput.focus();
             }
+        }
+
+        // Event listeners
+        sendButton.addEventListener('click', sendMessage);
+
+        messageInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
         });
+
+        // Focus input on load
+        messageInput.focus();
     </script>
 </body>
-</html>
-
+    </html> 
