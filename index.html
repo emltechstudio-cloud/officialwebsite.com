@@ -217,13 +217,13 @@
 
         /* Links */
         .bubble a {
-            color: inherit;
+            color: #667eea;
             text-decoration: underline;
             font-weight: 500;
         }
 
-        .bot .bubble a {
-            color: #667eea;
+        .user .bubble a {
+            color: white;
         }
 
         /* Typing Indicator */
@@ -536,7 +536,10 @@
 
             const bubble = document.createElement('div');
             bubble.className = 'bubble';
-            bubble.innerHTML = processText(text);
+            
+            // Clean the text before processing
+            const cleanedText = cleanText(text);
+            bubble.innerHTML = processText(cleanedText);
 
             messageDiv.appendChild(bubble);
             messagesArea.appendChild(messageDiv);
@@ -545,24 +548,40 @@
             messagesArea.scrollTop = messagesArea.scrollHeight;
         }
 
+        // Clean text from API responses
+        function cleanText(text) {
+            // Remove any HTML tags that might be in the response
+            text = text.replace(/<[^>]*>/g, '');
+            
+            // Fix the WhatsApp catalog link specifically
+            text = text.replace(/2347070811718" target="_blank" rel="noopener">View our catalogue" target="_blank" rel="noopener">https:\/\/2347070811718" target="_blank" rel="noopener">View our catalogue/g, 
+                              'https://wa.me/c/2347070811718');
+            
+            // Fix other malformed URLs
+            text = text.replace(/" target="_blank" rel="noopener">/g, '');
+            text = text.replace(/https:\/\/https:\/\//g, 'https://');
+            
+            return text;
+        }
+
         // Process text for links
         function processText(text) {
-            // Escape HTML
+            // Escape HTML first
             text = text.replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
-            // URLs - fixed regex to handle various URL formats
+            // WhatsApp catalog link - specific handling
             text = text.replace(
-                /(https?:\/\/[^\s<]+)/g,
+                /https:\/\/wa\.me\/c\/2347070811718/g,
+                '<a href="https://wa.me/c/2347070811718" target="_blank" rel="noopener">View our catalogue on WhatsApp</a>'
+            );
+
+            // Regular URLs
+            text = text.replace(
+                /(https?:\/\/[^\s<]+[^\s<.,;])/g,
                 '<a href="$1" target="_blank" rel="noopener">$1</a>'
             );
 
-            // WhatsApp catalog link
-            text = text.replace(
-                /wa\.me\/c\/2347070811718/g,
-                '<a href="https://wa.me/c/2347070811718" target="_blank" rel="noopener">View our catalogue</a>'
-            );
-
-            // Phone numbers - improved regex
+            // Phone numbers
             text = text.replace(
                 /(\+?[\d\s\-\(\)]{10,})/g,
                 function(match) {
@@ -571,7 +590,7 @@
                 }
             );
 
-            // Emails - improved regex
+            // Emails
             text = text.replace(
                 /([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/g,
                 '<a href="mailto:$1">$1</a>'
