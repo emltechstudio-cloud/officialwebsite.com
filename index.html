@@ -537,8 +537,14 @@
             const bubble = document.createElement('div');
             bubble.className = 'bubble';
             
-            // Process text for links
-            bubble.innerHTML = processText(text);
+            // Process text for links - SIMPLIFIED APPROACH
+            if (sender === 'bot') {
+                // For bot messages, clean the broken HTML and create proper links
+                bubble.innerHTML = cleanAndProcessText(text);
+            } else {
+                // For user messages, just escape HTML
+                bubble.textContent = text;
+            }
 
             messageDiv.appendChild(bubble);
             messagesArea.appendChild(messageDiv);
@@ -547,36 +553,44 @@
             messagesArea.scrollTop = messagesArea.scrollHeight;
         }
 
-        // Process text for links - IMPROVED VERSION
-        function processText(text) {
-            // First escape HTML to prevent XSS
-            let processedText = text.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        // Clean and process text from API responses
+        function cleanAndProcessText(text) {
+            // First, fix the broken HTML links from the API
+            let cleanedText = text;
             
-            // Convert full URLs (with http/https) to clickable links
+            // Fix the broken WhatsApp links
+            cleanedText = cleanedText.replace(/2347070811718" target="_blank" rel="noopener">https:\/\/wa\.me\/(c\/)?2347070811718/g, 
+                'https://wa.me/$12347070811718');
+            
+            // Remove any remaining broken HTML tags
+            cleanedText = cleanedText.replace(/" target="_blank" rel="noopener">/g, '');
+            cleanedText = cleanedText.replace(/<a href="/g, '');
+            cleanedText = cleanedText.replace(/<\/a>/g, '');
+            
+            // Now process the cleaned text for links
+            return processTextForLinks(cleanedText);
+        }
+
+        // Process clean text to add proper links
+        function processTextForLinks(text) {
+            let processedText = text;
+            
+            // Convert WhatsApp links
             processedText = processedText.replace(
-                /(https?:\/\/[^\s<]+)/g, 
-                '<a href="$1" target="_blank" rel="noopener">$1</a>'
+                /(https:\/\/wa\.me\/(c\/)?2347070811718)/g,
+                '<a href="$1" target="_blank" rel="noopener">View our catalogue on WhatsApp</a>'
             );
             
-            // Convert website domains without protocol (like Gmail.com, example.org)
+            // Convert regular URLs
             processedText = processedText.replace(
-                /(?:^|\s)([a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\.(?:com|org|net|edu|gov|io|co|info|biz|me|tv|uk|ca|au|de|fr|jp|cn|in|br|ru))(?:\s|$|\.|,)/g,
-                ' <a href="https://$1" target="_blank" rel="noopener">$1</a>'
+                /(https?:\/\/[^\s<]+)/g,
+                '<a href="$1" target="_blank" rel="noopener">$1</a>'
             );
             
             // Convert email addresses
             processedText = processedText.replace(
                 /([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/g,
                 '<a href="mailto:$1">$1</a>'
-            );
-            
-            // Convert phone numbers
-            processedText = processedText.replace(
-                /(\+?[\d\s\-\(\)]{10,})/g,
-                function(match) {
-                    const clean = match.replace(/[\s\-\(\)]/g, '');
-                    return clean.length >= 10 ? `<a href="tel:${clean}">${match}</a>` : match;
-                }
             );
             
             // Convert line breaks
@@ -609,4 +623,4 @@
         window.addEventListener('load', initChat);
     </script>
 </body>
-</html>
+		</html>
