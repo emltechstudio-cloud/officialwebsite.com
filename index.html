@@ -537,9 +537,8 @@
             const bubble = document.createElement('div');
             bubble.className = 'bubble';
             
-            // Clean the text before processing
-            const cleanedText = cleanText(text);
-            bubble.innerHTML = processText(cleanedText);
+            // Process text for links
+            bubble.innerHTML = processText(text);
 
             messageDiv.appendChild(bubble);
             messagesArea.appendChild(messageDiv);
@@ -548,58 +547,42 @@
             messagesArea.scrollTop = messagesArea.scrollHeight;
         }
 
-        // Clean text from API responses
-        function cleanText(text) {
-            // Remove any HTML tags that might be in the response
-            text = text.replace(/<[^>]*>/g, '');
-            
-            // Fix the WhatsApp catalog link specifically
-            text = text.replace(/2347070811718" target="_blank" rel="noopener">View our catalogue" target="_blank" rel="noopener">https:\/\/2347070811718" target="_blank" rel="noopener">View our catalogue/g, 
-                              'https://wa.me/c/2347070811718');
-            
-            // Fix other malformed URLs
-            text = text.replace(/" target="_blank" rel="noopener">/g, '');
-            text = text.replace(/https:\/\/https:\/\//g, 'https://');
-            
-            return text;
-        }
-
-        // Process text for links
+        // Process text for links - IMPROVED VERSION
         function processText(text) {
-            // Escape HTML first
-            text = text.replace(/</g, '&lt;').replace(/>/g, '&gt;');
-
-            // WhatsApp catalog link - specific handling
-            text = text.replace(
-                /https:\/\/wa\.me\/c\/2347070811718/g,
-                '<a href="https://wa.me/c/2347070811718" target="_blank" rel="noopener">View our catalogue on WhatsApp</a>'
-            );
-
-            // Regular URLs
-            text = text.replace(
-                /(https?:\/\/[^\s<]+[^\s<.,;])/g,
+            // First escape HTML to prevent XSS
+            let processedText = text.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            
+            // Convert full URLs (with http/https) to clickable links
+            processedText = processedText.replace(
+                /(https?:\/\/[^\s<]+)/g, 
                 '<a href="$1" target="_blank" rel="noopener">$1</a>'
             );
-
-            // Phone numbers
-            text = text.replace(
+            
+            // Convert website domains without protocol (like Gmail.com, example.org)
+            processedText = processedText.replace(
+                /(?:^|\s)([a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\.(?:com|org|net|edu|gov|io|co|info|biz|me|tv|uk|ca|au|de|fr|jp|cn|in|br|ru))(?:\s|$|\.|,)/g,
+                ' <a href="https://$1" target="_blank" rel="noopener">$1</a>'
+            );
+            
+            // Convert email addresses
+            processedText = processedText.replace(
+                /([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/g,
+                '<a href="mailto:$1">$1</a>'
+            );
+            
+            // Convert phone numbers
+            processedText = processedText.replace(
                 /(\+?[\d\s\-\(\)]{10,})/g,
                 function(match) {
                     const clean = match.replace(/[\s\-\(\)]/g, '');
                     return clean.length >= 10 ? `<a href="tel:${clean}">${match}</a>` : match;
                 }
             );
-
-            // Emails
-            text = text.replace(
-                /([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/g,
-                '<a href="mailto:$1">$1</a>'
-            );
-
-            // Line breaks
-            text = text.replace(/\n/g, '<br>');
-
-            return text;
+            
+            // Convert line breaks
+            processedText = processedText.replace(/\n/g, '<br>');
+            
+            return processedText;
         }
 
         // Typing indicator
@@ -626,4 +609,4 @@
         window.addEventListener('load', initChat);
     </script>
 </body>
-    </html>
+</html>
