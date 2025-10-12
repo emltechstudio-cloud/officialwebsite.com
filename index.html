@@ -3,31 +3,29 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CHAT SEM - Automated Business System</title>
-    <meta name="description" content="Business Automation System" />
+    <title>A.S - Automated System</title>
+    <meta name="description" content="Automated Customer Support System" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary: #10a37f;
             --primary-dark: #0d8a6a;
-            --primary-light: #e6f3f0;
             --bg-primary: #ffffff;
             --bg-secondary: #f7f7f8;
-            --bg-input: #ffffff;
+            --bg-sidebar: #202123;
             --text-primary: #343541;
             --text-secondary: #6e6e80;
             --text-muted: #8e8ea0;
             --border: #e5e5e7;
             --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            --gradient: linear-gradient(135deg, #10a37f 0%, #0d8a6a 100%);
         }
 
         @media (prefers-color-scheme: dark) {
             :root {
                 --bg-primary: #343541;
                 --bg-secondary: #444654;
-                --bg-input: #40414f;
+                --bg-sidebar: #202123;
                 --text-primary: #ececf1;
                 --text-secondary: #d1d5db;
                 --text-muted: #9ca3af;
@@ -46,187 +44,128 @@
             background: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.5;
+            display: flex;
             height: 100vh;
             overflow: hidden;
         }
 
-        /* WhatsApp-style Layout */
-        .chat-app {
-            display: flex;
-            height: 100vh;
-        }
-
-        /* Sidebar - Hidden on mobile, visible on desktop */
+        /* Sidebar */
         .sidebar {
-            width: 30%;
-            min-width: 300px;
-            background: var(--bg-primary);
-            border-right: 1px solid var(--border);
+            width: 260px;
+            background: var(--bg-sidebar);
+            color: white;
             display: flex;
             flex-direction: column;
-            overflow: hidden;
-        }
-
-        .sidebar-header {
             padding: 16px;
-            background: var(--bg-secondary);
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            gap: 12px;
+            border-right: 1px solid var(--border);
+            overflow-y: auto;
         }
 
         .logo {
             display: flex;
             align-items: center;
             gap: 12px;
+            padding: 12px;
+            margin-bottom: 16px;
         }
 
         .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--gradient);
-            border-radius: 10px;
+            width: 32px;
+            height: 32px;
+            background: var(--primary);
+            border-radius: 6px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 700;
-            color: white;
-            font-size: 18px;
+            font-weight: 600;
         }
 
         .logo-text {
-            font-size: 20px;
-            font-weight: 700;
-        }
-
-        .logo-subtitle {
-            font-size: 12px;
-            color: var(--text-muted);
-            margin-top: 2px;
-        }
-
-        .back-btn {
-            margin-left: auto;
-            background: transparent;
-            border: none;
-            color: var(--text-primary);
             font-size: 16px;
-            cursor: pointer;
-            padding: 8px;
+            font-weight: 600;
+        }
+
+        .chat-history {
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .history-item {
+            padding: 12px;
             border-radius: 6px;
+            cursor: pointer;
+            margin-bottom: 4px;
+            font-size: 14px;
             transition: background 0.2s;
         }
 
-        .back-btn:hover {
-            background: var(--bg-secondary);
+        .history-item:hover {
+            background: rgba(255, 255, 255, 0.1);
         }
 
-        .quick-actions {
-            padding: 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 12px;
+        .history-item.active {
+            background: var(--primary);
         }
 
-        .action-btn {
-            background: var(--bg-primary);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 16px 12px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.2s;
+        .footer {
+            margin-top: auto;
+            padding: 16px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-link {
+            color: var(--text-muted);
+            font-size: 12px;
+            text-decoration: none;
             display: flex;
-            flex-direction: column;
             align-items: center;
             gap: 8px;
-            box-shadow: var(--shadow);
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: color 0.2s;
         }
 
-        .action-btn:hover {
-            background: var(--primary-light);
-            border-color: var(--primary);
-            transform: translateY(-2px);
-        }
-
-        .action-icon {
-            font-size: 20px;
-            width: 40px;
-            height: 40px;
-            background: var(--gradient);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .footer-link:hover {
             color: white;
+            background: rgba(255, 255, 255, 0.1);
         }
 
-        .action-text {
-            font-size: 13px;
-            font-weight: 600;
-        }
-
-        /* Main Chat Area */
-        .chat-area {
+        /* Main Content */
+        .main-content {
             flex: 1;
             display: flex;
             flex-direction: column;
-            background: var(--bg-primary);
+            overflow: hidden;
         }
 
         .chat-header {
-            padding: 12px 20px;
-            background: var(--bg-secondary);
+            padding: 16px 24px;
             border-bottom: 1px solid var(--border);
             display: flex;
             align-items: center;
-            gap: 12px;
-        }
-
-        .chat-avatar {
-            width: 40px;
-            height: 40px;
-            background: var(--gradient);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            color: white;
-            font-size: 16px;
-        }
-
-        .chat-info {
-            flex: 1;
+            justify-content: space-between;
         }
 
         .chat-title {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 600;
-        }
-
-        .chat-subtitle {
-            font-size: 12px;
-            color: var(--text-muted);
         }
 
         .chat-container {
             flex: 1;
             overflow-y: auto;
-            padding: 20px;
+            padding: 24px;
             display: flex;
             flex-direction: column;
-            gap: 16px;
-            background: var(--bg-primary);
+            gap: 24px;
         }
 
-        /* Message Styles - ChatGPT-like */
         .message {
             display: flex;
-            gap: 12px;
-            max-width: 85%;
-            animation: messageAppear 0.3s ease-out;
+            gap: 16px;
+            max-width: 800px;
+            margin: 0 auto;
+            width: 100%;
         }
 
         .message.user {
@@ -234,91 +173,86 @@
             flex-direction: row-reverse;
         }
 
-        .message.assistant {
-            margin-right: auto;
-        }
-
         .avatar {
             width: 32px;
             height: 32px;
-            border-radius: 6px;
+            border-radius: 4px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 14px;
             font-weight: 600;
             flex-shrink: 0;
-            background: var(--gradient);
-            color: white;
         }
 
         .user .avatar {
             background: var(--primary);
+            color: white;
+        }
+
+        .assistant .avatar {
+            background: #8b5cf6;
+            color: white;
         }
 
         .message-content {
             background: var(--bg-secondary);
-            padding: 12px 16px;
-            border-radius: 18px;
-            line-height: 1.5;
-            box-shadow: var(--shadow);
+            padding: 16px;
+            border-radius: 8px;
+            line-height: 1.6;
+            flex: 1;
         }
 
         .user .message-content {
             background: var(--primary);
             color: white;
-            border-bottom-right-radius: 6px;
         }
 
-        .assistant .message-content {
-            border-bottom-left-radius: 6px;
-        }
-
-        /* Input Area - WhatsApp Style */
         .input-container {
-            padding: 16px 20px;
-            background: var(--bg-secondary);
+            padding: 24px;
             border-top: 1px solid var(--border);
         }
 
         .input-wrapper {
-            display: flex;
-            align-items: flex-end;
-            gap: 8px;
-            background: var(--bg-input);
-            border: 1px solid var(--border);
-            border-radius: 24px;
-            padding: 8px 16px;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
         }
 
         .message-input {
-            flex: 1;
-            border: none;
-            background: transparent;
+            width: 100%;
+            padding: 16px 48px 16px 16px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--bg-primary);
             color: var(--text-primary);
-            font-size: 15px;
+            font-size: 16px;
             resize: none;
-            min-height: 24px;
-            max-height: 120px;
+            min-height: 56px;
+            max-height: 200px;
             outline: none;
-            line-height: 1.4;
-            padding: 4px 0;
-            font-family: inherit;
+            transition: border-color 0.2s;
+        }
+
+        .message-input:focus {
+            border-color: var(--primary);
         }
 
         .send-button {
+            position: absolute;
+            right: 12px;
+            bottom: 12px;
             background: var(--primary);
             color: white;
             border: none;
-            border-radius: 50%;
-            width: 36px;
-            height: 36px;
+            border-radius: 4px;
+            width: 32px;
+            height: 32px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             transition: background 0.2s;
-            flex-shrink: 0;
         }
 
         .send-button:hover {
@@ -330,17 +264,15 @@
             cursor: not-allowed;
         }
 
-        /* Typing Indicator */
         .typing-indicator {
             display: flex;
             gap: 4px;
             padding: 8px 0;
-            align-items: center;
         }
 
         .typing-dot {
-            width: 6px;
-            height: 6px;
+            width: 8px;
+            height: 8px;
             background: var(--text-muted);
             border-radius: 50%;
             animation: typing 1.4s infinite ease-in-out;
@@ -354,18 +286,45 @@
             40% { transform: scale(1); opacity: 1; }
         }
 
-        @keyframes messageAppear {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        /* Quick Actions */
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            max-width: 800px;
+            margin: 0 auto 24px;
         }
 
-        /* Smart Links */
+        .action-btn {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .action-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .action-icon {
+            font-size: 20px;
+        }
+
+        .action-text {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* Link Styling */
         .message-content a {
             color: var(--primary);
             text-decoration: none;
@@ -382,14 +341,45 @@
             border-bottom-color: rgba(255, 255, 255, 0.5);
         }
 
-        /* Mobile Responsive */
+        /* Welcome Screen */
+        .welcome-screen {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px;
+            gap: 24px;
+        }
+
+        .welcome-icon {
+            font-size: 48px;
+            color: var(--primary);
+            margin-bottom: 16px;
+        }
+
+        .welcome-title {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .welcome-subtitle {
+            font-size: 16px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-bottom: 32px;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
             .sidebar {
                 display: none;
             }
             
             .message {
-                max-width: 90%;
+                max-width: 100%;
             }
             
             .chat-container {
@@ -397,95 +387,86 @@
             }
             
             .input-container {
-                padding: 12px 16px;
+                padding: 16px;
             }
             
             .quick-actions {
                 grid-template-columns: 1fr;
-                padding: 16px;
-            }
-        }
-
-        /* Show sidebar on desktop, hide on mobile */
-        @media (min-width: 769px) {
-            .mobile-only {
-                display: none;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .desktop-only {
-                display: none;
             }
         }
     </style>
 </head>
 <body>
-    <div class="chat-app">
-        <!-- Sidebar with Quick Actions -->
-        <div class="sidebar desktop-only">
-            <div class="sidebar-header">
-                <div class="logo">
-                    <div class="logo-icon">SEM</div>
-                    <div>
-                        <div class="logo-text">CHAT SEM</div>
-                        <div class="logo-subtitle">A. S</div>
-                    </div>
-                </div>
-                <button class="back-btn" onclick="goBack()">
-                    <i class="fas fa-arrow-left"></i>
-                </button>
-            </div>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">
+            <div class="logo-icon">A.S</div>
+            <div class="logo-text">Automated System</div>
+        </div>
+        
+        <div class="chat-history">
+            <div class="history-item active">Current Session</div>
+            <!-- Chat history would be populated here -->
+        </div>
+        
+        <div class="footer">
+            <a href="https://www.facebook.com/profile.php?id=61578739676871&mibextid=rS40aB7S9Ucbxw6v" class="footer-link" target="_blank">
+                <i class="fab fa-facebook"></i>
+                EML TECH STUDIO
+            </a>
+        </div>
+    </div>
 
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="chat-header">
+            <div class="chat-title">Automated Support System</div>
+        </div>
+
+        <div class="chat-container" id="chatContainer">
+            <!-- Quick Actions -->
             <div class="quick-actions">
-                <div class="action-btn" onclick="sendPredefinedMessage('I want to contact your support team via email')">
+                <div class="action-btn" onclick="sendPredefinedMessage('I want to mail your support team')">
                     <div class="action-icon">📧</div>
-                    <div class="action-text">Email Support</div>
+                    <div class="action-text">Mail Us</div>
                 </div>
-                <div class="action-btn" onclick="sendPredefinedMessage('Connect me with a live support agent')">
+                <div class="action-btn" onclick="sendPredefinedMessage('I need to speak with a live agent')">
                     <div class="action-icon">👨‍💼</div>
-                    <div class="action-text">Live Agent</div>
+                    <div class="action-text">Contact Live Agent</div>
                 </div>
-                <div class="action-btn" onclick="sendPredefinedMessage('I want to place a new order')">
+                <div class="action-btn" onclick="sendPredefinedMessage('I want to place an order')">
                     <div class="action-icon">🛒</div>
                     <div class="action-text">Place Order</div>
                 </div>
-                <div class="action-btn" onclick="sendPredefinedMessage('I need technical support')">
-                    <div class="action-icon">🔧</div>
-                    <div class="action-text">Tech Support</div>
+                <div class="action-btn" onclick="sendPredefinedMessage('What are your business hours?')">
+                    <div class="action-icon">⏰</div>
+                    <div class="action-text">Business Hours</div>
+                </div>
+            </div>
+
+            <!-- Welcome message -->
+            <div class="welcome-screen" id="welcomeScreen">
+                <div class="welcome-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="welcome-title">Automated Support System</div>
+                <div class="welcome-subtitle">
+                    How can I help you today? Use the quick actions above or type your question below.
                 </div>
             </div>
         </div>
 
-        <!-- Main Chat Area -->
-        <div class="chat-area">
-            <div class="chat-header">
-                <div class="chat-avatar">A.S</div>
-                <div class="chat-info">
-                    <div class="chat-title">Automated System</div>
-                    <div class="chat-subtitle">Online • Ready to help</div>
-                </div>
-                <button class="back-btn mobile-only" onclick="goBack()">
-                    <i class="fas fa-arrow-left"></i>
+        <div class="input-container">
+            <div class="input-wrapper">
+                <textarea 
+                    class="message-input" 
+                    id="messageInput" 
+                    placeholder="Type your message here..." 
+                    rows="1"
+                ></textarea>
+                <button class="send-button" id="sendButton">
+                    <i class="fas fa-paper-plane"></i>
                 </button>
-            </div>
-
-            <div class="chat-container" id="chatContainer">
-                <!-- Messages will appear here -->
-            </div>
-
-            <div class="input-container">
-                <div class="input-wrapper">
-                    <textarea 
-                        class="message-input" 
-                        id="messageInput" 
-                        placeholder="Message Automated System..." 
-                        rows="1"
-                    ></textarea>
-                    <button class="send-button" id="sendButton">
-                        <i class="fas fa-paper-plane"></i>
-                    </button>
-                </div>
             </div>
         </div>
     </div>
@@ -493,26 +474,20 @@
     <script>
         // DOM Elements
         const chatContainer = document.getElementById('chatContainer');
+        const welcomeScreen = document.getElementById('welcomeScreen');
         const messageInput = document.getElementById('messageInput');
         const sendButton = document.getElementById('sendButton');
 
         // Configuration
         const endpoint = "https://emmanuel154-customer24-7support.hf.space/chat";
 
-        // Back button functionality
-        function goBack() {
-            if (document.referrer && !document.referrer.includes(window.location.host)) {
-                window.history.back();
-            } else {
-                // If no previous page, go to home or do nothing
-                console.log('No previous page');
-            }
-        }
-
-        // Smart link processing
+        // Enhanced text processing with smart links
         function processText(text) {
             const fragment = document.createDocumentFragment();
+            
+            // Patterns for different types of content
             const patterns = [
+                // Email addresses
                 {
                     regex: /([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/g,
                     handler: (match) => {
@@ -523,6 +498,7 @@
                         return link;
                     }
                 },
+                // Phone numbers (international format)
                 {
                     regex: /(\+?[\d\s\-\(\)]{10,})/g,
                     handler: (match) => {
@@ -536,12 +512,25 @@
                         return document.createTextNode(match);
                     }
                 },
+                // URLs
                 {
                     regex: /(https?:\/\/[^\s]+)/g,
                     handler: (match) => {
                         const link = document.createElement('a');
                         link.href = match;
-                        link.textContent = match.length > 30 ? match.substring(0, 30) + '...' : match;
+                        link.textContent = match;
+                        link.target = '_blank';
+                        link.rel = 'noopener noreferrer';
+                        return link;
+                    }
+                },
+                // Facebook profile links
+                {
+                    regex: /(?:https?:\/\/)?(?:www\.)?facebook\.com\/[^\s]+/gi,
+                    handler: (match) => {
+                        const link = document.createElement('a');
+                        link.href = match.startsWith('http') ? match : `https://${match}`;
+                        link.textContent = 'Facebook Profile';
                         link.target = '_blank';
                         link.rel = 'noopener noreferrer';
                         return link;
@@ -552,20 +541,40 @@
             let lastIndex = 0;
             let textToProcess = text;
 
-            for (const pattern of patterns) {
-                pattern.regex.lastIndex = 0;
-                let match;
-                while ((match = pattern.regex.exec(textToProcess)) !== null) {
-                    if (match.index > lastIndex) {
-                        fragment.appendChild(document.createTextNode(
-                            textToProcess.slice(lastIndex, match.index)
-                        ));
-                    }
-                    fragment.appendChild(pattern.handler(match[0]));
-                    lastIndex = match.index + match[0].length;
+            // Create a combined pattern to find the earliest match
+            const allPatterns = patterns.map(p => p.regex);
+            const combinedPattern = new RegExp(allPatterns.map(p => p.source).join('|'), 'gi');
+
+            let match;
+            while ((match = combinedPattern.exec(textToProcess)) !== null) {
+                // Add text before the match
+                if (match.index > lastIndex) {
+                    fragment.appendChild(document.createTextNode(
+                        textToProcess.slice(lastIndex, match.index)
+                    ));
                 }
+
+                // Determine which pattern matched and handle accordingly
+                let handled = false;
+                for (const pattern of patterns) {
+                    pattern.regex.lastIndex = 0; // Reset regex
+                    const patternMatch = pattern.regex.exec(match[0]);
+                    if (patternMatch) {
+                        fragment.appendChild(pattern.handler(patternMatch[0]));
+                        handled = true;
+                        break;
+                    }
+                }
+
+                // If no specific pattern handled it, add as plain text
+                if (!handled) {
+                    fragment.appendChild(document.createTextNode(match[0]));
+                }
+
+                lastIndex = match.index + match[0].length;
             }
 
+            // Add remaining text
             if (lastIndex < textToProcess.length) {
                 fragment.appendChild(document.createTextNode(
                     textToProcess.slice(lastIndex)
@@ -577,15 +586,22 @@
 
         // Add message to chat
         function addMessage(text, sender) {
+            // Hide welcome screen on first message
+            if (welcomeScreen.style.display !== 'none') {
+                welcomeScreen.style.display = 'none';
+            }
+
             const messageDiv = document.createElement('div');
             messageDiv.className = `message ${sender}`;
 
             const avatar = document.createElement('div');
             avatar.className = 'avatar';
-            avatar.textContent = sender === 'user' ? 'You' : 'A.S';
+            avatar.textContent = sender === 'user' ? 'Y' : 'A.S';
 
             const content = document.createElement('div');
             content.className = 'message-content';
+
+            // Process text for smart links
             content.appendChild(processText(String(text)));
 
             messageDiv.appendChild(avatar);
@@ -632,7 +648,7 @@
             }
         }
 
-        // Send predefined message
+        // Send predefined message from quick actions
         function sendPredefinedMessage(message) {
             messageInput.value = message;
             sendMessage();
@@ -641,7 +657,7 @@
         // Auto-resize textarea
         messageInput.addEventListener('input', function() {
             this.style.height = 'auto';
-            this.style.height = Math.min(this.scrollHeight, 120) + 'px';
+            this.style.height = Math.min(this.scrollHeight, 200) + 'px';
         });
 
         // Send message
@@ -665,8 +681,10 @@
                     body: JSON.stringify({ message })
                 });
 
-                if (!response.ok) throw new Error(`Server error: ${response.status}`);
-                
+                if (!response.ok) {
+                    throw new Error(`Server responded with ${response.status}`);
+                }
+
                 const data = await response.json();
                 hideTyping();
                 
@@ -678,6 +696,7 @@
             } catch (error) {
                 hideTyping();
                 addMessage('Sorry, our automated system is currently unavailable. Please try again later.', 'assistant');
+                console.error('Error:', error);
             } finally {
                 sendButton.disabled = false;
                 messageInput.focus();
@@ -696,11 +715,6 @@
 
         // Focus input on load
         messageInput.focus();
-
-        // Add initial greeting
-        setTimeout(() => {
-            addMessage("Hello! I'm your Automated Business System. How can I assist you today?", 'assistant');
-        }, 500);
     </script>
 </body>
     </html> 
