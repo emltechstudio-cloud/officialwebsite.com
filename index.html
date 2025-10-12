@@ -486,25 +486,16 @@
             sendBtn.disabled = true;
 
             // Add user message
-            function addMessage(text, sender) {
-    const messageDiv = document.createElement('div');
-    messageDiv.className = `message ${sender}`;
-
-    const bubble = document.createElement('div');
-    bubble.className = 'bubble';
-    
-    // Convert URLs and emails in the text into clickable links
-    const linkified = text
-        .replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank">$1</a>')
-        .replace(/\b([A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,})\b/g, '<a href="mailto:$1">$1</a>');
-
-    bubble.innerHTML = linkified; // Use innerHTML now since we’re inserting HTML safely
-    messageDiv.appendChild(bubble);
-    messagesArea.appendChild(messageDiv);
-    
-    // Scroll to bottom
-    messagesArea.scrollTop = messagesArea.scrollHeight;
-        }
+            addMessage(message, 'user');
+            
+            // Increment message count and show menu bar after first message
+            messageCount++;
+            if (messageCount === 1) {
+                // Hide the initial quick actions
+                quickActions.style.display = 'none';
+                // Show the menu bar
+                quickActionsMenu.style.display = 'block';
+            }
 
             // Show typing
             showTyping();
@@ -538,7 +529,7 @@
             messageInput.focus();
         }
 
-        // Add message to chat
+        // Add message to chat - SINGLE FUNCTION
         function addMessage(text, sender) {
             const messageDiv = document.createElement('div');
             messageDiv.className = `message ${sender}`;
@@ -546,9 +537,12 @@
             const bubble = document.createElement('div');
             bubble.className = 'bubble';
             
-            // Just use the text as-is - no processing at all
-            bubble.textContent = text;
+            // Convert URLs and emails in the text into clickable links
+            const linkified = text
+                .replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank">$1</a>')
+                .replace(/\b([A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,})\b/g, '<a href="mailto:$1">$1</a>');
 
+            bubble.innerHTML = linkified; // Use innerHTML now since we're inserting HTML safely
             messageDiv.appendChild(bubble);
             messagesArea.appendChild(messageDiv);
             
