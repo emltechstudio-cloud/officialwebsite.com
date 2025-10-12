@@ -86,6 +86,7 @@
             padding: 20px;
             background: #f8f9fa;
             border-bottom: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
         }
 
         .action-grid {
@@ -128,6 +129,43 @@
             align-items: center;
             justify-content: center;
             color: white;
+        }
+
+        /* Quick Actions Menu Bar */
+        .quick-actions-menu {
+            display: none;
+            padding: 12px 16px;
+            background: white;
+            border-top: 1px solid #e5e7eb;
+            border-bottom: 1px solid #e5e7eb;
+            overflow-x: auto;
+            white-space: nowrap;
+            scrollbar-width: none;
+        }
+
+        .quick-actions-menu::-webkit-scrollbar {
+            display: none;
+        }
+
+        .menu-btn {
+            display: inline-block;
+            background: #f8f9fa;
+            border: 1px solid #e5e7eb;
+            padding: 8px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            color: #374151;
+            transition: all 0.2s;
+            margin-right: 8px;
+            white-space: nowrap;
+        }
+
+        .menu-btn:hover {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
         }
 
         /* Messages Area */
@@ -344,8 +382,8 @@
             </div>
         </div>
 
-        <!-- Quick Actions -->
-        <div class="quick-actions">
+        <!-- Quick Actions (Initial) -->
+        <div class="quick-actions" id="quickActions">
             <div class="action-grid">
                 <button class="action-btn" onclick="quickAction('I want to contact your support team via email')">
                     <div class="action-icon">📧</div>
@@ -364,6 +402,16 @@
                     Tech Support
                 </button>
             </div>
+        </div>
+
+        <!-- Quick Actions Menu Bar -->
+        <div class="quick-actions-menu" id="quickActionsMenu">
+            <button class="menu-btn" onclick="quickAction('I want to contact your support team via email')">Email Support</button>
+            <button class="menu-btn" onclick="quickAction('Connect me with a live support agent')">Live Agent</button>
+            <button class="menu-btn" onclick="quickAction('I want to place a new order')">Place Order</button>
+            <button class="menu-btn" onclick="quickAction('I need technical support')">Tech Support</button>
+            <button class="menu-btn" onclick="quickAction('Show me your catalogue')">View Catalogue</button>
+            <button class="menu-btn" onclick="quickAction('I have a billing question')">Billing Help</button>
         </div>
 
         <!-- Messages Area -->
@@ -389,6 +437,10 @@
         const messagesArea = document.getElementById('messagesArea');
         const messageInput = document.getElementById('messageInput');
         const sendBtn = document.getElementById('sendBtn');
+        const quickActions = document.getElementById('quickActions');
+        const quickActionsMenu = document.getElementById('quickActionsMenu');
+        
+        let messageCount = 0;
 
         // Initialize chat
         function initChat() {
@@ -435,6 +487,15 @@
 
             // Add user message
             addMessage(message, 'user');
+            
+            // Increment message count and show menu bar after first message
+            messageCount++;
+            if (messageCount === 1) {
+                // Hide the initial quick actions
+                quickActions.style.display = 'none';
+                // Show the menu bar
+                quickActionsMenu.style.display = 'block';
+            }
 
             // Show typing
             showTyping();
@@ -489,13 +550,19 @@
             // Escape HTML
             text = text.replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
-            // URLs
+            // URLs - fixed regex to handle various URL formats
             text = text.replace(
-                /(https?:\/\/[^\s]+)/g,
+                /(https?:\/\/[^\s<]+)/g,
                 '<a href="$1" target="_blank" rel="noopener">$1</a>'
             );
 
-            // Phone numbers
+            // WhatsApp catalog link
+            text = text.replace(
+                /wa\.me\/c\/2347070811718/g,
+                '<a href="https://wa.me/c/2347070811718" target="_blank" rel="noopener">View our catalogue</a>'
+            );
+
+            // Phone numbers - improved regex
             text = text.replace(
                 /(\+?[\d\s\-\(\)]{10,})/g,
                 function(match) {
@@ -504,9 +571,9 @@
                 }
             );
 
-            // Emails
+            // Emails - improved regex
             text = text.replace(
-                /([\w._%+-]+@[\w.-]+\.[A-Z]{2,})/gi,
+                /([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/g,
                 '<a href="mailto:$1">$1</a>'
             );
 
@@ -540,4 +607,4 @@
         window.addEventListener('load', initChat);
     </script>
 </body>
-</html>
+    </html>
