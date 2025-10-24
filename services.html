@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Services - EML Tech Studio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .menu-toggle {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #82109F;
+        }
+
+        .header-logo img {
+            height: 35px;
+            width: auto;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: 280px;
+            height: 100vh;
+            background: linear-gradient(to bottom, #82109F, #000040);
+            color: white;
+            padding: 20px;
+            z-index: 1000;
+            transition: left 0.3s ease;
+            overflow-y: auto;
+        }
+
+        .sidebar.active {
+            left: 0;
+        }
+
+        .sidebar-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .sidebar-logo img {
+            height: 35px;
+            width: auto;
+        }
+
+        .nav-links {
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-bottom: 15px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .nav-links i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Overlay */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+            display: none;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #82109F, #00FFFF);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .page-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border-color: #82109F;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #82109F, #00FFFF);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+            background: linear-gradient(135deg, #82109F, #00FFFF);
+        }
+
+        .service-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .service-description {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .service-features li {
+            padding: 8px 0;
+            color: #555;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            color: #25D366;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .service-action {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .service-price {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #82109F;
+        }
+
+        .service-price .starting {
+            font-size: 0.9rem;
+            color: #666;
+            font-weight: normal;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #82109F, #00FFFF);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(130, 16, 159, 0.3);
+        }
+
+        /* Process Section */
+        .process-section {
+            background: linear-gradient(135deg, #82109F, #000040);
+            color: white;
+            padding: 50px 30px;
+            border-radius: 20px;
+            margin: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            font-weight: 600;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .process-step {
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        .step-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .step-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .step-description {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: white;
+            border-radius: 20px;
+            padding: 50px 30px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-top: 50px;
+        }
+
+        .cta-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+            background: linear-gradient(135deg, #82109F, #00FFFF);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .cta-text {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            padding: 12px 25px;
+            border: 2px solid #82109F;
+            color: #82109F;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cta-btn.primary {
+            background: linear-gradient(135deg, #82109F, #00FFFF);
+            color: white;
+            border: none;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(to right, #82109F, #00FFFF);
+            color: white;
+            padding: 40px 20px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #FFD700;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #FFD700;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.3);
+            font-size: 14px;
+        }
+
+        /* Floating Chat Button */
+        .floating-chat {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #82109F, #00FFFF);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(130, 16, 159, 0.4);
+            z-index: 100;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .floating-chat:hover {
+            transform: scale(1.1);
+        }
+
+        .chat-placeholder {
+            width: 35px;
+            height: 35px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #82109F;
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .footer-content {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .sidebar {
+                left: 0;
+            }
+            
+            .main-content {
+                margin-left: 280px;
+            }
+            
+            .menu-toggle {
+                display: none;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .service-action {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .cta-btn {
+                width: 200px;
+                justify-content: center;
+            }
+            
+            .floating-chat {
+                bottom: 20px;
+                right: 20px;
+                width: 55px;
+                height: 55px;
+            }
+            
+            .chat-placeholder {
+                width: 30px;
+                height: 30px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-logo">
+            <img src="ETSlogo.png" alt="EML Tech Studio">
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="services.html" class="active"><i class="fas fa-concierge-bell"></i> Services</a></li>
+            <li><a href="https://wa.me/c/2347070811718" target="_blank"><i class="fas fa-store"></i> Catalogue</a></li>
+            <li><a href="about.html"><i class="fas fa-users"></i> About</a></li>
+            <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Header -->
+    <div class="header">
+        <button class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="header-logo">
+            <img src="ETSlogo.png" alt="EML Tech Studio">
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1 class="page-title">Our Professional Services</h1>
+            <p class="page-subtitle">Comprehensive digital solutions tailored to elevate your business and personal brand in the digital space</p>
+        </div>
+
+        <!-- Services Grid -->
+        <div class="services-grid">
+            <!-- Web Development -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3 class="service-title">Web Development</h3>
+                <p class="service-description">Custom websites and web applications built with modern technologies to establish your strong online presence.</p>
+                <ul class="service-features">
+                    <li>Responsive Design</li>
+                    <li>Fast Loading Speed</li>
+                    <li>SEO Optimized</li>
+                    <li>Mobile-Friendly</li>
+                    <li>Easy Content Management</li>
+                </ul>
+                <div class="service-action">
+                    <div class="service-price">
+                        <span class="starting">Starting from</span><br>
+                        ₦25,000
+                    </div>
+                    <a href="https://wa.me/p/2485175255781132/2347070811718" target="_blank" class="btn btn-primary">
+                        <i class="fab fa-whatsapp"></i>
+                        Get Quote
+                    </a>
+                </div>
+            </div>
+
+            <!-- AI Chatbots -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h3 class="service-title">AS Chatbots</h3>
+                <p class="service-description">Intelligent automated assistants to handle customer inquiries 24/7 and improve user engagement.</p>
+                <ul class="service-features">
+                    <li>24/7 Customer Support</li>
+                    <li>Natural Language Processing</li>
+                    <li>Multi-platform Integration</li>
+                    <li>Custom Training</li>
+                    <li>Analytics Dashboard</li>
+                </ul>
+                <div class="service-action">
+                    <div class="service-price">
+                        <span class="starting">Starting from</span><br>
+                        ₦15,000
+                    </div>
+                    <a href="https://wa.me/p/24687636330930239/2347070811718" target="_blank" class="btn btn-primary">
+                        <i class="fab fa-whatsapp"></i>
+                        Get Quote
+                    </a>
+                </div>
+            </div>
+
+            <!-- Business Automation -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <h3 class="service-title">Business Automation</h3>
+                <p class="service-description">Streamline your business processes with custom automation solutions that save time and reduce errors.</p>
+                <ul class="service-features">
+                    <li>Process Optimization</li>
+                    <li>Workflow Automation</li>
+                    <li>Data Integration</li>
+                    <li>Custom Scripting</li>
+                    <li>Performance Monitoring</li>
+                </ul>
+                <div class="service-action">
+                    <div class="service-price">
+                        <span class="starting">Starting from</span><br>
+                        ₦30,000
+                    </div>
+                    <a href="https://wa.me/2347070811718?text=Hi! I'm interested in Business Automation services" target="_blank" class="btn btn-primary">
+                        <i class="fab fa-whatsapp"></i>
+                        Get Quote
+                    </a>
+                </div>
+            </div>
+
+            <!-- Digital Marketing -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-bullhorn"></i>
+                </div>
+                <h3 class="service-title">Digital Marketing</h3>
+                <p class="service-description">Comprehensive digital marketing strategies to increase your online visibility and drive business growth.</p>
+                <ul class="service-features">
+                    <li>Social Media Management</li>
+                    <li>Content Strategy</li>
+                    <li>SEO Optimization</li>
+                    <li>Email Marketing</li>
+                    <li>Performance Analytics</li>
+                </ul>
+                <div class="service-action">
+                    <div class="service-price">
+                        <span class="starting">Starting from</span><br>
+                        ₦20,000
+                    </div>
+                    <a href="https://wa.me/2347070811718?text=Hi! I'm interested in Digital Marketing services" target="_blank" class="btn btn-primary">
+                        <i class="fab fa-whatsapp"></i>
+                        Get Quote
+                    </a>
+                </div>
+            </div>
+
+            <!-- Brand Design -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-palette"></i>
+                </div>
+                <h3 class="service-title">Brand Design</h3>
+                <p class="service-description">Create a memorable brand identity with professional logo design and comprehensive branding packages.</p>
+                <ul class="service-features">
+                    <li>Logo Design</li>
+                    <li>Brand Guidelines</li>
+                    <li>Business Cards</li>
+                    <li>Social Media Kit</li>
+                    <li>Multiple Revisions</li>
+                </ul>
+                <div class="service-action">
+                    <div class="service-price">
+                        <span class="starting">Starting from</span><br>
+                        ₦7,000
+                    </div>
+                    <a href="https://wa.me/c/2347070811718" target="_blank" class="btn btn-primary">
+                        <i class="fab fa-whatsapp"></i>
+                        Get Quote
+                    </a>
+                </div>
+            </div>
+            <!-- VIDEO content-->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-video"></i>
+                </div>
+                <h3 class="service-title">Video Contents Creations</h3>
+                <p class="service-description">Get your viewers engaged with our video creation products.Be it your reels,ads,or anything that could be visulized </p>
+                <ul class="service-features">
+                    <li>Video editting and animations</li>
+                    <li>Into/Outro videos</li>
+                    <li>Semi-AI generated videos</li>
+                    <li>Product intoduction Videos</li>
+                </ul>
+                <div class="service-action">
+                    <div class="service-price">
+                        <span class="starting">Starting from</span><br>
+                        ₦3,000
+                    </div>
+                    <a href="https://wa.me/c/2347070811718" target="_blank" class="btn btn-primary">
+                        <i class="fab fa-whatsapp"></i>
+                        Get Quote
+                    </a>
+                </div>
+            </div>
+
+            <!-- Custom Solutions -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-puzzle-piece"></i>
+                </div>
+                <h3 class="service-title">Custom Solutions</h3>
+                <p class="service-description">Tailored digital solutions for unique business needs that standard packages can't address.</p>
+                <ul class="service-features">
+                    <li>Requirement Analysis</li>
+                    <li>Custom Development</li>
+                    <li>API Integration</li>
+                    <li>Technical Consultation</li>
+                    <li>Ongoing Support</li>
+                </ul>
+                <div class="service-action">
+                    <div class="service-price">
+                        <span class="starting">Custom</span><br>
+                        Pricing
+                    </div>
+                    <a href="https://wa.me/2347070811718?text=Hi! I need a Custom Solution for my business" target="_blank" class="btn btn-primary">
+                        <i class="fab fa-whatsapp"></i>
+                        Discuss Project
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Process Section -->
+        <div class="process-section">
+            <h2 class="section-title">How We Deliver Excellence</h2>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3 class="step-title">Consultation</h3>
+                    <p class="step-description">We understand your needs and goals through detailed discussion to create the perfect solution.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-icon">
+                        <i class="fas fa-pencil-alt"></i>
+                    </div>
+                    <h3 class="step-title">Planning</h3>
+                    <p class="step-description">We design a customized strategy and provide a detailed project proposal with timeline.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="step-title">Development</h3>
+                    <p class="step-description">Our expert team builds your solution using the latest technologies and best practices.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="step-title">Delivery</h3>
+                    <p class="step-description">We deliver your completed project and provide training and ongoing support.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h2 class="cta-title">Ready to Transform Your Business?</h2>
+            <p class="cta-text">Let's discuss your project and create a solution that drives your digital success forward</p>
+            <div class="cta-buttons">
+                <a href="https://wa.me/2347070811718" target="_blank" class="cta-btn primary">
+                    <i class="fab fa-whatsapp"></i>
+                    Start on WhatsApp
+                </a>
+                <a href="contact.html" class="cta-btn">
+                    <i class="fas fa-phone"></i>
+                    Schedule Call
+                </a>
+                <a href="https://emltechstudio.site/chatsem" target="_blank" class="cta-btn">
+                    <i class="fas fa-robot"></i>
+                    Quick Questions
+                </a>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>EML Tech Studio</h3>
+                    <p>The tech studio for you..</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="https://wa.me/c/2347070811718" target="_blank">Catalogue</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://emltechstudio.site/chatsem">Chat SEM</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-envelope"></i> mail@emltechstudio.site</li>
+                        <li><i class="fas fa-phone"></i> +234 808 411 5775</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Ogun, Nigeria</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2025 EML Tech Studio. All Rights Reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Floating Chat Button -->
+    <div class="floating-chat" onclick="window.open('https://emltechstudio.site/chatsem', '_blank')">
+        <div class="chat-placeholder">
+            <img src="semlogo.png" alt="Chat" style="height:20px; width:auto;">
+        </div>
+    </div>
+
+    <script>
+        // Toggle sidebar
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.toggle('active');
+            document.getElementById('overlay').classList.toggle('active');
+        });
+
+        // Close sidebar when clicking overlay
+        document.getElementById('overlay').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.remove('active');
+            document.getElementById('overlay').classList.remove('active');
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth >= 1024) {
+                document.getElementById('sidebar').classList.add('active');
+            } else {
+                document.getElementById('sidebar').classList.remove('active');
+                document.getElementById('overlay').classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

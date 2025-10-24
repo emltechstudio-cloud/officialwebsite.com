@@ -1,475 +1,783 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>EML Tech Studio</title>
-    <meta name="description" content="EML Tech Studio - Professional web development, design, and automation solutions. Launching soon.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #2d1b69 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #ffffff;
+            background-color: #FFFFFF;
+            color: #333;
             overflow-x: hidden;
-            position: relative;
-            line-height: 1.6;
         }
 
-        /* Professional background with gradient mesh */
-        .background {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .gradient-mesh {
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(118, 75, 162, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(41, 182, 246, 0.05) 0%, transparent 50%);
-            animation: float 20s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translate(0, 0) rotate(0deg);
-            }
-            33% {
-                transform: translate(30px, 50px) rotate(120deg);
-            }
-            66% {
-                transform: translate(-20px, 80px) rotate(240deg);
-            }
-        }
-
-        /* Main container */
-        .container {
-            text-align: center;
-            z-index: 10;
-            padding: 40px 20px;
-            max-width: 1200px;
-            width: 100%;
-            position: relative;
-        }
-
-        /* Logo styling */
-        .logo-container {
-            margin-bottom: 40px;
-        }
-
-        .logo {
-            font-size: 3.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.02em;
-        }
-
-        .logo-subtitle {
-            font-size: 1rem;
-            font-weight: 400;
-            color: rgba(255, 255, 255, 0.7);
-            margin-top: 8px;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-        }
-
-        /* Main heading */
-        .main-heading {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 24px;
-            background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.9) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-        }
-
-        .subtitle {
-            font-size: 1.25rem;
-            font-weight: 400;
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 48px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Description */
-        .description {
-            font-size: 1.125rem;
-            line-height: 1.7;
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 60px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            font-weight: 300;
-        }
-
-        /* Services grid */
-        .services-section {
-            margin: 80px 0;
-        }
-
-        .section-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 40px;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .service-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 40px 30px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
             top: 0;
-            left: -100%;
+            z-index: 100;
+        }
+
+        .menu-toggle {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #82109F;
+        }
+
+        .header-logo img {
+            height: 35px;
+            width: auto;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: 280px;
+            height: 100vh;
+            background: linear-gradient(to bottom, #82109F, #000040);
+            color: white;
+            padding: 20px;
+            z-index: 1000;
+            transition: left 0.3s ease;
+            overflow-y: auto;
+        }
+
+        .sidebar.active {
+            left: 0;
+        }
+
+        .sidebar-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .sidebar-logo img {
+            height: 35px;
+            width: auto;
+        }
+
+        .nav-links {
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-bottom: 15px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .nav-links i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Overlay */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transition: left 0.6s;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+            display: none;
         }
 
-        .service-card:hover::before {
-            left: 100%;
-        }
-
-        .service-card:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(102, 126, 234, 0.3);
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-        }
-
-        .service-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
+        .overlay.active {
             display: block;
         }
 
-        .service-name {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 12px;
-            color: #ffffff;
+        /* Main Content */
+        .main-content {
+            padding-top: 20px;
         }
 
-        .service-description {
-            font-size: 0.95rem;
-            color: rgba(255, 255, 255, 0.7);
-            line-height: 1.5;
+        /* Video Section */
+        .video-container {
+            position: relative;
+            width: 94%;
+            margin: 0 auto 40px;
         }
 
-        /* CTA Section */
-        .cta-section {
-            margin: 80px 0 40px;
-            padding: 60px 40px;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+           
         }
 
-        .cta-title {
-            font-size: 2rem;
-            font-weight: 600;
-            margin-bottom: 16px;
+        .video-wrapper video {
+            width: 100%;
+            height: auto;
+            display: block;
         }
 
-        .cta-description {
-            font-size: 1.125rem;
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 32px;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Professional chat button */
-        .chat-button {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border: none;
-            border-radius: 50px;
-            padding: 16px 32px;
+        .video-control {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            background: rgba(0,0,0,0.7);
             color: white;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            gap: 12px;
-            box-shadow: 0 8px 30px rgba(102, 126, 234, 0.4);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 1000;
-            backdrop-filter: blur(10px);
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
         }
 
-        .chat-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 40px rgba(102, 126, 234, 0.6);
+        .video-control:hover {
+            background: rgba(0,0,0,0.9);
+        }
+
+        /* cc*/
+        .carousel-container {
+            width: 92%;
+            margin: 40px auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            background: transparent;    
+            box-shadow: none;           
+            height: 150px;
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease;
+            height: 100%;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 6px;
+            box-sizing: border-box;
+        }
+
+        .carousel-slide img {
+            max-width: 96%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        .carousel-dots {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 50;               
+            pointer-events: auto;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.85);
+            border: 1px solid rgba(0,0,0,0.12);
+            cursor: pointer;
+            transition: background 0.2s, transform 0.15s;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+        }
+
+        .dot.active {
+            background: #FFFFFF;
+            transform: scale(1.2);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+        }
+
+        /* Cards */
+        .cards-container {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .card {
+            border-radius: 15px;
+            padding: 25px;
+            color: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            min-height: 220px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card-digital {
+            background: linear-gradient(135deg, #82109F, #00FFFF);
+            border: 1px solid #404040;
+        }
+
+        .card-courses {
+            background: linear-gradient(135deg, #400080, #000040);
+            border: 1px solid #404040;
+        }
+
+        .card-header {
+            margin-bottom: 15px;
+        }
+
+        .card-body {
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 20px;
             text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .btn-primary {
+            background: #0080C0;
             color: white;
         }
 
-        .chat-button:active {
-            transform: translateY(0);
+        .btn-primary:hover {
+            background: #0066A0;
+            transform: translateY(-2px);
         }
 
-        .chat-icon {
-            font-size: 1.25rem;
+        .price {
+            color: #FFD700;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            border-radius: 15px;
+            background: linear-gradient(135deg, #800040, #82109F);
+            padding: 25px;
+            margin: 40px 20px;
+            color: white;
+        }
+
+        .newsletter-text {
+            font-size: 14px;
+            color: #FFFFFF;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .newsletter-form {
+            display: flex;
+            background: white;
+            border-radius: 25px;
+            overflow: hidden;
+            padding: 5px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            border: none;
+            padding: 12px 20px;
+            font-size: 14px;
+            color: #000000;
+            outline: none;
+        }
+
+        .newsletter-btn {
+            background: #4AA65A;
+            color: #FFFFFF;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+
+        .newsletter-btn:hover {
+            background: #3d8c4a;
         }
 
         /* Footer */
         .footer {
-            margin-top: 60px;
-            padding-top: 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.9rem;
+            background: linear-gradient(to right, #82109F, #00FFFF);
+            color: white;
+            padding: 40px 20px 20px;
+            margin-top: 40px;
         }
 
-        /* Mobile responsive */
-        @media (max-width: 768px) {
-            .container {
-                padding: 20px;
-            }
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-            .logo {
-                font-size: 2.5rem;
-            }
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: 600;
+        }
 
-            .main-heading {
-                font-size: 2.5rem;
-            }
+        .footer-links {
+            list-style: none;
+        }
 
-            .subtitle {
-                font-size: 1.125rem;
-            }
+        .footer-links li {
+            margin-bottom: 10px;
+        }
 
-            .description {
-                font-size: 1rem;
-            }
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
 
-            .services-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
+        .footer-links a:hover {
+            color: #FFD700;
+        }
 
-            .service-card {
-                padding: 30px 20px;
-            }
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
 
-            .cta-section {
-                padding: 40px 20px;
-                margin: 60px 0 20px;
-            }
+        .social-links a {
+            color: white;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
 
-            .cta-title {
-                font-size: 1.75rem;
-            }
+        .social-links a:hover {
+            color: #FFD700;
+        }
 
-            .chat-button {
+        .copyright {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.3);
+            font-size: 14px;
+        }
+
+        /* Floating Chat Button */
+        .floating-chat {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #82109F, #00FFFF);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(130, 16, 159, 0.4);
+            z-index: 100;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .floating-chat:hover {
+            transform: scale(1.1);
+        }
+
+        .chat-placeholder {
+            width: 35px;
+            height: 35px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #82109F;
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .cards-container {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .card {
+                width: calc(50% - 15px);
+            }
+            
+            .carousel-container {
+                height: 180px;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .card {
+                width: calc(50% - 15px);
+            }
+            
+            .carousel-container {
+                height: 200px;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .sidebar {
+                left: 0;
+            }
+            
+            .main-content {
+                margin-left: 280px;
+            }
+            
+            .menu-toggle {
+                display: none;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .card-footer {
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
+            
+            .floating-chat {
                 bottom: 20px;
                 right: 20px;
-                padding: 14px 24px;
-                font-size: 0.9rem;
+                width: 55px;
+                height: 55px;
             }
-
-            .main-heading {
-                font-size: 2rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .logo {
-                font-size: 2rem;
-            }
-
-            .main-heading {
-                font-size: 1.75rem;
-            }
-
-            .chat-button {
-                padding: 12px 20px;
-                font-size: 0.85rem;
-            }
-        }
-
-        /* Loading animation */
-        .loading-bar {
-            width: 200px;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 2px;
-            margin: 40px auto;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .loading-progress {
-            width: 60%;
-            height: 100%;
-            background: linear-gradient(90deg, #667eea, #764ba2);
-            border-radius: 2px;
-            animation: loading 2s ease-in-out infinite;
-        }
-
-        @keyframes loading {
-            0%, 100% {
-                transform: translateX(-100%);
-            }
-            50% {
-                transform: translateX(200%);
+            
+            .chat-placeholder {
+                width: 30px;
+                height: 30px;
+                font-size: 12px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Professional background -->
-    <div class="background">
-        <div class="gradient-mesh"></div>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-logo">
+            <img src="ETSlogo.png" alt="EML Tech Studio">
+        </div>
+        <ul class="nav-links">
+            <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="services.html"><i class="fas fa-concierge-bell"></i> Services</a></li>
+            <li><a href="https://wa.me/c/2347070811718"><i class="fas fa-store"></i> Catalogue</a></li>
+            <li><a href="about.html"><i class="fas fa-users"></i> About</a></li>
+            <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+        </ul>
     </div>
 
-    <!-- Main content -->
-    <div class="container">
-        <!-- Logo -->
-        <div class="logo-container">
-            <div class="logo">EML</div>
-            <div class="logo-subtitle">TECH STUDIO</div>
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Header -->
+    <div class="header">
+        <button class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="header-logo">
+            <img src="ETSlogo.png" alt="EML Tech Studio">
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Video Section -->
+        <div class="video-container">
+            <div class="video-wrapper">
+                <video id="sloganVideo" src="normvida.mp4" autoplay loop muted>
+                    Your browser does not support the video element.
+                </video>
+                <button class="video-control" id="playPauseBtn">
+                    <i class="fas fa-pause"></i>
+                </button>
+            </div>
         </div>
 
-        <!-- Main heading -->
-        <h1 class="main-heading">Launching Soon</h1>
-        <div class="subtitle">Professional Digital Solutions Platform</div>
-
-        <!-- Loading animation -->
-        <div class="loading-bar">
-            <div class="loading-progress"></div>
+        <!-- Carousel -->
+        <div class="carousel-container">
+            <div class="carousel" id="carousel">
+                <div class="carousel-slide">
+                    <a href="https://emltechstudio.site/chatsem">
+                        <img src="chatsem_banner.jpg" alt="Chat SEM - Get Instant Support">
+                    </a>
+                </div>
+                <div class="carousel-slide">
+                    <img src="appstore_banner.jpg" alt="EML App Store - Coming Soon">
+                </div>
+            </div>
+            <div class="carousel-dots" id="carouselDots">
+                <div class="dot active" data-index="0"></div>
+                <div class="dot" data-index="1"></div>
+            </div>
         </div>
 
-        <!-- Description -->
-        <div class="description">
-            <p>Hi there! We’re busy building something amazing for you. At EML Tech Studio, we create digital experiences that help your business grow and thrive online. Check back soon, or ChatSEM to get started right away!</p>
-        </div>
+        <!-- Cards Section -->
+        <div class="cards-container">
+            <!-- Digital Realm Card -->
+            <div class="card card-digital">
+                <div class="card-header">
+                    <h3 style="font-size:20px; color:#FFFFFF; font-weight:bold; margin-bottom: 8px;">Everyone</h3>
+                    <h3 style="font-size:18px; color:#FFFFFF; font-weight:600;">deserves to be in the Digital realm</h3>
+                </div>
+                <div class="card-body">
+                    <p style="font-size:15px; color:#FFFFFF; font-weight:500;">
+                        Be it your Blogs, Businesses, Brands or anything else. We provide the tools and Solutions to establish your digital presence with confidence.
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <p style="font-size:14px; color:#FFFFFF; font-weight:500;">
+                        Get started with our products
+                    </p>
+                    <a href="https://wa.me/c/2347070811718">
+                    <button class="btn btn-primary">View Catalogue</button>
+                    </a>
+                </div>
+            </div>
 
-        <!-- Services section -->
-        <div class="services-section">
-            <h2 class="section-title">Our Expertise</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">🌐</div>
-                    <div class="service-name">Web Development</div>
-                    <div class="service-description">
-                        Custom, responsive websites built with modern frameworks and optimized for performance.
-                    </div>
+            <!-- Courses Card -->
+            <div class="card card-courses">
+                <div class="card-header">
+                    <h3 style="font-size:18px; color:#E6E6E6; font-weight:600; margin-bottom: 10px;">
+                        GSWC & GSWV Courses
+                    </h3>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">🎨</div>
-                    <div class="service-name">Brand Design</div>
-                    <div class="service-description">
-                        Comprehensive branding solutions including logos, identity systems, and visual design.
-                    </div>
+                <div class="card-body">
+                    <p style="font-size:14px; color:#FFFFFF; font-weight:500; margin-bottom: 10px;">
+                        For Children/Teens and Adults seeking quality tech education. Give yourself or your child the competitive edge in the digital world.
+                    </p>
+                    <p style="font-size:13px; color:#FFFFFF; font-weight:500; font-style: italic;">
+                        Create real-world projects that matter.
+                    </p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">🤖</div>
-                    <div class="service-name">A.S Chat Systems</div>
-                    <div class="service-description">
-                        Intelligent automated chat solutions for customer support and engagement.
+                <div class="card-footer">
+                    <div>
+                        <p style="font-size:14px; color:#FFFFFF; font-weight:500; margin-bottom: 5px;">
+                            Start your learning journey today
+                        </p>
+                        <p class="price">Just From Your Devices</p>
                     </div>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">⚡</div>
-                    <div class="service-name">Process Automation</div>
-                    <div class="service-description">
-                        Streamline operations with custom automation solutions and workflow optimization.
-                    </div>
+                    <a href="https://wa.me/c/2347070811718">
+                    <button class="btn btn-primary">View Catalogue</button>
+                    </a>
                 </div>
             </div>
         </div>
 
-        <!-- CTA Section -->
-        <div class="cta-section">
-            <h2 class="cta-title">Ready to Transform Your Digital Presence?</h2>
-            <div class="cta-description">
-                Get early access to our services and exclusive launch offers. 
-                Let's build something remarkable together.
+        <!-- Newsletter -->
+        <div class="newsletter">
+            <div class="newsletter-text">
+                Stay updated with our latest Infos,products/resourses and exclusive offers
             </div>
+            <form class="newsletter-form">
+                <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
+                <button type="submit" class="newsletter-btn">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </form>
         </div>
 
         <!-- Footer -->
-        <div class="footer">
-            &copy; 2025 EML Tech Studio. All rights reserved.
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>EML Tech Studio</h3>
+                    <p>The Tech Studio For You.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="https://wa.me/2347070811718"><i class="fab fa-whatsapp"></i></a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="https://wa.me/c/2347070811718">Catalogue</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://emltechstudio.site/chatsem">Chat SEM</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-envelope"></i> mail@emltechstudio.site</li>
+                        <li><i class="fas fa-phone"></i> +234 808 411 5775</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Ogun, Nigeria</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2025 EML Tech Studio. All Rights Reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Floating Chat Button -->
+    <div class="floating-chat" onclick="window.open('https://emltechstudio.site/chatsem', '_blank')">
+        <div class="chat-placeholder">
+            <img src="semlogo.png" alt="Chat" style="width:20px; height:20px;">
         </div>
     </div>
 
-    <!-- Professional chat button -->
-    <a href="https://emltechstudio.site/chatsem" target="_blank" class="chat-button">
-        <span class="chat-icon">💬</span>
-        CHAT SEM
-    </a>
-
     <script>
-        // Add subtle entrance animations
-        document.addEventListener('DOMContentLoaded', function() {
-            const elements = document.querySelectorAll('.logo-container, .main-heading, .subtitle, .description, .services-section, .cta-section');
+        // Toggle sidebar
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.toggle('active');
+            document.getElementById('overlay').classList.toggle('active');
+        });
+
+        // Close sidebar when clicking overlay
+        document.getElementById('overlay').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.remove('active');
+            document.getElementById('overlay').classList.remove('active');
+        });
+
+        // Video controls - only pause button
+        const video = document.getElementById('sloganVideo');
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        
+        playPauseBtn.addEventListener('click', function() {
+            if (video.paused) {
+                video.play();
+                playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            } else {
+                video.pause();
+                playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+            }
+        });
+
+        // Carousel functionality
+        const carousel = document.getElementById('carousel');
+        const dots = document.querySelectorAll('.dot');
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            carousel.style.transform = `translateX(-${index * 100}%)`;
             
-            elements.forEach((element, index) => {
-                element.style.opacity = '0';
-                element.style.transform = 'translateY(30px)';
-                
-                setTimeout(() => {
-                    element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                    element.style.opacity = '1';
-                    element.style.transform = 'translateY(0)';
-                }, index * 200);
+            // Update dots
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
             });
+            
+            currentSlide = index;
+        }
+
+        // Add click events to dots
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showSlide(index);
+            });
+        });
+
+        // Ensure initial state is correct
+        showSlide(0);
+
+        // Auto slide every 5 seconds
+        setInterval(() => {
+            let nextSlide = (currentSlide + 1) % dots.length;
+            showSlide(nextSlide);
+        }, 5000);
+
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth >= 1024) {
+                document.getElementById('sidebar').classList.add('active');
+            } else {
+                document.getElementById('sidebar').classList.remove('active');
+                document.getElementById('overlay').classList.remove('active');
+            }
         });
     </script>
 </body>
