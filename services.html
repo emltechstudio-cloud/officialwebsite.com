@@ -178,6 +178,8 @@
             border: 2px solid transparent;
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
 
         .service-card:hover {
@@ -225,6 +227,7 @@
         .service-features {
             list-style: none;
             margin-bottom: 25px;
+            flex-grow: 1;
         }
 
         .service-features li {
@@ -246,21 +249,10 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 20px;
+            margin-top: auto;
             padding-top: 20px;
             border-top: 1px solid #f0f0f0;
-        }
-
-        .service-price {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #82109F;
-        }
-
-        .service-price .starting {
-            font-size: 0.9rem;
-            color: #666;
-            font-weight: normal;
+            gap: 15px;
         }
 
         .btn {
@@ -275,6 +267,7 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            white-space: nowrap;
         }
 
         .btn-primary {
@@ -383,7 +376,7 @@
             border-radius: 25px;
             font-weight: 500;
             transition: all 0.3s;
-            display: flex;
+            display: inline-flex;
             align-items: center;
             gap: 8px;
         }
@@ -538,6 +531,11 @@
                 text-align: center;
             }
             
+            .service-action .btn {
+                width: 150px;
+                justify-content: center;
+            }
+            
             .cta-buttons {
                 flex-direction: column;
                 align-items: center;
@@ -615,6 +613,7 @@
                     <li>Mobile-Friendly</li>
                     <li>Easy Content Management</li>
                 </ul>
+                <div class="service-action">
                     <a href="https://wa.me/p/2485175255781132/2347070811718" target="_blank" class="btn btn-primary">
                         <i class="fab fa-whatsapp"></i>
                         Get Quote
@@ -635,6 +634,8 @@
                     <li>Multi-platform Integration</li>
                     <li>Custom Training</li>
                     <li>Analytics Dashboard</li>
+                </ul>
+                <div class="service-action">
                     <a href="https://wa.me/p/24687636330930239/2347070811718" target="_blank" class="btn btn-primary">
                         <i class="fab fa-whatsapp"></i>
                         Get Quote
@@ -656,6 +657,7 @@
                     <li>Custom Scripting</li>
                     <li>Performance Monitoring</li>
                 </ul>
+                <div class="service-action">
                     <a href="https://wa.me/2347070811718?text=Hi! I'm interested in Business Automation services" target="_blank" class="btn btn-primary">
                         <i class="fab fa-whatsapp"></i>
                         Get Quote
@@ -677,7 +679,7 @@
                     <li>Email Marketing</li>
                     <li>Performance Analytics</li>
                 </ul>
-                    </div>
+                <div class="service-action">
                     <a href="https://wa.me/2347070811718?text=Hi! I'm interested in Digital Marketing services" target="_blank" class="btn btn-primary">
                         <i class="fab fa-whatsapp"></i>
                         Get Quote
@@ -699,25 +701,28 @@
                     <li>Social Media Kit</li>
                     <li>Multiple Revisions</li>
                 </ul>
+                <div class="service-action">
                     <a href="https://wa.me/c/2347070811718" target="_blank" class="btn btn-primary">
                         <i class="fab fa-whatsapp"></i>
                         Get Quote
                     </a>
                 </div>
             </div>
-            <!-- VIDEO content-->
+
+            <!-- Video Content Creation -->
             <div class="service-card">
                 <div class="service-icon">
                     <i class="fas fa-video"></i>
                 </div>
-                <h3 class="service-title">Video Contents Creations</h3>
-                <p class="service-description">Get your viewers engaged with our video creation products.Be it your reels,ads,or anything that could be visulized </p>
+                <h3 class="service-title">Video Content Creation</h3>
+                <p class="service-description">Get your viewers engaged with our video creation products. Be it your reels, ads, or anything that could be visualized.</p>
                 <ul class="service-features">
-                    <li>Video editting and animations</li>
-                    <li>Into/Outro videos</li>
-                    <li>Semi-AI generated videos</li>
-                    <li>Product intoduction Videos</li>
+                    <li>Video Editing and Animations</li>
+                    <li>Intro/Outro Videos</li>
+                    <li>Semi-AI Generated Videos</li>
+                    <li>Product Introduction Videos</li>
                 </ul>
+                <div class="service-action">
                     <a href="https://wa.me/c/2347070811718" target="_blank" class="btn btn-primary">
                         <i class="fab fa-whatsapp"></i>
                         Get Quote
@@ -739,6 +744,7 @@
                     <li>Technical Consultation</li>
                     <li>Ongoing Support</li>
                 </ul>
+                <div class="service-action">
                     <a href="https://wa.me/2347070811718?text=Hi! I need a Custom Solution for my business" target="_blank" class="btn btn-primary">
                         <i class="fab fa-whatsapp"></i>
                         Discuss Project
@@ -814,7 +820,6 @@
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook"></i></a>
                         <a href="#"><i class="fab fa-whatsapp"></i></a>
-                        
                     </div>
                 </div>
                 
@@ -886,6 +891,4 @@
     </script>
 </body>
 
-</html>
-
-
+    </html>
