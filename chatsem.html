@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Chat SEM | AS CHATBOT</title>
+<title>Chat SEM | A.S CHATBOT</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
@@ -488,11 +488,10 @@ body {
 
 /* FOOTER WITH GROUND SPACING */
 .footer {
-  padding: 16px 20px 90px; /* Extra bottom padding for ground spacing */
+  padding: 16px 20px 90px;
   background: var(--bg-secondary);
   border-top: 1px solid var(--border-color);
   flex-shrink: 0;
-  /* Ground spacing at bottom */
   box-shadow: 0 -2px 20px rgba(0, 0, 0, 0.05);
   position: relative;
   z-index:10;
@@ -504,7 +503,7 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 24px; /* Ground spacing */
+  height: 24px;
   background: var(--bg-secondary);
 }
 
@@ -685,7 +684,7 @@ textarea::placeholder {
     <div class="header-top">
       <div class="header-left">
         <h1>Chat SEM</h1>
-        <p>Premium Customer Support</p>
+        <p>Our A.S Chatbot</p>
       </div>
       <button class="settings-gear" id="settingsGear">
         <i class="fas fa-cog"></i>
@@ -797,7 +796,7 @@ const carouselSlides = [
   {
     icon: '<i class="fas fa-globe"></i>',
     title: "Website Development",
-    description: "Professional websites starting at ₦50,000"
+    description: "Contact us for quotes "
   },
   {
     icon: '<i class="fas fa-palette"></i>',
@@ -936,19 +935,20 @@ function setupEventListeners() {
       chatState.lastBotMessageId = null;
       messages.innerHTML = '';
       saveState();
+      localStorage.removeItem('chatHistory');
     }
   };
   
   exportChatBtn.onclick = () => {
     const chatText = chatState.messages.map(msg => 
-      `${msg.type === 'user' ? 'You' : 'Assistant'}: ${msg.text}`
+      `${msg.type === 'user' ? 'You' : 'Assistant'}: ${msg.text} (${msg.time})`
     ).join('\n\n');
     
     const blob = new Blob([chatText], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'chat-sem-conversation.txt';
+    a.download = `chat-sem-${new Date().toISOString().slice(0,10)}.txt`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -961,7 +961,6 @@ function setupEventListeners() {
     }
   });
   
-  // Touch events for better mobile support
   document.addEventListener('touchstart', () => {}, { passive: true });
 }
 
@@ -984,7 +983,6 @@ function initCarousel() {
     carouselDots.appendChild(dot);
   });
   
-  // Touch/swipe support for carousel
   let startX = 0;
   let isSwiping = false;
   
@@ -1113,6 +1111,9 @@ function addUserMessage(text) {
   renderMessage(msg);
   saveState();
   playNotificationSound();
+  
+  // Save to conversation history
+  saveConversationHistory();
 }
 
 async function addBotMessage(text, intent) {
@@ -1138,6 +1139,9 @@ async function addBotMessage(text, intent) {
   renderMessage(msg);
   saveState();
   playNotificationSound();
+  
+  // Save to conversation history
+  saveConversationHistory();
 }
 
 function createTypingIndicator() {
@@ -1267,22 +1271,49 @@ function playNotificationSound() {
   }
 }
 
-function detectIntentFromResponse(apiResponse, userText) {
-  if (apiResponse.category && apiResponse.category !== "UNKNOWN") {
-    return apiResponse.category.toUpperCase();
-  }
+// =========================
+// CONVERSATION HISTORY FUNCTIONS
+// =========================
+
+function formatConversationHistory() {
+  const recentMessages = chatState.messages.slice(-20);
   
-  const text = userText.toLowerCase();
-  if (text.includes('contact') || text.includes('call') || text.includes('email') || text.includes('phone')) return 'CONTACT';
-  if (text.includes('about') || text.includes('who are you') || text.includes('company')) return 'ABOUT';
-  if (text.includes('logo') || text.includes('branding')) return 'LOGO_INFO';
-  if (text.includes('website') || text.includes('web design') || text.includes('site')) return 'WEBSITE_INFO';
-  if (text.includes('product') || text.includes('catalogue') || text.includes('item')) return 'PRODUCTS_INFO';
-  if (text.includes('service') || text.includes('help') || text.includes('support')) return 'SERVICES';
-  if (text.includes('hi') || text.includes('hello') || text.includes('hey')) return 'GREETINGS';
-  
-  return 'GENERAL';
+  return recentMessages.map(msg => ({
+    type: msg.type,
+    text: msg.text,
+    time: msg.time,
+    intent: msg.intent || null
+  }));
 }
+
+function saveConversationHistory() {
+  const history = formatConversationHistory();
+  localStorage.setItem('chatHistory', JSON.stringify(history));
+}
+
+function loadConversationHistory() {
+  const saved = localStorage.getItem('chatHistory');
+  if (saved) {
+    try {
+      const history = JSON.parse(saved);
+      
+      chatState.messages = history.map(msg => ({
+        ...msg,
+        id: Date.now() + Math.random(),
+        showActions: msg.type === 'bot',
+        quickActionsVisible: false
+      }));
+      
+      renderMessages();
+    } catch (e) {
+      console.log('Error loading history:', e);
+    }
+  }
+}
+
+// =========================
+// MAIN MESSAGE SENDING FUNCTION
+// =========================
 
 async function sendMessage() {
   const text = input.value.trim();
@@ -1294,18 +1325,24 @@ async function sendMessage() {
   addUserMessage(text);
 
   try {
+    // Get formatted conversation history
+    const conversationHistory = formatConversationHistory();
+    
     const res = await fetch("https://emltechstudio-chatsem.hf.space/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message: text })
+      body: JSON.stringify({ 
+        message: text,
+        conversationHistory: conversationHistory
+      })
     });
     
-   const data = await res.json();
+    const data = await res.json();
 
-let intent = (data.intent || "GENERAL").toUpperCase();
-if (intent === "UNKNOWN") intent = "GENERAL";
+    let intent = (data.intent || "GENERAL").toUpperCase();
+    if (intent === "UNKNOWN") intent = "GENERAL";
 
-addBotMessage(data.response || "I'm here to help!", intent);
+    addBotMessage(data.response || "I'm here to help!", intent);
     
   } catch (err) {
     console.error('Error:', err);
@@ -1313,7 +1350,14 @@ addBotMessage(data.response || "I'm here to help!", intent);
   }
 }
 
-window.addEventListener('DOMContentLoaded', init);
+// =========================
+// INITIALIZATION
+// =========================
+
+window.addEventListener('DOMContentLoaded', () => {
+  init();
+  loadConversationHistory();
+});
 </script>
 </body>
-    </html>
+  </html>
