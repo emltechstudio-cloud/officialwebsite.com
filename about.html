@@ -3,21 +3,17 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Favicon for browser tab -->
-<link rel="icon" href="/ETSlogo.png" type="image/png">
-
-<!-- Open Graph image (for social/media preview) -->
-<meta property="og:image" content="/ETSLogo.png">
-<meta property="og:image:type" content="image/png">
-<meta property="og:image:width" content="400">
-<meta property="og:image:height" content="400">
-
-<!-- Twitter Card image -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="/ETSlogo.png">
+    <link rel="icon" href="/ETSlogo.png" type="image/png">
+    <meta property="og:image" content="/ETSLogo.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="400">
+    <meta property="og:image:height" content="400">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="/ETSlogo.png">
     <title>About - EML Tech Studio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* General styles */
         * {
             margin: 0;
             padding: 0;
@@ -107,7 +103,8 @@
             transition: background 0.3s;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover,
+        .nav-links a.active {
             background: rgba(255,255,255,0.1);
         }
 
@@ -133,7 +130,7 @@
             display: block;
         }
 
-        /* Main Content */
+        /* Main content */
         .main-content {
             padding: 40px 20px;
             max-width: 1200px;
@@ -162,7 +159,7 @@
             margin: 0 auto;
         }
 
-        /* About Sections */
+        /* About section */
         .about-section {
             background: white;
             border-radius: 15px;
@@ -195,7 +192,7 @@
             font-size: 1.05rem;
         }
 
-        /* Values Grid */
+        /* Value cards */
         .values-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -233,7 +230,7 @@
             line-height: 1.6;
         }
 
-        /* Payment Info */
+        /* Payment methods */
         .payment-methods {
             display: flex;
             flex-wrap: wrap;
@@ -256,7 +253,7 @@
             font-size: 1.2rem;
         }
 
-        /* Process Steps */
+        /* Process steps */
         .process-steps {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -304,7 +301,7 @@
             line-height: 1.5;
         }
 
-        /* CTA Section */
+        /* CTA section */
         .cta-section {
             background: linear-gradient(135deg, #82109F, #000040);
             color: white;
@@ -418,42 +415,44 @@
             font-size: 14px;
         }
 
-        /* Floating Chat Button */
-        .floating-chat {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #82109F, #00FFFF);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 15px rgba(130, 16, 159, 0.4);
-            z-index: 100;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
+        .floating-chat-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #82109F, #00FFFF);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    cursor: pointer;
+    transition: transform 0.2s;
+    text-decoration: none;
+}
 
-        .floating-chat:hover {
-            transform: scale(1.1);
-        }
+.floating-chat-btn:hover {
+    transform: scale(1.05);
+}
 
-        .chat-placeholder {
-            width: 35px;
-            height: 35px;
-            background: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: #82109F;
-            font-size: 14px;
-        }
+.white-circle {
+    width: 40px;
+    height: 40px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-        /* Responsive Design */
+.chat-icon {
+    width: 22px;
+    height: 22px;
+}
+
+        /* Responsive */
         @media (min-width: 768px) {
             .footer-content {
                 grid-template-columns: repeat(2, 1fr);
@@ -464,15 +463,12 @@
             .footer-content {
                 grid-template-columns: repeat(4, 1fr);
             }
-            
             .sidebar {
                 left: 0;
             }
-            
             .main-content {
                 margin-left: 280px;
             }
-            
             .menu-toggle {
                 display: none;
             }
@@ -482,36 +478,28 @@
             .page-title {
                 font-size: 2rem;
             }
-            
             .about-section {
                 padding: 25px;
             }
-            
             .cta-buttons {
                 flex-direction: column;
                 align-items: center;
             }
-            
             .cta-btn {
                 width: 200px;
                 justify-content: center;
             }
-            
             .payment-methods {
                 flex-direction: column;
             }
-            
             .floating-chat {
-                bottom: 20px;
+                bottom: 80px;
                 right: 20px;
                 width: 55px;
                 height: 55px;
             }
-            
-            .chat-placeholder {
-                width: 30px;
-                height: 30px;
-                font-size: 12px;
+            html, body {
+                overflow-x: hidden;
             }
         }
     </style>
@@ -519,169 +507,99 @@
 <body>
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
-        <div class="sidebar-logo">
-            <img src="ETSlogo.png" alt="EML Tech Studio">
-        </div>
+        <div class="sidebar-logo"><img src="ETSlogo.png" alt="EML Tech Studio"></div>
         <ul class="nav-links">
             <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
             <li><a href="services.html"><i class="fas fa-concierge-bell"></i> Services</a></li>
-            <li><a href="catalog.html"><i class="fas fa-store"></i> Catalog</a></li>
+            <li><a href="https://wa.me/c/2347070811718" target="_blank"><i class="fas fa-store"></i> Catalog</a></li>
             <li><a href="about.html" class="active"><i class="fas fa-users"></i> About</a></li>
             <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+            <li><a href="chatsem.html"><img src="semlogo.png" alt="Chat SEM" style="width: 20px; height: 20px; margin-right: 10px;">Chatsem</a></li>
         </ul>
     </div>
-
-    <!-- Overlay -->
     <div class="overlay" id="overlay"></div>
 
     <!-- Header -->
     <div class="header">
-        <button class="menu-toggle" id="menuToggle">
-            <i class="fas fa-bars"></i>
-        </button>
-        <div class="header-logo">
-            <img src="ETSlogo.png" alt="EML Tech Studio">
-        </div>
+        <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+        <div class="header-logo"><img src="ETSlogo.png" alt="EML Tech Studio"></div>
     </div>
 
     <!-- Main Content -->
     <div class="main-content">
-        <!-- Page Header -->
         <div class="page-header">
             <h1 class="page-title">About EML Tech Studio</h1>
-            <p class="page-subtitle">Learn about our mission, values, and how we're transforming digital experiences for everyone</p>
+            <p class="page-subtitle">Building practical digital systems that work in real-world conditions.</p>
         </div>
 
-        <!-- Who We Are Section -->
+        <!-- Who We Are -->
         <section class="about-section">
-            <h2 class="section-title">
-                <i class="fas fa-rocket"></i>
-                Who We Are
-            </h2>
+            <h2 class="section-title"><i class="fas fa-rocket"></i> Who We Are</h2>
             <div class="about-content">
-                <p>EML Tech Studio is a forward-thinking digital solutions provider dedicated to making technology accessible and beneficial for everyone. Founded on the principle that digital empowerment should be available to all, we bridge the gap between complex technology and everyday users.</p>
-                
-                <p>We believe that whether you're a business owner, content creator, student, or simply someone looking to establish a digital presence, you deserve tools and platforms that work for you, not against you.</p>
+                <p>EML Tech Studio transforms complex technology into systems real people can use.</p>
+                <p>We design tools for businesses, creators, students, and teams, considering real-world limits like devices, budgets, and evolving needs.</p>
+                <p>Our goal: technology should work for you, not against you.</p>
             </div>
         </section>
 
-        <!-- How We Work Section -->
+        <!-- How We Work -->
         <section class="about-section">
-            <h2 class="section-title">
-                <i class="fas fa-cogs"></i>
-                How We Work
-            </h2>
+            <h2 class="section-title"><i class="fas fa-cogs"></i> How We Work</h2>
             <div class="about-content">
-                <p>Our approach combines technical expertise with user-centered design to create solutions that are both powerful and intuitive. We follow a streamlined process that ensures quality and efficiency:</p>
-                
+                <p>We follow a structured process prioritizing clarity, execution, and reliability.</p>
                 <div class="process-steps">
-                    <div class="process-step">
-                        <div class="step-number">1</div>
-                        <h3 class="step-title">Consultation</h3>
-                        <p class="step-description">We understand your needs and goals through detailed discussions</p>
-                    </div>
-                    
-                    <div class="process-step">
-                        <div class="step-number">2</div>
-                        <h3 class="step-title">Planning</h3>
-                        <p class="step-description">We create a customized strategy tailored to your specific requirements</p>
-                    </div>
-                    
-                    <div class="process-step">
-                        <div class="step-number">3</div>
-                        <h3 class="step-title">Development</h3>
-                        <p class="step-description">Our team builds your solution using the latest technologies and best practices</p>
-                    </div>
-                    
-                    <div class="process-step">
-                        <div class="step-number">4</div>
-                        <h3 class="step-title">Delivery & Support</h3>
-                        <p class="step-description">We deliver your solution and provide ongoing support and maintenance</p>
-                    </div>
+                    <div class="process-step"><div class="step-number">1</div><h3 class="step-title">Consultation</h3><p class="step-description">We listen first — understanding your goals and expectations.</p></div>
+                    <div class="process-step"><div class="step-number">2</div><h3 class="step-title">Planning</h3><p class="step-description">Solutions fit your current reality, not just ideal scenarios.</p></div>
+                    <div class="process-step"><div class="step-number">3</div><h3 class="step-title">Development</h3><p class="step-description">We build with proven tools, clean structure, and best practices.</p></div>
+                    <div class="process-step"><div class="step-number">4</div><h3 class="step-title">Delivery & Support</h3><p class="step-description">Deployment, testing, and ongoing support for improvement.</p></div>
                 </div>
             </div>
         </section>
 
-        <!-- Payment Information -->
+        <!-- Payment Info -->
         <section class="about-section">
-            <h2 class="section-title">
-                <i class="fas fa-credit-card"></i>
-                Payment Information
-            </h2>
+            <h2 class="section-title"><i class="fas fa-credit-card"></i> Payment Information</h2>
             <div class="about-content">
-                <p>We make payment processes simple and secure. All transactions are handled with the highest level of security and transparency.</p>
-                
+                <p>We make transactions simple, secure, and transparent.</p>
                 <p><strong>Accepted Payment Methods:</strong></p>
                 <div class="payment-methods">
-                    <div class="payment-method">
-                        <i class="fab fa-whatsapp"></i>
-                        <span>WhatsApp Transfer</span>
-                    </div>
-                    <div class="payment-method">
-                        <i class="fas fa-mobile-alt"></i>
-                        <span>Bank Transfer</span>
-                    </div>
-                    <div class="payment-method">
-                        <i class="fas fa-university"></i>
-                        <span>Online Payment</span>
-                    </div>
+                    <div class="payment-method"><i class="fab fa-whatsapp"></i> WhatsApp Transfer</div>
+                    <div class="payment-method"><i class="fas fa-mobile-alt"></i> Bank Transfer</div>
+                    <div class="payment-method"><i class="fas fa-university"></i> Online Payment</div>
                 </div>
-                
                 <p style="margin-top: 20px;"><strong>Payment Terms:</strong></p>
                 <ul style="color: #555; line-height: 1.7; margin-left: 20px;">
-                    <li>50% advance payment for project commencement</li>
-                    <li>50% upon project completion and delivery</li>
-                    <li>All payments are secure and documented</li>
-                    <li>Receipts provided for all transactions</li>
+                    <li>All payments handled securely and transparently</li>
+                    <li>Various payment methods for convenience</li>
+                    <li>Receipts provided for every transaction</li>
                 </ul>
             </div>
         </section>
 
-        <!-- Our Values -->
+        <!-- Founder's Perspective -->
         <section class="about-section">
-            <h2 class="section-title">
-                <i class="fas fa-star"></i>
-                Our Values
-            </h2>
-            <div class="values-grid">
-                <div class="value-card">
-                    <div class="value-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3 class="value-title">Inclusivity</h3>
-                    <p class="value-description">We believe technology should be accessible to everyone, regardless of technical background or resources.</p>
-                </div>
-                
-                <div class="value-card">
-                    <div class="value-icon">
-                        <i class="fas fa-lightbulb"></i>
-                    </div>
-                    <h3 class="value-title">Innovation</h3>
-                    <p class="value-description">We continuously explore new technologies and approaches to deliver cutting-edge solutions.</p>
-                </div>
-                
-                <div class="value-card">
-                    <div class="value-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3 class="value-title">Quality</h3>
-                    <p class="value-description">We never compromise on quality, ensuring every solution meets the highest standards.</p>
-                </div>
-                
-                <div class="value-card">
-                    <div class="value-icon">
-                        <i class="fas fa-handshake"></i>
-                    </div>
-                    <h3 class="value-title">Partnership</h3>
-                    <p class="value-description">We work collaboratively with our clients, treating their success as our own.</p>
+            <h2 class="section-title"><i class="fas fa-compass"></i> Founder's Perspective</h2>
+            <div class="about-content">
+                <p>Every idea has its challenges. When I first explored technology, I faced a gap between vision and the means to realize it. Tools, guidance, or resources were often missing, leaving ideas stuck. It was isolating and frustrating, but it taught me persistence and creative problem-solving.</p>
+                <p>These experiences inspired EML Tech Studio. I realized that collaboration — even just shared effort or guidance — could turn ideas into reality faster. That perspective drives everything we do: creating spaces, tools, and opportunities so ideas aren't lost due to lack of resources or know-how.</p>
+                <p>Collaboration doesn't always require technical expertise. What matters is vision and dedication. Occasionally, I personally work with individuals committed to meaningful projects. These partnerships form naturally, guided by curiosity, shared values, and the desire to see ideas become real-world solutions.</p>
+                <p>While collaborations stem from personal initiative, results often grow under the EML Tech Studio umbrella — benefiting both participants and the wider community. Focus is on real solutions, not profit. Whether you bring technical skills, creative ideas, or simply drive, we explore possibilities together.</p>
+                <p style="margin-top: 25px;"><strong>Emmanuel Olusanya</strong><br>Founder, EML Tech Studio</p>
+                <p style="margin-top: 10px; color:#555;">For serious collaborations or project ideas, feel free to reach out personally.</p>
+                <div style="margin-top: 18px; display: flex; gap: 15px; flex-wrap: wrap;">
+                    <a href="https://wa.me/2348084115775" target="_blank" style="text-decoration:none;color:#82109F;font-weight:500;">
+                        <i class="fab fa-whatsapp"></i> Reach me on WhatsApp
+                    </a>
                 </div>
             </div>
         </section>
 
         <!-- CTA Section -->
-        <div class="cta-section">
+        <section class="cta-section">
             <h2 class="cta-title">Ready to Start Your Digital Journey?</h2>
-            <p class="cta-text">Join thousands of satisfied clients who have transformed their digital presence with EML Tech Studio</p>
+            <p class="cta-text">
+                Explore opportunities, build meaningful solutions, and bring your ideas to life with EML Tech Studio.
+            </p>
             <div class="cta-buttons">
                 <a href="contact.html" class="cta-btn">
                     <i class="fas fa-paper-plane"></i>
@@ -697,6 +615,7 @@
                 </a>
             </div>
         </div>
+        </section>
 
         <!-- Footer -->
         <footer class="footer">
@@ -705,8 +624,8 @@
                     <h3>EML Tech Studio</h3>
                     <p>The Tech Studio For You.</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://facebook.com/emltechstudio1"><i class="fab fa-facebook"></i></a>
+                        <a href="https://wa.me/2347070811718"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
                 
@@ -715,7 +634,7 @@
                     <ul class="footer-links">
                         <li><a href="index.html">Home</a></li>
                         <li><a href="services.html">Services</a></li>
-                        <li><a href="">Catalogue</a></li>
+                        <li><a href="https://wa.me/c/2347070811718">Catalogue</a></li>
                         <li><a href="about.html">About</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
@@ -724,7 +643,7 @@
                 <div class="footer-section">
                     <h3>Support</h3>
                     <ul class="footer-links">
-                        <li><a href="https://emltechstudio.site/chatsem">Chat SEM</a></li>
+                        <li><a href="chatsem.html">Chat SEM</a></li>
                         <li><a href="contact.html">Contact Us</a></li>
                         <li><a href="#">Help Center</a></li>
                         <li><a href="#">Privacy Policy</a></li>
@@ -734,7 +653,7 @@
                 <div class="footer-section">
                     <h3>Contact Info</h3>
                     <ul class="footer-links">
-                        <li><i class="fas fa-envelope"></i>mail@emltechstudio.site</li>
+                        <li><i class="fas fa-envelope"></i> mail@emltechstudio.site</li>
                         <li><i class="fas fa-phone"></i> +234 808 411 5775</li>
                         <li><i class="fas fa-map-marker-alt"></i> Ogun, Nigeria</li>
                     </ul>
@@ -745,13 +664,13 @@
             </div>
         </footer>
     </div>
-
-    <!-- Floating Chat Button -->
-    <div class="floating-chat" onclick="window.open('https://emltechstudio.site/chatsem', '_blank')">
-        <div class="chat-placeholder">
-            <img src="semlogo.png" alt="Chat" style="width: 20px; height: 20px;">
-        </div>
+<!-- Floating Chat Button -->
+<a href="chatsem.html" target="_blank" class="floating-chat-btn">
+    <div class="white-circle">
+        <img src="semlogo.png" alt="Chat with SEM" class="chat-icon">
     </div>
+</a>
+    
 
     <script>
         // Toggle sidebar
@@ -777,7 +696,4 @@
         });
     </script>
 </body>
-
-</html>
-
-
+    </html>
