@@ -367,40 +367,45 @@
             font-size: 14px;
         }
 
+        
         /* Floating Chat Button */
-        .floating-chat {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #82109F, #00FFFF);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 15px rgba(130, 16, 159, 0.4);
-            z-index: 100;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
+.floating-chat {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #82109F, #00FFFF);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(130, 16, 159, 0.4);
+    z-index: 100;
+    cursor: pointer;
+    transition: transform 0.3s;
+    text-decoration: none;
+}
 
-        .floating-chat:hover {
-            transform: scale(1.1);
-        }
+.floating-chat:hover {
+    transform: scale(1.1);
+}
 
-        .chat-placeholder {
-            width: 35px;
-            height: 35px;
-            background: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: #82109F;
-            font-size: 14px;
-        }
+.white-circle {
+    width: 40px;
+    height: 40px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chat-icon {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+}
 
         /* Responsive Design */
         @media (min-width: 768px) {
@@ -451,10 +456,10 @@
             }
             
             .floating-chat {
-                bottom: 20px;
+                bottom: 80px;
                 right: 20px;
-                width: 55px;
-                height: 55px;
+                width: 60px;
+                height: 60px;
             }
             
             .chat-placeholder {
@@ -477,6 +482,7 @@
             <li><a href=""><i class="fas fa-store"></i> Catalogue</a></li>
             <li><a href="about.html"><i class="fas fa-users"></i> About</a></li>
             <li><a href="contact.html" class="active"><i class="fas fa-envelope"></i> Contact</a></li>
+            <li><a href="chatsem.html"><img src="semlogo.png" alt="Chat SEM" style="width: 20px; height: 20px; margin-right: 10px;">Chatsem</a></li>
         </ul>
     </div>
 
@@ -556,7 +562,7 @@
             </a>
 
             <!-- Facebook -->
-            <a href="#" class="contact-card" onclick="alert('Facebook page coming soon!')">
+            <a href="https://m.me/emltechstudio1" class="contact-card">
                 <div class="contact-icon icon-facebook">
                     <i class="fab fa-facebook-messenger"></i>
                 </div>
@@ -583,7 +589,7 @@
         </div>
 
         <!-- Support Section -->
-        <div class="support-section">
+        <section class="support-section">
             <h2 class="support-title">Need Immediate Help?</h2>
             <p class="support-text">Our support team is ready to assist you with any questions about our services, courses, or technical issues.</p>
             <div class="support-buttons">
@@ -601,6 +607,7 @@
                 </a>
             </div>
         </div>
+    </section>
 
         <!-- Footer -->
         <footer class="footer">
@@ -609,8 +616,8 @@
                     <h3>EML Tech Studio</h3>
                     <p>The tech Studio For You.</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://facebook.com/emltechstudio1"><i class="fab fa-facebook"></i></a>
+                        <a href="https://wa.me/2347070811718"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
                 
@@ -628,7 +635,7 @@
                 <div class="footer-section">
                     <h3>Support</h3>
                     <ul class="footer-links">
-                        <li><a href="https://emltechstudio.site/chatsem">Chat SEM</a></li>
+                        <li><a href="chatsem.html">Chat SEM</a></li>
                         <li><a href="contact.html">Contact Us</a></li>
                         <li><a href="#">Help Center</a></li>
                         <li><a href="#">Privacy Policy</a></li>
@@ -651,11 +658,11 @@
     </div>
 
     <!-- Floating Chat Button -->
-    <div class="floating-chat" onclick="window.open('https://emltechstudio.site/chatsem', '_blank')">
-        <div class="chat-placeholder">
-            <img src="semlogo.png" alt="Chat SEM" style="width:20px; height:20px;">
-        </div>
+<a href="chatsem.html" target="_blank" class="floating-chat">
+    <div class="white-circle">
+        <img src="semlogo.png" alt="Chat SEM" class="chat-icon">
     </div>
+</a>
 
     <script>
         // Toggle sidebar
@@ -683,4 +690,4 @@
 </body>
 
 </html>
-
+ 
