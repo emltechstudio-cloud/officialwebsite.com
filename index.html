@@ -140,8 +140,8 @@
         /* Video Section */
         .video-container {
             position: relative;
-            width: 94%;
-            margin: 0 auto 40px;
+            width: 95%;
+            margin: 10px;
         }
 
         .video-wrapper {
@@ -319,6 +319,70 @@
             font-size: 16px;
         }
 
+        /* CTA Section - Links to Other Pages */
+        .cta-section {
+            background: linear-gradient(135deg, #82109F, #00FFFF);
+            padding: 50px 20px;
+            margin: 40px auto;
+            border-radius: 15px;
+            color: white;
+            text-align: center;
+            max-width: 1100px;
+            box-shadow: 0 5px 20px rgba(130, 16, 159, 0.2);
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            padding: 12px 35px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s;
+            border: 2px solid white;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .cta-btn-white {
+            background: white;
+            color: #82109F;
+        }
+
+        .cta-btn-white:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .cta-btn-outline {
+            background: transparent;
+            color: white;
+        }
+
+        .cta-btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
         /* Newsletter */
         .newsletter {
             border-radius: 15px;
@@ -334,6 +398,33 @@
             font-weight: 600;
             margin-bottom: 15px;
             text-align: center;
+        }
+
+        .newsletter-success {
+            display: none;
+            background: #4AA65A;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 15px;
+            font-weight: 600;
+            animation: slideIn 0.3s ease;
+        }
+
+        .newsletter-success.show {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .newsletter-form {
@@ -438,41 +529,45 @@
             border-top: 1px solid rgba(255,255,255,0.3);
             font-size: 14px;
         }
+       /* Floating Chat Button */
+.floating-chat {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #82109F, #00FFFF);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(130, 16, 159, 0.4);
+    z-index: 100;
+    cursor: pointer;
+    transition: transform 0.3s;
+    text-decoration: none;
+}
 
-        /* Floating Chat Button */
-        .floating-chat {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #82109F, #00FFFF);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 15px rgba(130, 16, 159, 0.4);
-            z-index: 100;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
+.floating-chat:hover {
+    transform: scale(1.1);
+}
 
-        .floating-chat:hover {
-            transform: scale(1.1);
-        }
+.white-circle {
+    width: 40px;
+    height: 40px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-        .chat-placeholder {
-            width: 35px;
-            height: 35px;
-            background: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: #82109F;
-            font-size: 14px;
-        }
+.chat-icon {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+}
+
 
         /* Responsive Design */
         @media (min-width: 768px) {
@@ -528,17 +623,26 @@
                 align-items: flex-start;
             }
             
+           
             .floating-chat {
-                bottom: 20px;
+                bottom: 80px;
                 right: 20px;
-                width: 55px;
-                height: 55px;
+                width: 60px;
+                height: 60px;
             }
             
             .chat-placeholder {
                 width: 30px;
                 height: 30px;
                 font-size: 12px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .cta-btn {
+                width: 100%;
             }
         }
     </style>
@@ -555,6 +659,7 @@
             <li><a href="https://wa.me/c/2347070811718"><i class="fas fa-store"></i> Catalogue</a></li>
             <li><a href="about.html"><i class="fas fa-users"></i> About</a></li>
             <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+            <li><a href="chatsem.html"><img src="semlogo.png" alt="Chat SEM" style="width: 20px; height: 20px; margin-right: 10px;">Chatsem</a></li>
         </ul>
     </div>
 
@@ -655,36 +760,51 @@
             </div>
         </div>
 
+        <!-- CTA Section - Links to Other Pages -->
+        <div class="cta-section">
+            <h2>Want to Know More?</h2>
+            <p>Explore our services, learn about our team, or get in touch with us today.</p>
+            <div class="cta-buttons">
+                <a href="about.html" class="cta-btn cta-btn-white">Learn About Us</a>
+                <a href="services.html" class="cta-btn cta-btn-outline">View Services</a>
+                <a href="contact.html" class="cta-btn cta-btn-outline">Get in Touch</a>
+            </div>
+        </div>
+
         <!-- Newsletter -->
         <div class="newsletter">
             <div class="newsletter-text">
                 Stay updated with our latest Infos,products/resourses and exclusive offers
             </div>
-            <form class="newsletter-form">
-                <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
+            <div class="newsletter-success" id="newsletterSuccess">
+                <i class="fas fa-check-circle"></i> Thank you for subscribing! We'll keep you updated.
+            </div>
+            <form class="newsletter-form" id="newsletterForm">
+                <input type="email" class="newsletter-input" id="newsletterEmail" placeholder="Enter your email address" required>
                 <button type="submit" class="newsletter-btn">
                     <i class="fas fa-paper-plane"></i>
                 </button>
             </form>
         </div>
 
-        <!-- Footer -->
+          <!-- Footer -->
         <footer class="footer">
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>EML Tech Studio</h3>
-                    <p>The Tech Studio For You.</p>
+                    <p>The tech studio for you..</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="https://facebook.com/emltechstudio1"><i class="fab fa-facebook"></i></a>
                         <a href="https://wa.me/2347070811718"><i class="fab fa-whatsapp"></i></a>
+                    </div>
                 </div>
                 
                 <div class="footer-section">
                     <h3>Quick Links</h3>
                     <ul class="footer-links">
-                        <li><a href="#">Home</a></li>
+                        <li><a href="index.html">Home</a></li>
                         <li><a href="services.html">Services</a></li>
-                        <li><a href="https://wa.me/c/2347070811718">Catalogue</a></li>
+                        <li><a href="https://wa.me/c/2347070811718" target="_blank">Catalogue</a></li>
                         <li><a href="about.html">About</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
@@ -715,12 +835,13 @@
         </footer>
     </div>
 
-    <!-- Floating Chat Button -->
-    <div class="floating-chat" onclick="window.open('https://emltechstudio.site/chatsem', '_blank')">
-        <div class="chat-placeholder">
-            <img src="semlogo.png" alt="Chat" style="width:20px; height:20px;">
-        </div>
+        <!-- Floating Chat Button -->
+<a href="chatsem.html" target="_blank" class="floating-chat">
+    <div class="white-circle">
+        <img src="semlogo.png" alt="Chat SEM" class="chat-icon">
     </div>
+</a>
+
 
     <script>
         // Toggle sidebar
@@ -790,9 +911,60 @@
                 document.getElementById('overlay').classList.remove('active');
             }
         });
+
+        // ========== NEWSLETTER FORM SUBMISSION ==========
+        const newsletterForm = document.getElementById('newsletterForm');
+        const newsletterEmail = document.getElementById('newsletterEmail');
+        const newsletterSuccess = document.getElementById('newsletterSuccess');
+
+        newsletterForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const email = newsletterEmail.value.trim();
+
+            // Email validation regex
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address');
+                return;
+            }
+
+            try {
+                // Send email to your backend endpoint
+                // REPLACE 'YOUR_BACKEND_ENDPOINT' with your actual Hugging Face Spaces endpoint
+                const response = await fetch('https://emltechstudio-chatsem.hf.space/subscribe', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email: email })
+                });
+
+                if (response.ok) {
+                    // Show success message
+                    newsletterSuccess.classList.add('show');
+                    newsletterForm.style.display = 'none';
+
+                    // Reset form and hide success message after 3 seconds
+                    setTimeout(() => {
+                        newsletterForm.reset();
+                        newsletterForm.style.display = 'flex';
+                        newsletterSuccess.classList.remove('show');
+                        newsletterEmail.focus();
+                    }, 3000);
+                } else {
+                    alert('Error subscribing. Please try again later.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error subscribing. Please check your connection and try again.');
+            }
+        });
     </script>
 </body>
 
 </html>
+
+
 
 
