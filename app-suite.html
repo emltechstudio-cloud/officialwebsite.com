@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EML Tech Studio – App Suite</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #82109F;
+            --primary-light: #A838C7;
+            --accent: #00FFFF;
+            --bg: #F9F6FC;
+            --surface: #FFFFFF;
+            --text: #1A1A2E;
+            --text-secondary: #555770;
+            --border: #E8E6F0;
+            --shadow-sm: 0 4px 12px rgba(130, 16, 159, 0.08);
+            --shadow-md: 0 12px 28px rgba(130, 16, 159, 0.12);
+            --shadow-lg: 0 20px 50px rgba(130, 16, 159, 0.15);
+            --radius: 20px;
+            --transition: 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* HERO */
+        .hero {
+            padding: 5rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(circle at 20% 30%, rgba(130,16,159,0.06) 0%, transparent 60%),
+                        radial-gradient(circle at 80% 70%, rgba(0,255,255,0.05) 0%, transparent 60%);
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary), var(--accent), transparent);
+        }
+
+        .hero-logo {
+            height: 64px;
+            width: auto;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 4px 12px rgba(130, 16, 159, 0.15));
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 3.5rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.9rem 2.2rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            box-shadow: 0 6px 20px rgba(130, 16, 159, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(130, 16, 159, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* APP GRID */
+        .apps-section {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 4rem 2rem 6rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 60%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--surface);
+            border-radius: var(--radius);
+            padding: 2rem 1.8rem 1.5rem;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            animation: fadeUp 0.5s ease both;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card:nth-child(1) { animation-delay: 0.05s; }
+        .card:nth-child(2) { animation-delay: 0.1s; }
+        .card:nth-child(3) { animation-delay: 0.15s; }
+        .card:nth-child(4) { animation-delay: 0.2s; }
+        .card:nth-child(5) { animation-delay: 0.25s; }
+        .card:nth-child(6) { animation-delay: 0.3s; }
+        .card:nth-child(7) { animation-delay: 0.35s; }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
+        }
+
+        .card-icon {
+            width: 88px;
+            height: 88px;
+            border-radius: 22px;
+            background: linear-gradient(135deg, rgba(130,16,159,0.08), rgba(0,255,255,0.05));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.4rem;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(130,16,159,0.1);
+        }
+
+        .card-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+            color: var(--text);
+        }
+
+        .card-tagline {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+        }
+
+        .card-desc {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+            flex: 1;
+        }
+
+        .card-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .card-features li {
+            font-size: 0.75rem;
+            background: rgba(130,16,159,0.06);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: auto;
+            border-top: 1px solid var(--border);
+            padding-top: 1.2rem;
+        }
+
+        .card-btn {
+            flex: 1;
+            padding: 0.7rem 0;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-align: center;
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+        }
+
+        .btn-visit {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            box-shadow: 0 4px 10px rgba(130,16,159,0.15);
+        }
+
+        .btn-visit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(130,16,159,0.25);
+        }
+
+        .btn-install {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-install:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            padding: 3rem 2rem;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        footer strong {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        footer .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        footer .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        footer .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .hero { padding: 3rem 1.2rem 2.5rem; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero p { font-size: 1rem; }
+            .apps-section { padding: 2.5rem 1.2rem 4rem; }
+            .grid { grid-template-columns: 1fr; }
+            .card { padding: 1.8rem 1.5rem 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero -->
+    <header class="hero">
+        <img src="ETSlogo.png" alt="EML Tech Studio" class="hero-logo" onerror="this.style.display='none'">
+        <h1>App Suite</h1>
+        <p>A hand‑picked collection of progressive web apps, built for creators, developers, and professionals who demand speed, privacy, and elegance.</p>
+        <div class="hero-buttons">
+            <a href="#apps" class="btn btn-primary"><i class="fas fa-arrow-down"></i> Explore Now</a>
+            <a href="https://emltechstudio.site" target="_blank" class="btn btn-outline"><i class="fas fa-globe"></i> EML Tech Studio</a>
+        </div>
+    </header>
+
+    <!-- Apps Grid -->
+    <section class="apps-section" id="apps">
+        <h2 class="section-title">Our Applications</h2>
+        <div class="grid" id="appGrid"></div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Built with passion by <strong>EML Tech Studio</strong></p>
+        <div class="footer-links">
+            <a href="https://emltechstudio.site" target="_blank">Studio Website</a>
+            <a href="https://wa.me/c/2347070811718" target="_blank">WhatsApp Support</a>
+            <a href="mailto:mail@emltechstudio.site">Contact</a>
+        </div>
+    </footer>
+
+    <script>
+        const appsData = [
+            {
+                name: "Search with SEM",
+                tagline: "Smart Research & Discovery",
+                desc: "Instant Wikipedia summaries, full‑screen gallery, trending topics, and voice search. Works offline.",
+                features: ["Voice Search", "Offline", "Trending", "Gallery View"],
+                url: "https://searchwithsem.afric.site",
+                icon: "https://searchwithsem.afric.site/icon.svg"
+            },
+            {
+                name: "Audiolite",
+                tagline: "Studio Audio Extraction",
+                desc: "Extract studio‑quality audio from any video. All processing stays on your device—private and fast.",
+                features: ["Local Processing", "Presets", "No Upload"],
+                url: "https://audiolite.afric.site",
+                icon: "https://audiolite.afric.site/icon.svg"
+            },
+            {
+                name: "CalcPro",
+                tagline: "Precision Calculator",
+                desc: "A scientific calculator with formulas, variables, and history. Clean dark interface, works offline.",
+                features: ["Scientific", "Formulas", "History", "Dark Mode"],
+                url: "https://calculator.afric.site",
+                icon: "https://calculator.afric.site/icon.svg"
+            },
+            {
+                name: "CodeQR",
+                tagline: "QR Code Hub",
+                desc: "Generate and scan & decode QR codes for URLs, WiFi, contacts, and more. Add your own branding to codes.",
+                features: ["Scan", "Generate", "Branding", "WiFi Sharing"],
+                url: "https://codeqr.afric.site",
+                icon: "https://codeqr.afric.site/icon.svg"
+            },
+            {
+                name: "HotSpot",
+                tagline: "Instant Deploy",
+                desc: "Deploy HTML sites in seconds. Share a live link with clients and delete it when the work is done.",
+                features: ["1‑Click Deploy", "Temporary Links"],
+                url: "https://hotspot.afric.site",
+                icon: "https://hotspot.afric.site/icon.svg"
+            },
+            {
+                name: "iNet",
+                tagline: "Private Calling",
+                desc: "Encrypted peer‑to‑peer calls and messages. No account needed—just a 6‑digit PIN.",
+                features: ["E2E Encrypted", "No Account", "PIN Connect", "Group Calls"],
+                url: "https://inet.afric.site",
+                icon: "https://inet.afric.site/icon.svg"
+            },
+            {
+                name: "Quotes",
+                tagline: "Documents & Invoices",
+                desc: "Create stunning invoices, receipts, and quotations. AI extracts data from handwritten notes.",
+                features: ["AI Extraction", "Templates", "PDF Export"],
+                url: "https://quotes.afric.site",
+                icon: "https://quotes.afric.site/icon.svg"
+            }
+        ];
+
+        const grid = document.getElementById('appGrid');
+        grid.innerHTML = appsData.map(app => `
+            <div class="card">
+                <div class="card-icon">
+                    <img src="${app.icon}" alt="${app.name}" onerror="this.parentElement.innerHTML='<svg viewBox=\\'0 0 200 200\\' xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'88\\' height=\\'88\\'><rect fill=\\'%2382109F\\' width=\\'200\\' height=\\'200\\' rx=\\'30\\'/><text x=\\'100\\' y=\\'110\\' dominant-baseline=\\'middle\\' text-anchor=\\'middle\\' font-size=\\'80\\' fill=\\'white\\' font-family=\\'sans-serif\\'>◆</text></svg>'">
+                </div>
+                <h3 class="card-title">${app.name}</h3>
+                <span class="card-tagline">${app.tagline}</span>
+                <p class="card-desc">${app.desc}</p>
+                <ul class="card-features">
+                    ${app.features.map(f => `<li>${f}</li>`).join('')}
+                </ul>
+                <div class="card-actions">
+                    <a href="${app.url}" target="_blank" rel="noopener" class="card-btn btn-visit">
+                        <i class="fas fa-external-link-alt"></i> Open
+                    </a>
+                    <a href="${app.url}/install" target="_blank" rel="noopener" class="card-btn btn-install">
+                        <i class="fas fa-download"></i> Install
+                    </a>
+                </div>
+            </div>
+        `).join('');
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
