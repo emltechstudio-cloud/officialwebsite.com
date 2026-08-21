@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" role="img" aria-label="EML Youniversity icon">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#8d18ad"/><stop offset=".52" stop-color="#49118c"/><stop offset="1" stop-color="#17d9e6"/></linearGradient></defs>
+  <rect width="192" height="192" rx="44" fill="url(#g)"/>
+  <path d="M49 49h25l22 41 22-41h25l-35 63v31H84v-31L49 49Z" fill="#fff"/>
+  <circle cx="143" cy="142" r="14" fill="#f5cf3d"/>
+</svg>

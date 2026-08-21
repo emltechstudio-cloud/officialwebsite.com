@@ -1,0 +1,23 @@
+{
+  "updated_at": "2026-08-21",
+  "items": [
+    {
+      "date": "2026-08-21",
+      "type": "Platform update",
+      "title": "Learner ID access is ready",
+      "detail": "Learners register with an email address, receive one account-level Learner ID on screen, and use both to sign in. No Learner ID email is sent."
+    },
+    {
+      "date": "2026-08-21",
+      "type": "Learning update",
+      "title": "Thirteen seven-week starter pathways are available",
+      "detail": "The current catalogue covers coding, visual work, and practical AI with weekly study, guided practice, independent variation, review, and saved evidence."
+    },
+    {
+      "date": "2026-08-21",
+      "type": "Assessment update",
+      "title": "Weekly learning checks are now five questions",
+      "detail": "Each completed week has a protected five-question quiz, while every course ends with one backend-scored 40-question final exam."
+    }
+  ]
+}

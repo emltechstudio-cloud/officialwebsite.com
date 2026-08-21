@@ -1,0 +1,19 @@
+{
+  "name": "EML Youniversity",
+  "short_name": "Youniversity",
+  "description": "Free practical self-study courses from EML Tech Studio.",
+  "id": "portal.html",
+  "lang": "en",
+  "start_url": "portal.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fbfbfe",
+  "theme_color": "#49118c",
+  "icons": [
+    {"src": "pwa-icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable"}
+  ],
+  "shortcuts": [
+    {"name": "My learning", "url": "portal.html", "description": "Open the EML Youniversity learner portal"},
+    {"name": "What’s New", "url": "index.html#whats-new", "description": "Read current EML Youniversity updates"}
+  ]
+}
