@@ -1,6 +1,6 @@
 /* EML Youniversity University Service Worker — app-shell cache only. */
-const CACHE_NAME = 'eml-youniversity-shell-v2';
-const APP_SHELL = ['', 'index.html', 'portal.html', 'offline.html', 'manifest.webmanifest', 'pwa-icon.svg', 'updates.json']
+const CACHE_NAME = 'eml-youniversity-shell-v3';
+const APP_SHELL = ['', 'index.html', 'portal.html', 'dashboard.html', 'offline.html', 'manifest.webmanifest', 'pwa-icon.svg', 'updates.json']
   .map((path) => new URL(path, self.registration.scope).toString());
 const offlineUrl = new URL('offline.html', self.registration.scope).toString();
 
