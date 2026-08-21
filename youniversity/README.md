@@ -5,8 +5,8 @@ This directory contains standalone, browser-ready EML Youniversity pages for rev
 | File | Purpose |
 |---|---|
 | `index.html` | Public EML Youniversity landing page with live catalogue loading, course-path filters, self-study explanation, and completion-record clarity. |
-| `portal.html` | Learner portal with registration, email-plus-Learner-ID login, catalogue, enrollment, seven-week lesson view, progress, five-question quiz, and completion-record states. |
-| `dashboard.html` | Post-sign-in learner workspace with the active course, current weekly source, guided practical outcome, next action, learning record, and seven-week pathway. |
+| `portal.html` | Learner portal with registration, email-plus-Learner-ID login, catalogue, enrollment, direct weekly lesson routing, five-question quizzes, and a backend-gated final assessment. |
+| `dashboard.html` | Post-sign-in course home with explicit learning-area navigation, current weekly source and activity, seven readable weekly module cards, a visible final-assessment card, learning record, and course information. |
 | `manifest.webmanifest` | Installable PWA metadata with `portal.html` as the start URL. |
 | `university-service-worker.js` | The named University Service Worker; caches only the app shell and current update register. |
 | `updates.json` | The truthful What’s New release register displayed on the public landing page. |
@@ -29,6 +29,7 @@ The pages call `https://emltechstudio-eml-tech-studio-api.hf.space`.
 | Enrol | `POST /youniversity/enroll` with a bearer token |
 | Save section progress | `POST /youniversity/courses/{course_id}/sections/{section_id}/complete` |
 | Open/submit weekly quiz | `GET` / `POST` section quiz routes |
+| Open/submit final assessment | `GET` / `POST /youniversity/courses/{course_id}/final-exam` |
 | Check completion record eligibility | `GET /youniversity/courses/{course_id}/certificate-eligibility` |
 | Load learner course state | `GET /youniversity/me/courses/{course_id}` |
 

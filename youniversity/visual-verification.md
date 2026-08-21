@@ -31,3 +31,13 @@ The dedicated `dashboard.html` was checked with the controlled non-personal lear
 The verified active state loaded **AI for Everyone** at 14% completion, identified Week 2 as the next weekly action after the saved Week 1 record, named the credited CVC / @ONE source, and made the remaining five-week route visible without distracting the learner from the current task. The desktop view retains the EML violet/cyan signal rail, while the compact layout moves the account and current course panels into a readable single-column sequence on smaller screens.
 
 The authenticated no-enrollment state was also verified. It replaces the active-course canvas with a single, clear first-course action and accurately states that all 13 published courses are available. Following that action opens the separate course catalogue, which then populated all five Coding, four Visuals, and four Practical AI course cards from the live backend.
+
+### Course-home clarification pass
+
+The revised authenticated course-home layout was verified with the live **AI for Everyone** curriculum structure and a non-persistent active-course progress fixture. The page showed Week 1 as saved, Week 2 as the current module, Weeks 3–7 as separate readable module cards, and the 40-question final assessment as a distinct locked card after the seventh week. Each weekly card exposes its direct opening action, while the course home provides separate visible destinations for Course Modules, Activities, Progress, and Course Information. The layout preserves the EML violet/cyan identity while making the complete learning sequence easier to scan than the earlier compact week tiles.
+
+The direct Week 7 module route was also checked in the live preview. Its course link opened **Complete and explain a responsible outcome** with the correct Google AI Essentials source, guided practice, independent variation, evidence artifact, and quiz action; it did not default the learner back to Week 1.
+
+The final-assessment route was checked before enrollment and showed a clear locked state instead of protected questions. It explained that enrollment, every completed weekly section, and every attempted weekly quiz are required before the backend makes the single final-assessment attempt available.
+
+An exact 390 × 844 CSS-pixel fixture capture confirmed the narrow mobile course-home hierarchy: the full course name wraps cleanly, the learner account card remains readable, course-area controls remain available as an intentionally horizontally scrollable row, and the current weekly module maintains its large, practical-task-first presentation. The EML violet/cyan identity remains visible without relying on a copied University of the People visual treatment.
