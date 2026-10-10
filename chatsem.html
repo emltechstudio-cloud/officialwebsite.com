@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Chat SEM — EML Tech Studio's live studio guide." />
     <title>Chat SEM — EML Tech Studio</title>
+  <link rel="canonical" href="https://emltechstudio.space/chatsem.html" />
+
     <style>
       :root{--ink:#182535;--muted:#7b8590;--blue:#173b74;--violet:#82109f;--copper:#d95d39;--line:#e8e5e1;--ease:cubic-bezier(.23,1,.32,1)}
       *{box-sizing:border-box}body{margin:0;min-width:320px;color:var(--ink);background:#fcfbfa;font-family:Arial,Helvetica,sans-serif}button,textarea{font:inherit}button{border:0;cursor:pointer}button:disabled{cursor:not-allowed;opacity:.42}a{color:inherit;text-decoration:none}button:focus-visible,a:focus-visible,textarea:focus-visible{outline:3px solid rgba(130,16,159,.24);outline-offset:3px}
@@ -16,7 +18,7 @@
     </style>
   </head>
   <body>
-    <header class="header"><a class="brand" href="https://emltechstudio.site" target="_blank" rel="noreferrer"><span class="mark" aria-hidden="true"></span><span><strong>CHAT SEM</strong><small>EML TECH STUDIO</small></span></a><div class="header-tools"><span id="statusDot" class="dot" aria-label="Checking EML service"></span><button id="reset" class="reset" type="button" aria-label="Start a new chat" title="Start a new chat">↻</button></div></header>
+    <header class="header"><a class="brand" href="https://emltechstudio.space" target="_blank" rel="noreferrer"><span class="mark" aria-hidden="true"></span><span><strong>CHAT SEM</strong><small>EML TECH STUDIO</small></span></a><div class="header-tools"><span id="statusDot" class="dot" aria-label="Checking EML service"></span><button id="reset" class="reset" type="button" aria-label="Start a new chat" title="Start a new chat">↻</button></div></header>
     <main><section class="intro"><h1>Chat with SEM</h1><p id="statusText">Connecting to EML.</p></section><section id="thread" class="thread" aria-label="Chat conversation" aria-live="polite"></section><form id="form"><div class="composer"><textarea id="input" rows="2" placeholder="Message SEM…" aria-label="Message SEM"></textarea><button id="voice" class="voice" type="button" aria-label="Start voice input" title="Voice input">⌁</button><button id="send" class="send" type="submit" aria-label="Send message">➤</button></div><p id="hint" class="hint">Type your message. Press Enter to send.</p></form></main><div id="notice" class="notice" hidden role="status"></div>
     <script>
       (()=>{const API='https://emltechstudio-eml-tech-studio-api.hf.space',welcome={id:'sem-welcome',role:'assistant',content:'Hi, I’m SEM. What would you like to explore?'},starters=['Find the right EML tool','I want to learn a skill','I have a project idea','Tell me about EML services'];let messages=[welcome],pending=false,listening=false,speakingId=null,recognition=null;const $=id=>document.getElementById(id),thread=$('thread'),input=$('input'),key=()=>`m-${Date.now()}-${Math.random().toString(36).slice(2,7)}`,note=t=>{const n=$('notice');n.textContent=t;n.hidden=false;clearTimeout(window.noteTimer);window.noteTimer=setTimeout(()=>n.hidden=true,3600)},resize=()=>{input.style.height='auto';input.style.height=Math.min(input.scrollHeight,186)+'px'},scroll=()=>window.setTimeout(()=>window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'}),30);
