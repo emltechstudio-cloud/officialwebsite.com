@@ -1,1 +1,702 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="./ets-pages.css"><link rel="icon" href="./elogo.jpg"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"><title>About ETS | EML Tech Studio</title><meta name="description" content="Learn what EML Tech Studio, also known as ETS, believes in and how its digital studio, products, learning and community fit together. "><link rel="canonical" href="https://emltechstudio.space/about.html"></head><body><header class="topbar"><div class="wrap nav"><a class="brand" href="./"><img src="./elogo.jpg" alt="EML Tech Studio logo"><strong>EML <span>Tech Studio</span></strong></a><nav class="navlinks"><a href="./services.html">Services</a><a href="./app-suite.html">App Suite</a><a href="./youniversity/">Youniversity</a><a href="./about.html">About</a><a href="./community.html">Community</a><a class="cta" href="./contact.html">Start a conversation</a></nav></div></header><main><section class="hero"><div class="wrap"><span class="eyebrow">About EML Tech Studio · ETS</span><h1>A studio for <em>useful</em> digital progress.</h1><p class="lede">EML Tech Studio builds digital experiences and learning spaces for people who want technology to work in the real world.</p></div></section><section class="section"><div class="wrap split"><div><span class="eyebrow">Who we are</span><h2>ETS means EML Tech Studio.</h2><p class="lede">You may see the shorter name ETS across our products and community spaces. The full name remains EML Tech Studio: the studio behind our services, tools, education and collaborations.</p><p class="lede">We work across design, development, education and communication because a useful product is more than code. It needs clear language, thoughtful structure and a path for people to keep using it.</p></div><ul class="list"><li><strong>Peace</strong><span>Technology should create more room for people to think, learn and participate.</span></li><li><strong>Education</strong><span>We make practical learning and useful documentation part of the work.</span></li><li><strong>Community</strong><span>People can contribute to an ecosystem without having to be expert coders.</span></li></ul></div></section><section class="section dark"><div class="wrap"><div class="section-head"><div><span class="eyebrow">How we work</span><h2>Clear steps. Honest scope. Real testing.</h2></div></div><div class="grid3"><article class="card"><div class="num">01</div><h3>Listen</h3><p>We understand the audience, the problem and the constraints before choosing a solution.</p></article><article class="card"><div class="num">02</div><h3>Build</h3><p>We turn the plan into a usable experience with readable content and maintainable structure.</p></article><article class="card"><div class="num">03</div><h3>Improve</h3><p>We test, learn from feedback and keep the next improvement visible and achievable.</p></article></div></div></section><section class="section"><div class="wrap"><div class="section-head"><div><span class="eyebrow">Questions we answer</span><h2>What does ETS actually do?</h2></div></div><div class="faq"><details open><summary>Is ETS a software company?</summary><p>It is a digital studio and product ecosystem. We deliver client services while also building our own tools and learning platforms.</p></details><details><summary>Is EML Youniversity a certified university?</summary><p>It is a practical self-study platform. Its completion records are not degrees, academic credits, licences or accredited qualifications.</p></details><details><summary>Can non-coders join the community?</summary><p>Yes. The community is for people interested in technology, creativity, communication, learning and digital work—not only programming.</p></details><details><summary>How do I start a project?</summary><p>Use the contact page or message a live agent on WhatsApp with your goal, timeline and what you already have.</p></details></div></div></section></main><footer class="footer"><div class="wrap footer-row"><div><strong>ETS</strong> · EML Tech Studio · Digital products, education and community.</div><div><a href="./contact.html">Contact</a> · <a href="https://wa.me/447918449756">WhatsApp</a> · <a href="https://facebook.com/emltechstudio1">Facebook</a></div></div></footer></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/ETSlogo.png" type="image/png">
+    <meta property="og:image" content="/ETSLogo.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="400">
+    <meta property="og:image:height" content="400">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="/ETSlogo.png">
+    <title>About - EML Tech Studio</title>
+  <link rel="canonical" href="https://emltechstudio.space/about.html" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* General styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .menu-toggle {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #82109F;
+        }
+
+        .header-logo img {
+            height: 35px;
+            width: auto;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: 280px;
+            height: 100vh;
+            background: linear-gradient(to bottom, #82109F, #000040);
+            color: white;
+            padding: 20px;
+            z-index: 1000;
+            transition: left 0.3s ease;
+            overflow-y: auto;
+        }
+
+        .sidebar.active {
+            left: 0;
+        }
+
+        .sidebar-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .sidebar-logo img {
+            height: 35px;
+            width: auto;
+        }
+
+        .nav-links {
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-bottom: 15px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .nav-links i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Overlay */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+            display: none;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        /* Main content */
+        .main-content {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #82109F, #00FFFF);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .page-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* About section */
+        .about-section {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: #82109F;
+            margin-bottom: 25px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title i {
+            font-size: 1.5rem;
+        }
+
+        .about-content {
+            line-height: 1.7;
+            color: #555;
+        }
+
+        .about-content p {
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+
+        /* Value cards */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .value-card {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #82109F;
+            transition: transform 0.3s;
+        }
+
+        .value-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .value-icon {
+            font-size: 2rem;
+            color: #82109F;
+            margin-bottom: 15px;
+        }
+
+        .value-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .value-description {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Payment methods */
+        .payment-methods {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .payment-method {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+
+        .payment-method i {
+            color: #25D366;
+            font-size: 1.2rem;
+        }
+
+        /* Process steps */
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .process-step {
+            text-align: center;
+            padding: 25px;
+            background: linear-gradient(135deg, #82109F, #00FFFF);
+            color: white;
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            color: #82109F;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+
+        .step-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            margin-top: 10px;
+        }
+
+        .step-description {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+
+        /* CTA section */
+        .cta-section {
+            background: linear-gradient(135deg, #82109F, #000040);
+            color: white;
+            padding: 50px 30px;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .cta-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .cta-text {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            padding: 12px 25px;
+            border: 2px solid white;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cta-btn:hover {
+            background: white;
+            color: #82109F;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(to right, #82109F, #00FFFF);
+            color: white;
+            padding: 40px 20px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #FFD700;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #FFD700;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.3);
+            font-size: 14px;
+        }
+
+        .floating-chat-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #82109F, #00FFFF);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    cursor: pointer;
+    transition: transform 0.2s;
+    text-decoration: none;
+}
+
+.floating-chat-btn:hover {
+    transform: scale(1.05);
+}
+
+.white-circle {
+    width: 40px;
+    height: 40px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chat-icon {
+    width: 22px;
+    height: 22px;
+}
+
+        /* Responsive */
+        @media (min-width: 768px) {
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .footer-content {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            .sidebar {
+                left: 0;
+            }
+            .main-content {
+                margin-left: 280px;
+            }
+            .menu-toggle {
+                display: none;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .page-title {
+                font-size: 2rem;
+            }
+            .about-section {
+                padding: 25px;
+            }
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .cta-btn {
+                width: 200px;
+                justify-content: center;
+            }
+            .payment-methods {
+                flex-direction: column;
+            }
+            .floating-chat {
+                bottom: 80px;
+                right: 20px;
+                width: 55px;
+                height: 55px;
+            }
+            html, body {
+                overflow-x: hidden;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-logo"><img src="ETSlogo.png" alt="EML Tech Studio"></div>
+        <ul class="nav-links">
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="services.html"><i class="fas fa-concierge-bell"></i> Services</a></li>
+            <li><a href="https://wa.me/c/2347070811718" target="_blank"><i class="fas fa-store"></i> Catalog</a></li>
+            <li><a href="about.html" class="active"><i class="fas fa-users"></i> About</a></li>
+            <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+            <li><a href="chatsem.html"><img src="semlogo.png" alt="Chat SEM" style="width: 20px; height: 20px; margin-right: 10px;">Chatsem</a></li>
+            <li><a href="community.html"><i class="fas fa-people-group"></i> ETS Community</a></li>
+        </ul>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Header -->
+    <div class="header">
+        <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+        <div class="header-logo"><img src="ETSlogo.png" alt="EML Tech Studio"></div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="page-header">
+            <h1 class="page-title">About EML Tech Studio</h1>
+            <p class="page-subtitle">Building practical digital systems that work in real-world conditions.</p>
+        </div>
+
+        <!-- Who We Are -->
+        <section class="about-section">
+            <h2 class="section-title"><i class="fas fa-rocket"></i> Who We Are</h2>
+            <div class="about-content">
+                <p>EML Tech Studio transforms complex technology into systems real people can use.</p>
+                <p>We design tools for businesses, creators, students, and teams, considering real-world limits like devices, budgets, and evolving needs.</p>
+                <p>Our goal: technology should work for you, not against you.</p>
+            </div>
+        </section>
+
+        <!-- How We Work -->
+        <section class="about-section">
+            <h2 class="section-title"><i class="fas fa-cogs"></i> How We Work</h2>
+            <div class="about-content">
+                <p>We follow a structured process prioritizing clarity, execution, and reliability.</p>
+                <div class="process-steps">
+                    <div class="process-step"><div class="step-number">1</div><h3 class="step-title">Consultation</h3><p class="step-description">We listen first — understanding your goals and expectations.</p></div>
+                    <div class="process-step"><div class="step-number">2</div><h3 class="step-title">Planning</h3><p class="step-description">Solutions fit your current reality, not just ideal scenarios.</p></div>
+                    <div class="process-step"><div class="step-number">3</div><h3 class="step-title">Development</h3><p class="step-description">We build with proven tools, clean structure, and best practices.</p></div>
+                    <div class="process-step"><div class="step-number">4</div><h3 class="step-title">Delivery & Support</h3><p class="step-description">Deployment, testing, and ongoing support for improvement.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Payment Info -->
+        <section class="about-section">
+            <h2 class="section-title"><i class="fas fa-credit-card"></i> Payment Information</h2>
+            <div class="about-content">
+                <p>We make transactions simple, secure, and transparent.</p>
+                <p><strong>Accepted Payment Methods:</strong></p>
+                <div class="payment-methods">
+                    <div class="payment-method"><i class="fab fa-whatsapp"></i> WhatsApp Transfer</div>
+                    <div class="payment-method"><i class="fas fa-mobile-alt"></i> Bank Transfer</div>
+                    <div class="payment-method"><i class="fas fa-university"></i> Online Payment</div>
+                </div>
+                <p style="margin-top: 20px;"><strong>Payment Terms:</strong></p>
+                <ul style="color: #555; line-height: 1.7; margin-left: 20px;">
+                    <li>All payments handled securely and transparently</li>
+                    <li>Various payment methods for convenience</li>
+                    <li>Receipts provided for every transaction</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Founder's Perspective -->
+        <section class="about-section">
+            <h2 class="section-title"><i class="fas fa-compass"></i> Founder's Perspective</h2>
+            <div class="about-content">
+                <p>Every idea has its challenges. When I first explored technology, I faced a gap between vision and the means to realize it. Tools, guidance, or resources were often missing, leaving ideas stuck. It was isolating and frustrating, but it taught me persistence and creative problem-solving.</p>
+                <p>These experiences inspired EML Tech Studio. I realized that collaboration — even just shared effort or guidance — could turn ideas into reality faster. That perspective drives everything we do: creating spaces, tools, and opportunities so ideas aren't lost due to lack of resources or know-how.</p>
+                <p>Collaboration doesn't always require technical expertise. What matters is vision and dedication. Occasionally, I personally work with individuals committed to meaningful projects. These partnerships form naturally, guided by curiosity, shared values, and the desire to see ideas become real-world solutions.</p>
+                <p>While collaborations stem from personal initiative, results often grow under the EML Tech Studio umbrella — benefiting both participants and the wider community. Focus is on real solutions, not profit. Whether you bring technical skills, creative ideas, or simply drive, we explore possibilities together.</p>
+                <p style="margin-top: 25px;"><strong>Emmanuel Olusanya</strong><br>Founder, EML Tech Studio</p>
+                <p style="margin-top: 10px; color:#555;">For serious collaborations or project ideas, feel free to reach out personally.</p>
+                <div style="margin-top: 18px; display: flex; gap: 15px; flex-wrap: wrap;">
+                    <a href="https://wa.me/447918449756" target="_blank" style="text-decoration:none;color:#82109F;font-weight:500;">
+                        <i class="fab fa-whatsapp"></i> Reach me on WhatsApp
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <h2 class="cta-title">Ready to Start Your Digital Journey?</h2>
+            <p class="cta-text">
+                Explore opportunities, build meaningful solutions, and bring your ideas to life with EML Tech Studio.
+            </p>
+            <div class="cta-buttons">
+                <a href="contact.html" class="cta-btn">
+                    <i class="fas fa-paper-plane"></i>
+                    Get Started
+                </a>
+                <a href="services.html" class="cta-btn">
+                    <i class="fas fa-concierge-bell"></i>
+                    View Services
+                </a>
+                <a href="https://emltechstudio.space/chatsem" target="_blank" class="cta-btn">
+                    <i class="fas fa-robot"></i>
+                    Chat with SEM
+                </a>
+            </div>
+        </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>EML Tech Studio</h3>
+                    <p>The Tech Studio For You.</p>
+                    <div class="social-links">
+                        <a href="https://facebook.com/emltechstudio1"><i class="fab fa-facebook"></i></a>
+                        <a href="https://wa.me/447918449756"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="https://wa.me/c/2347070811718">Catalogue</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="chatsem.html">Chat SEM</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-envelope"></i> mail@emltechstudio.space</li>
+                        <li><i class="fas fa-phone"></i> +234 808 411 5775</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Ogun, Nigeria</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2026 EML Tech Studio. All Rights Reserved.</p>
+            </div>
+        </footer>
+    </div>
+<!-- Floating Chat Button -->
+<a href="chatsem.html" target="_blank" class="floating-chat-btn">
+    <div class="white-circle">
+        <img src="semlogo.png" alt="Chat with SEM" class="chat-icon">
+    </div>
+</a>
+    
+
+    <script>
+        // Toggle sidebar
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.toggle('active');
+            document.getElementById('overlay').classList.toggle('active');
+        });
+
+        // Close sidebar when clicking overlay
+        document.getElementById('overlay').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.remove('active');
+            document.getElementById('overlay').classList.remove('active');
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth >= 1024) {
+                document.getElementById('sidebar').classList.add('active');
+            } else {
+                document.getElementById('sidebar').classList.remove('active');
+                document.getElementById('overlay').classList.remove('active');
+            }
+        });
+    </script>
+</body>
+    </html>
