@@ -3,8 +3,17 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EML Tech Studio – App Suite</title>
+    <title>ETS App Suite | MyShub, EML Youniversity and digital tools</title>
+    <meta name="description" content="Explore the ETS App Suite: MyShub, EML Youniversity and practical progressive web apps for business, learning, research and everyday digital work.">
+    <meta name="keywords" content="EML Tech Studio apps, ETS App Suite, MyShub, EML Youniversity, progressive web apps, digital tools">
+    <meta name="author" content="EML Tech Studio">
   <link rel="canonical" href="https://emltechstudio.space/app-suite.html" />
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="ETS App Suite | Tools for work, learning and discovery">
+    <meta property="og:description" content="Discover MyShub, EML Youniversity and the practical digital tools built by EML Tech Studio.">
+    <meta property="og:url" content="https://emltechstudio.space/app-suite.html">
+    <meta property="og:image" content="https://emltechstudio.space/elogo.jpg">
+    <meta name="twitter:card" content="summary_large_image">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -302,6 +311,22 @@
             color: white;
         }
 
+        .marketplace-head { display:flex; justify-content:space-between; align-items:end; gap:2rem; margin-bottom:1.7rem; }
+        .marketplace-head .section-title { margin-bottom:.55rem; }
+        .marketplace-note { max-width:610px; color:var(--text-secondary); font-size:.92rem; }
+        .marketplace-controls { min-width:min(100%,390px); }
+        .marketplace-controls input { width:100%; padding:.9rem 1rem; border:1px solid var(--border); border-radius:13px; background:#fff; color:var(--text); font:inherit; box-shadow:var(--shadow-sm); }
+        .filters { display:flex; flex-wrap:wrap; gap:.45rem; margin-top:.65rem; }
+        .filter { border:1px solid var(--border); border-radius:99px; background:#fff; color:var(--text-secondary); padding:.42rem .75rem; font:600 .76rem Inter,sans-serif; cursor:pointer; }
+        .filter.active, .filter:hover { border-color:var(--primary); background:var(--primary); color:#fff; }
+        .catalogue-status { min-height:1.4em; color:var(--text-secondary); font-size:.82rem; margin:0 0 1.2rem; }
+        .card-category { display:inline-block; align-self:flex-start; margin-bottom:.8rem; padding:.28rem .65rem; border-radius:99px; background:rgba(0,255,255,.12); color:#087d8a; font-size:.7rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase; }
+        .card.featured { border-color:rgba(130,16,159,.28); box-shadow:0 9px 25px rgba(130,16,159,.11); }
+        .empty-state { padding:3rem 1rem; text-align:center; border:1px dashed var(--border); border-radius:var(--radius); background:#fff; }
+        .empty-state h3 { margin-bottom:.4rem; }
+        .empty-state p { color:var(--text-secondary); }
+        .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+        @media (max-width:800px) { .marketplace-head { display:block; } .marketplace-controls { margin-top:1.2rem; } }
         /* FOOTER */
         footer {
             background: var(--surface);
@@ -350,8 +375,8 @@
     <!-- Hero -->
     <header class="hero">
         <img src="ETSlogo.png" alt="EML Tech Studio" class="hero-logo" onerror="this.style.display='none'">
-        <h1>App Suite</h1>
-        <p>A hand‑picked collection of progressive web apps, built for creators, developers, and professionals who demand speed, privacy, and elegance.</p>
+        <h1>ETS App Suite</h1>
+        <p>A growing collection of practical digital products from EML Tech Studio—separate tools for work, learning, discovery, communication and everyday creativity.</p>
         <div class="hero-buttons">
             <a href="#apps" class="btn btn-primary"><i class="fas fa-arrow-down"></i> Explore Now</a>
             <a href="https://emltechstudio.space" target="_blank" class="btn btn-outline"><i class="fas fa-globe"></i> EML Tech Studio</a>
@@ -360,8 +385,13 @@
 
     <!-- Apps Grid -->
     <section class="apps-section" id="apps">
-        <h2 class="section-title">Our Applications</h2>
+        <div class="marketplace-head">
+            <div><h2 class="section-title">Explore the marketplace</h2><p class="marketplace-note">Search the catalogue or filter by the kind of work you want to do. MyShub and EML Youniversity are separate products with separate journeys.</p></div>
+            <div class="marketplace-controls" role="search"><label class="sr-only" for="appSearch">Search apps</label><input id="appSearch" type="search" placeholder="Search apps, features or categories…" autocomplete="off"><div id="categoryFilters" class="filters" aria-label="Filter apps"></div></div>
+        </div>
+        <p id="catalogueStatus" class="catalogue-status" role="status">Loading the current ETS catalogue…</p>
         <div class="grid" id="appGrid"></div>
+        <div id="emptyState" class="empty-state" hidden><h3>No matching products</h3><p>Try a different search or clear the category filter.</p></div>
     </section>
 
     <!-- Footer -->
@@ -375,96 +405,68 @@
     </footer>
 
     <script>
-        const appsData = [
-            {
-                name: "Search with SEM",
-                tagline: "Smart Research & Discovery",
-                desc: "Instant Wikipedia summaries, full‑screen gallery, trending topics, and voice search. Works offline.",
-                features: ["Voice Search", "Offline", "Trending", "Gallery View"],
-                url: "https://searchwithsem.afric.site",
-                icon: "https://searchwithsem.afric.site/icon.svg"
-            },
-            {
-                name: "Audiolite",
-                tagline: "Studio Audio Extraction",
-                desc: "Extract studio‑quality audio from any video. All processing stays on your device—private and fast.",
-                features: ["Local Processing", "Presets", "No Upload"],
-                url: "https://audiolite.afric.site",
-                icon: "https://audiolite.afric.site/icon.svg"
-            },
-            {
-                name: "CalcPro",
-                tagline: "Precision Calculator",
-                desc: "A scientific calculator with formulas, variables, and history. Clean dark interface, works offline.",
-                features: ["Scientific", "Formulas", "History", "Dark Mode"],
-                url: "https://calculator.afric.site",
-                icon: "https://calculator.afric.site/icon.svg"
-            },
-            {
-                name: "CodeQR",
-                tagline: "QR Code Hub",
-                desc: "Generate and scan & decode QR codes for URLs, WiFi, contacts, and more. Add your own branding to codes.",
-                features: ["Scan", "Generate", "Branding", "WiFi Sharing"],
-                url: "https://codeqr.afric.site",
-                icon: "https://codeqr.afric.site/icon.svg"
-            },
-            {
-                name: "HotSpot",
-                tagline: "Instant Deploy",
-                desc: "Deploy HTML sites in seconds. Share a live link with clients and delete it when the work is done.",
-                features: ["1‑Click Deploy", "Temporary Links"],
-                url: "https://hotspot.afric.site",
-                icon: "https://hotspot.afric.site/icon.svg"
-            },
-            {
-                name: "iNet",
-                tagline: "Private Calling",
-                desc: "Encrypted peer‑to‑peer calls and messages. No account needed—just a 6‑digit PIN.",
-                features: ["E2E Encrypted", "No Account", "PIN Connect", "Group Calls"],
-                url: "https://inet.afric.site",
-                icon: "https://inet.afric.site/icon.svg"
-            },
-            {
-                name: "Quotes",
-                tagline: "Documents & Invoices",
-                desc: "Create stunning invoices, receipts, and quotations. AI extracts data from handwritten notes.",
-                features: ["AI Extraction", "Templates", "PDF Export"],
-                url: "https://quotes.afric.site",
-                icon: "https://quotes.afric.site/icon.svg"
-            }
+        const API = 'https://emltechstudio-eml-tech-studio-api.hf.space';
+        const curatedApps = [
+            { id:'myshub', name:'MyShub', tagline:'Business & social storefronts', desc:'Create a professional link hub and storefront for your business, catalogue, contacts and social channels.', features:['Storefronts','Catalogues','Seller tools','Analytics'], url:'https://myshub.site', installUrl:'https://myshub.site/install.html', category:'Business', icon:'https://myshub.site/icon.svg', featured:true, aliases:['MyShub','My Shop','storefront','seller','business'] },
+            { id:'youniversity', name:'EML Youniversity', tagline:'Practical self-study', desc:'Explore guided learning paths in coding, visual work and responsible AI, then keep evidence of what you build.', features:['Courses','Quizzes','Learner record','Self-paced'], url:'https://emltechstudio.space/youniversity/', installUrl:'https://emltechstudio.space/youniversity/', category:'Learning', icon:'https://emltechstudio.space/ETSlogo.png', featured:true, aliases:['EML Youniversity','Youniversity','EML Campus','learning','courses'] },
+            { id:'search_with_sem', name:'Search with SEM', tagline:'Smart research & discovery', desc:'Instant summaries, gallery search, trending topics and voice search for faster exploration.', features:['Voice search','Offline','Trending','Gallery view'], url:'https://searchwithsem.afric.site', installUrl:'https://searchwithsem.afric.site/install', category:'Explore', icon:'https://searchwithsem.afric.site/icon.svg', aliases:['Search with SEM','research','discovery'] },
+            { id:'audiolite', name:'Audiolite', tagline:'Studio audio extraction', desc:'Extract studio-quality audio from video with local processing that keeps your files on your device.', features:['Local processing','Presets','No upload'], url:'https://audiolite.afric.site', installUrl:'https://audiolite.afric.site/install', category:'Create', icon:'https://audiolite.afric.site/icon.svg', aliases:['Audiolite','audio','video'] },
+            { id:'calcpro', name:'CalcPro', tagline:'Precision calculator', desc:'A scientific calculator with formulas, variables and history in a clean offline-friendly interface.', features:['Scientific','Formulas','History','Dark mode'], url:'https://calculator.afric.site', installUrl:'https://calculator.afric.site/install', category:'Productivity', icon:'https://calculator.afric.site/icon.svg', aliases:['CalcPro','calculator','math'] },
+            { id:'codeqr', name:'CodeQR', tagline:'QR code hub', desc:'Generate and scan QR codes for URLs, Wi-Fi, contacts and more, with optional branding.', features:['Scan','Generate','Branding','Wi-Fi sharing'], url:'https://codeqr.afric.site', installUrl:'https://codeqr.afric.site/install', category:'Productivity', icon:'https://codeqr.afric.site/icon.svg', aliases:['CodeQR','QR','scan'] },
+            { id:'hotspot', name:'HotSpot', tagline:'Instant deploy', desc:'Deploy HTML sites in seconds, share a live link with clients and remove temporary work when finished.', features:['One-click deploy','Temporary links'], url:'https://hotspot.afric.site', installUrl:'https://hotspot.afric.site/install', category:'Build', icon:'https://hotspot.afric.site/icon.svg', aliases:['HotSpot','deploy','hosting'] },
+            { id:'inet', name:'iNet', tagline:'Private calling', desc:'Connect through private calls and messages with a lightweight PIN-based experience.', features:['Private calls','No account','PIN connect','Group calls'], url:'https://inet.afric.site', installUrl:'https://inet.afric.site/install', category:'Connect', icon:'https://inet.afric.site/icon.svg', aliases:['iNet','calling','messages'] },
+            { id:'quotes', name:'Quotes', tagline:'Documents & invoices', desc:'Create polished invoices, receipts and quotations with templates, PDF export and assisted data entry.', features:['Templates','PDF export','Invoices'], url:'https://quotes.afric.site', installUrl:'https://quotes.afric.site/install', category:'Business', icon:'https://quotes.afric.site/icon.svg', aliases:['Quotes','invoices','receipts'] }
         ];
-
         const grid = document.getElementById('appGrid');
-        grid.innerHTML = appsData.map(app => `
-            <div class="card">
-                <div class="card-icon">
-                    <img src="${app.icon}" alt="${app.name}" onerror="this.parentElement.innerHTML='<svg viewBox=\\'0 0 200 200\\' xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'88\\' height=\\'88\\'><rect fill=\\'%2382109F\\' width=\\'200\\' height=\\'200\\' rx=\\'30\\'/><text x=\\'100\\' y=\\'110\\' dominant-baseline=\\'middle\\' text-anchor=\\'middle\\' font-size=\\'80\\' fill=\\'white\\' font-family=\\'sans-serif\\'>◆</text></svg>'">
-                </div>
-                <h3 class="card-title">${app.name}</h3>
-                <span class="card-tagline">${app.tagline}</span>
-                <p class="card-desc">${app.desc}</p>
-                <ul class="card-features">
-                    ${app.features.map(f => `<li>${f}</li>`).join('')}
-                </ul>
-                <div class="card-actions">
-                    <a href="${app.url}" target="_blank" rel="noopener" class="card-btn btn-visit">
-                        <i class="fas fa-external-link-alt"></i> Open
-                    </a>
-                    <a href="${app.url}/install" target="_blank" rel="noopener" class="card-btn btn-install">
-                        <i class="fas fa-download"></i> Install
-                    </a>
-                </div>
-            </div>
-        `).join('');
-
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) target.scrollIntoView({ behavior: 'smooth' });
+        const search = document.getElementById('appSearch');
+        const filters = document.getElementById('categoryFilters');
+        const status = document.getElementById('catalogueStatus');
+        const empty = document.getElementById('emptyState');
+        let apps = [...curatedApps]; let activeCategory = 'All';
+        const esc = value => String(value ?? '').replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+        function mergeBackendItems(items) {
+            const byId = new Map(curatedApps.map(app => [app.id, app]));
+            for (const item of items || []) {
+                const existing = byId.get(item.id);
+                if (existing) { byId.set(item.id, {...existing, ...item, name:existing.name, category:existing.category, installUrl:existing.installUrl || item.install_url}); }
+                else if (item.url) byId.set(item.id, {id:item.id,name:item.title,tagline:item.category || 'ETS tool',desc:item.description,features:item.aliases?.slice(2,6)||[],url:item.url,installUrl:item.install_url||item.url,category:item.category||'Explore',icon:item.icon_svg_url||'',aliases:item.aliases||[]});
+            }
+            apps = [...byId.values()];
+        }
+        function renderFilters() {
+            const categories = ['All', ...new Set(apps.map(app => app.category).filter(Boolean))];
+            filters.innerHTML = categories.map(category => `<button class="filter ${category===activeCategory?'active':''}" type="button" data-category="${esc(category)}">${esc(category)}</button>`).join('');
+            filters.querySelectorAll('[data-category]').forEach(button => button.addEventListener('click', () => { activeCategory=button.dataset.category; renderFilters(); render(); }));
+        }
+        function render() {
+            const query = search.value.trim().toLowerCase();
+            const visible = apps.filter(app => {
+                const text = [app.name,app.tagline,app.desc,app.category,...(app.features||[]),...(app.aliases||[])].join(' ').toLowerCase();
+                return (activeCategory==='All' || app.category===activeCategory) && (!query || text.includes(query));
             });
-        });
+            empty.hidden = visible.length > 0;
+            status.textContent = `${visible.length} product${visible.length===1?'':'s'} available${query?` for “${search.value.trim()}”`:''}.`;
+            grid.innerHTML = visible.map((app,index) => `<article class="card ${app.featured?'featured':''}" data-app-id="${esc(app.id)}" style="animation-delay:${Math.min(index,8)*.04}s">
+                <span class="card-category">${esc(app.category || 'Explore')}</span>
+                <div class="card-icon"><img src="${esc(app.icon||'')}" alt="${esc(app.name)} icon" onerror="this.parentElement.innerHTML='<span style=\"font-size:2rem;color:var(--primary)\">◆</span>'"></div>
+                <h3 class="card-title">${esc(app.name)}</h3><span class="card-tagline">${esc(app.tagline||'ETS digital product')}</span>
+                <p class="card-desc">${esc(app.desc||'Explore this EML Tech Studio product.')}</p>
+                <ul class="card-features">${(app.features||[]).map(feature => `<li>${esc(feature)}</li>`).join('')}</ul>
+                <div class="card-actions"><a href="${esc(app.url)}" target="_blank" rel="noopener" class="card-btn btn-visit"><i class="fas fa-external-link-alt"></i> Open</a><a href="${esc(app.installUrl||app.url)}" target="_blank" rel="noopener" class="card-btn btn-install"><i class="fas fa-download"></i> ${app.installUrl && app.installUrl!==app.url?'Install':'Explore'}</a></div>
+            </article>`).join('');
+        }
+        search.addEventListener('input', render);
+        async function loadCatalogue() {
+            try {
+                const response = await fetch(API + '/apps', {cache:'no-store'});
+                if (!response.ok) throw new Error('Catalogue unavailable');
+                const data = await response.json();
+                mergeBackendItems(data.apps);
+                status.textContent = 'Connected to the live ETS catalogue.';
+            } catch (error) { status.textContent = 'Showing the ETS catalogue with the latest published products.'; }
+            renderFilters(); render();
+        }
+        loadCatalogue();
     </script>
 </body>
 </html>
