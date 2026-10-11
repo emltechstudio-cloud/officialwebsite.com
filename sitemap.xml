@@ -11,4 +11,10 @@
   <url><loc>https://emltechstudio.space/youniversity/dashboard.html</loc></url>
   <url><loc>https://emltechstudio.space/youniversity/portal.html</loc></url>
   <url><loc>https://emltechstudio.space/youniversity/profile.html</loc></url>
+  <url><loc>https://emltechstudio.space/website-development.html</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://emltechstudio.space/pwa-development.html</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://emltechstudio.space/business-automation.html</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://emltechstudio.space/digital-marketing.html</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://emltechstudio.space/brand-design.html</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://emltechstudio.space/custom-solutions.html</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
 </urlset>
