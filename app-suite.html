@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EML Tech Studio – App Suite</title>
+    <title>EML App Suite | Focused Tools from EML Tech Studio</title>
+    <meta name="description" content="Explore the EML App Suite, including MyShub, EML Youniversity and focused web tools built for creators, learners, businesses and everyday problems.">
+    <meta property="og:title" content="EML App Suite | Focused Tools from EML Tech Studio">
+    <meta property="og:description" content="One connected suite for work, learning, business and everyday digital needs.">
+    <meta property="og:url" content="https://emltechstudio.space/app-suite.html">
   <link rel="canonical" href="https://emltechstudio.space/app-suite.html" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -302,6 +306,15 @@
             color: white;
         }
 
+
+        /* Ecosystem navigation */
+        .site-nav { position: sticky; top: 0; z-index: 10; background: rgba(255,255,255,.94); border-bottom: 1px solid var(--border); backdrop-filter: blur(14px); }
+        .site-nav-inner { max-width: 1160px; margin: auto; min-height: 62px; display: flex; align-items: center; gap: 1rem; padding: 0 1.2rem; }
+        .site-nav a { color: var(--text-secondary); text-decoration: none; font-weight: 600; font-size: .9rem; white-space: nowrap; }
+        .site-nav a:hover, .site-nav a.active { color: var(--primary); }
+        .site-nav .brand { color: var(--primary); margin-right: auto; }
+        .site-nav-scroll { display: flex; gap: 1.1rem; overflow-x: auto; scrollbar-width: none; }
+        @media (max-width: 720px) { .site-nav-inner { min-height: 54px; } .site-nav .brand { display: none; } }
         /* FOOTER */
         footer {
             background: var(--surface);
@@ -347,6 +360,8 @@
     </style>
 </head>
 <body>
+    <!-- Ecosystem navigation -->
+    <nav class="site-nav" aria-label="EML ecosystem navigation"><div class="site-nav-inner"><a class="brand" href="index.html">EML Tech Studio</a><div class="site-nav-scroll"><a href="index.html">Home</a><a class="active" href="app-suite.html">App Suite</a><a href="youniversity/">EML Youniversity</a><a href="community.html">ETS Community</a><a href="services.html">Services</a><a href="chatsem.html">ChatSEM</a><a href="contact.html">Contact</a></div></div></nav>
     <!-- Hero -->
     <header class="hero">
         <img src="ETSlogo.png" alt="EML Tech Studio" class="hero-logo" onerror="this.style.display='none'">
@@ -354,7 +369,7 @@
         <p>A hand‑picked collection of progressive web apps, built for creators, developers, and professionals who demand speed, privacy, and elegance.</p>
         <div class="hero-buttons">
             <a href="#apps" class="btn btn-primary"><i class="fas fa-arrow-down"></i> Explore Now</a>
-            <a href="https://emltechstudio.space" target="_blank" class="btn btn-outline"><i class="fas fa-globe"></i> EML Tech Studio</a>
+            <a href="youniversity/" class="btn btn-outline"><i class="fas fa-graduation-cap"></i> EML Youniversity</a>
         </div>
     </header>
 
@@ -368,7 +383,10 @@
     <footer>
         <p>Built with passion by <strong>EML Tech Studio</strong></p>
         <div class="footer-links">
-            <a href="https://emltechstudio.space" target="_blank">Studio Website</a>
+            <a href="index.html">Studio Website</a>
+            <a href="youniversity/">EML Youniversity</a>
+            <a href="community.html">ETS Community</a>
+            <a href="services.html">Services</a>
             <a href="https://wa.me/447918449756" target="_blank">WhatsApp Support</a>
             <a href="mailto:mail@emltechstudio.space">Contact</a>
         </div>
@@ -452,6 +470,9 @@
             }
         ];
 
+        const API_BASE = 'https://emltechstudio-eml-tech-studio-api.hf.space';
+        async function track(event_type, subject_id = '') { try { await fetch(`${API_BASE}/analytics/event`, { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({event_type, subject_id}) }); } catch (_) {} }
+        track('page_view', 'app_suite');
         const grid = document.getElementById('appGrid');
         const CATALOGUE_API = 'https://emltechstudio-eml-tech-studio-api.hf.space/apps';
         async function loadApps() {
@@ -494,6 +515,10 @@
         `).join('');
         }
         loadApps();
+        document.getElementById('appGrid').addEventListener('click', function(event) {
+            const link = event.target.closest('a');
+            if (link) track('app_click', link.href);
+        });
 
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {

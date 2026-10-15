@@ -14,8 +14,12 @@
 <!-- Twitter Card image -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="/elogo.jpg">
-    <title>EML Tech Studio</title>
+    <title>EML Tech Studio | Digital Services, Apps and Practical Learning</title>
   <link rel="canonical" href="https://emltechstudio.space/" />
+    <meta name="description" content="EML Tech Studio builds websites, AI tools, automation and digital experiences, with the EML App Suite, EML Youniversity and ETS Community in one connected ecosystem.">
+    <meta property="og:title" content="EML Tech Studio | Digital Services, Apps and Practical Learning">
+    <meta property="og:description" content="Explore practical digital services, focused apps, learning and community through EML Tech Studio.">
+    <meta property="og:url" content="https://emltechstudio.space/">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -647,6 +651,20 @@
                 width: 100%;
             }
         }
+
+        /* Ecosystem touch-up */
+        .audience-section { margin: 28px 0; padding: 30px; border-radius: 18px; background: linear-gradient(135deg,#f8f1ff,#eefcfd); }
+        .audience-section h2 { margin: 0 0 8px; color: #24123f; }
+        .audience-section > p { max-width: 720px; margin: 0 0 20px; color: #5f5570; line-height: 1.6; }
+        .audience-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:14px; }
+        .audience-card { display:flex; min-height:180px; flex-direction:column; justify-content:space-between; padding:18px; border:1px solid rgba(130,16,159,.14); border-radius:14px; background:rgba(255,255,255,.86); box-shadow:0 8px 24px rgba(55,20,80,.06); }
+        .audience-card i { color:#82109F; font-size:22px; }
+        .audience-card h3 { margin:14px 0 6px; color:#321550; font-size:17px; }
+        .audience-card p { margin:0; color:#655b70; font-size:13px; line-height:1.5; }
+        .audience-card a { margin-top:15px; color:#82109F; font-size:12px; font-weight:700; text-decoration:none; }
+        .newsletter-note { margin-top:8px; color:rgba(255,255,255,.76); font-size:12px; }
+        @media (max-width:980px) { .audience-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+        @media (max-width:520px) { .audience-section { padding:22px 17px; } .audience-grid { grid-template-columns:1fr; } }
     </style>
 </head>
 <body>
@@ -766,6 +784,17 @@
             </div>
         </div>
 
+        <!-- Audience and ecosystem pathways -->
+        <section class="audience-section" aria-labelledby="pathways-title">
+            <h2 id="pathways-title">Find your next useful step</h2>
+            <p>Whether you are building a brand, learning technology, exploring our tools, or looking for a welcoming community, EML Tech Studio gives you a clear place to begin.</p>
+            <div class="audience-grid">
+                <article class="audience-card"><div><i class="fas fa-briefcase"></i><h3>For businesses and brands</h3><p>Build a stronger digital presence with websites, automation, design, marketing and practical support.</p></div><a href="services.html">Explore services →</a></article>
+                <article class="audience-card"><div><i class="fas fa-graduation-cap"></i><h3>For curious learners</h3><p>Start a structured, self-paced learning journey through EML Youniversity and keep your progress in one place.</p></div><a href="youniversity/">Visit Youniversity →</a></article>
+                <article class="audience-card"><div><i class="fas fa-layer-group"></i><h3>For everyday problems</h3><p>Try the EML App Suite: focused tools for work, study, productivity, communication and small businesses.</p></div><a href="app-suite.html">Browse App Suite →</a></article>
+                <article class="audience-card"><div><i class="fas fa-users"></i><h3>For future-minded people</h3><p>Join a growing community for people who want to explore technology, creativity and digital opportunity together.</p></div><a href="community.html">Meet the community →</a></article>
+            </div>
+        </section>
         <!-- CTA Section - Links to Other Pages -->
         <div class="cta-section">
             <h2>Want to Know More?</h2>
@@ -780,17 +809,18 @@
         <!-- Newsletter -->
         <div class="newsletter">
             <div class="newsletter-text">
-                Stay updated with our latest Infos,products/resourses and exclusive offers
+                <strong>Useful updates, not noise.</strong><br>Get occasional news about new tools, learning opportunities, resources and studio updates.<div class="newsletter-note">Your email is used for this subscription only. No password or verification code is required.</div>
             </div>
             <div class="newsletter-success" id="newsletterSuccess">
                 <i class="fas fa-check-circle"></i> Thank you for subscribing! We'll keep you updated.
             </div>
             <form class="newsletter-form" id="newsletterForm">
                 <input type="email" class="newsletter-input" id="newsletterEmail" placeholder="Enter your email address" required>
-                <button type="submit" class="newsletter-btn">
-                    <i class="fas fa-paper-plane"></i>
+                <button type="submit" class="newsletter-btn" id="newsletterSubmit">
+                    <i class="fas fa-paper-plane"></i> Subscribe
                 </button>
             </form>
+            <div class="newsletter-status" id="newsletterStatus" role="status" aria-live="polite"></div>
         </div>
 
           <!-- Footer -->
@@ -813,8 +843,9 @@
                         <li><a href="https://wa.me/c/2347070811718" target="_blank">Catalogue</a></li>
                         <li><a href="about.html">About</a></li>
                         <li><a href="contact.html">Contact</a></li>
-                        <a href="app-suite.html">App-suite</a></li>
-                    </ul>
+                        <li><a href="app-suite.html">App Suite</a></li>
+                        <li><a href="youniversity/">EML Youniversity</a></li>
+                        <li><a href="community.html">ETS Community</a></li>
                     </ul>
                 </div>
                 
@@ -920,54 +951,11 @@
             }
         });
 
-        // ========== NEWSLETTER FORM SUBMISSION ==========
-        const newsletterForm = document.getElementById('newsletterForm');
-        const newsletterEmail = document.getElementById('newsletterEmail');
-        const newsletterSuccess = document.getElementById('newsletterSuccess');
-
-        newsletterForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
-
-            const email = newsletterEmail.value.trim();
-
-            // Email validation regex
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                alert('Please enter a valid email address');
-                return;
-            }
-
-            try {
-                // Send email to your backend endpoint
-                // REPLACE 'YOUR_BACKEND_ENDPOINT' with your actual Hugging Face Spaces endpoint
-                const response = await fetch('https://emltechstudio-chatsem.hf.space/subscribe', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ email: email })
-                });
-
-                if (response.ok) {
-                    // Show success message
-                    newsletterSuccess.classList.add('show');
-                    newsletterForm.style.display = 'none';
-
-                    // Reset form and hide success message after 3 seconds
-                    setTimeout(() => {
-                        newsletterForm.reset();
-                        newsletterForm.style.display = 'flex';
-                        newsletterSuccess.classList.remove('show');
-                        newsletterEmail.focus();
-                    }, 3000);
-                } else {
-                    alert('Error subscribing. Please try again later.');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                alert('Error subscribing. Please check your connection and try again.');
-            }
-        });
+        // ========== NEWSLETTER + PRIVACY-SAFE ANALYTICS ==========
+        const API_BASE='https://emltechstudio-eml-tech-studio-api.hf.space',newsletterForm=document.getElementById('newsletterForm'),newsletterEmail=document.getElementById('newsletterEmail'),newsletterSuccess=document.getElementById('newsletterSuccess'),newsletterStatus=document.getElementById('newsletterStatus'),newsletterSubmit=document.getElementById('newsletterSubmit');
+        async function track(event_type,subject_id=''){try{await fetch(`${API_BASE}/analytics/event`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({event_type,subject_id})})}catch(_){}}
+        track('page_view','homepage');track('newsletter_view','homepage');
+        newsletterForm.addEventListener('submit',async function(e){e.preventDefault();const email=newsletterEmail.value.trim();if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){newsletterStatus.textContent='Please enter a valid email address.';newsletterStatus.className='newsletter-status error';return}newsletterSubmit.disabled=true;newsletterSubmit.innerHTML='<i class="fas fa-spinner fa-spin"></i> Subscribing…';newsletterStatus.textContent='Connecting securely…';newsletterStatus.className='newsletter-status';try{const r=await fetch(`${API_BASE}/subscribe`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email})}),d=await r.json().catch(()=>({}));if(!r.ok)throw Error(d.detail||'The subscription service is temporarily unavailable.');newsletterSuccess.classList.add('show');newsletterForm.reset();newsletterForm.style.display='none';newsletterStatus.textContent=d.status==='exists'?'This email is already subscribed.':'You are subscribed. Thank you.';newsletterStatus.className='newsletter-status good';track('app_click','newsletter_subscribed');setTimeout(()=>{newsletterForm.style.display='flex';newsletterSuccess.classList.remove('show');newsletterStatus.textContent='';newsletterSubmit.disabled=false;newsletterSubmit.innerHTML='<i class="fas fa-paper-plane"></i> Subscribe';newsletterEmail.focus()},4500)}catch(err){newsletterStatus.textContent=err.message;newsletterStatus.className='newsletter-status error';newsletterSubmit.disabled=false;newsletterSubmit.innerHTML='<i class="fas fa-paper-plane"></i> Subscribe'}});
     </script>
 </body>
 
