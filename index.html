@@ -665,6 +665,13 @@
         .newsletter-note { margin-top:8px; color:rgba(255,255,255,.76); font-size:12px; }
         @media (max-width:980px) { .audience-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
         @media (max-width:520px) { .audience-section { padding:22px 17px; } .audience-grid { grid-template-columns:1fr; } }
+        .anniversary-spotlight { display:flex; justify-content:space-between; align-items:center; gap:20px; margin:24px auto 18px; padding:22px 26px; width:calc(100% - 40px); max-width:1100px; border-radius:18px; color:#fff; background:linear-gradient(115deg,#000040 0%,#82109F 70%,#087f98 100%); box-shadow:0 12px 32px rgba(0,0,64,.16); }
+        .anniversary-spotlight p { margin:0; color:rgba(255,255,255,.78); line-height:1.55; }
+        .anniversary-spotlight .anniversary-kicker { margin-bottom:5px; color:#00FFFF; font-size:11px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; }
+        .anniversary-spotlight h2 { margin:0 0 5px; color:#fff; font-size:clamp(20px,3vw,28px); }
+        .anniversary-spotlight a { flex:0 0 auto; padding:11px 17px; border-radius:999px; color:#000040; background:#FFD700; font-size:13px; font-weight:800; text-decoration:none; }
+        .anniversary-spotlight a:hover { transform:translateY(-2px); }
+        @media (max-width:600px) { .anniversary-spotlight { flex-direction:column; align-items:flex-start; padding:21px; } .anniversary-spotlight a { width:100%; text-align:center; } }
     </style>
 </head>
 <body>
@@ -682,6 +689,7 @@
             <li><a href="app-suite.html"><i class="fas fa-layer-group"></i> App Suite</a></li>
             <li><a href="youniversity/"><i class="fas fa-graduation-cap"></i> EML Youniversity</a></li>
             <li><a href="community.html"><i class="fas fa-users"></i> ETS Community</a></li>
+            <li><a href="starting-point.html"><i class="fas fa-calendar-days"></i> Starting Point Event</a></li>
             <li><a href="chatsem.html"><img src="semlogo.png" alt="Chat SEM" style="width: 20px; height: 20px; margin-right: 10px;">ChatSEM</a></li>
         </ul>
     </div>
@@ -731,6 +739,15 @@
                 <div class="dot" data-index="1"></div>
             </div>
         </div>
+
+        <section class="anniversary-spotlight" aria-labelledby="anniversary-title">
+            <div>
+                <p class="anniversary-kicker">November 3–5 · Virtual anniversary event</p>
+                <h2 id="anniversary-title">Starting Point: three days of ideas, AI and what’s next.</h2>
+                <p>Meet the studio, explore practical AI for business, and discover our growing digital ecosystem.</p>
+            </div>
+            <a href="starting-point.html">Explore the event <span aria-hidden="true">→</span></a>
+        </section>
 
         <!-- Cards Section -->
         <div class="cards-container">
@@ -846,6 +863,7 @@
                         <li><a href="app-suite.html">App Suite</a></li>
                         <li><a href="youniversity/">EML Youniversity</a></li>
                         <li><a href="community.html">ETS Community</a></li>
+                        <li><a href="starting-point.html">Starting Point Event</a></li>
                     </ul>
                 </div>
                 
