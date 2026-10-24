@@ -668,23 +668,26 @@
         .newsletter-note { margin-top:8px; color:rgba(255,255,255,.76); font-size:12px; }
         @media (max-width:980px) { .audience-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
         @media (max-width:520px) { .audience-section { padding:22px 17px; } .audience-grid { grid-template-columns:1fr; } }
-        .anniversary-spotlight { display:flex; justify-content:space-between; align-items:center; gap:26px; margin:18px auto 24px; padding:25px clamp(20px,3.5vw,36px); width:calc(100% - 40px); max-width:1200px; border:1px solid rgba(0,255,255,.28); border-radius:18px; color:#fff; background:radial-gradient(ellipse at 88% 0%,rgba(0,255,255,.18),transparent 42%),linear-gradient(115deg,#000040 0%,#82109F 70%,#087f98 100%); box-shadow:0 12px 32px rgba(0,0,64,.18); }
-        .anniversary-copy { flex:1 1 600px; min-width:0; }
-        .anniversary-spotlight p { margin:0; color:rgba(255,255,255,.86); line-height:1.55; }
-        .anniversary-spotlight .anniversary-kicker { margin-bottom:7px; color:#00FFFF; font-size:12px; font-weight:800; letter-spacing:.13em; text-transform:uppercase; }
-        .anniversary-spotlight h2 { margin:0 0 8px; color:#fff; font-size:clamp(22px,2.4vw,31px); line-height:1.2; }
-        .anniversary-spotlight .anniversary-time { margin-top:8px; color:#fff; font-size:14px; }
-        .anniversary-agenda { display:flex; flex-wrap:wrap; gap:8px 18px; margin-top:14px; color:#fff; }
-        .anniversary-agenda span { font-size:14px; }
+        .anniversary-spotlight { display:block; margin:14px auto 18px; padding:16px clamp(18px,3vw,28px); width:calc(100% - 40px); max-width:1200px; border:1px solid rgba(0,255,255,.28); border-radius:16px; color:#fff; background:radial-gradient(ellipse at 88% 0%,rgba(0,255,255,.18),transparent 42%),linear-gradient(115deg,#000040 0%,#82109F 70%,#087f98 100%); box-shadow:0 8px 22px rgba(0,0,64,.16); }
+        .anniversary-copy { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px 20px; }
+        .anniversary-heading { flex:1 1 420px; min-width:0; }
+        .anniversary-facts { flex:0 1 auto; text-align:right; }
+        .anniversary-spotlight p { margin:0; color:rgba(255,255,255,.9); line-height:1.4; }
+        .anniversary-spotlight .anniversary-kicker { margin-bottom:3px; color:#00FFFF; font-size:10px; font-weight:800; letter-spacing:.13em; text-transform:uppercase; }
+        .anniversary-spotlight h2 { margin:0; color:#fff; font-size:clamp(20px,2vw,26px); line-height:1.15; }
+        .anniversary-spotlight .anniversary-time { color:#fff; font-size:13px; white-space:nowrap; }
+        .anniversary-agenda { display:flex; flex-wrap:wrap; justify-content:flex-end; gap:4px 12px; margin-top:4px; color:#fff; }
+        .anniversary-agenda span { font-size:12px; }
         .anniversary-agenda strong { color:#FFD700; }
-        .anniversary-actions { display:flex; flex:0 1 270px; flex-direction:column; gap:10px; }
-        .anniversary-actions a { display:block; padding:12px 16px; border:2px solid transparent; border-radius:999px; text-align:center; font-size:14px; font-weight:800; text-decoration:none; transition:transform .2s,background .2s; }
+        .anniversary-actions { display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-top:11px; padding-top:10px; border-top:1px solid rgba(255,255,255,.22); }
+        .anniversary-actions a { display:inline-flex; align-items:center; justify-content:center; min-height:40px; padding:8px 14px; border:2px solid transparent; border-radius:999px; text-align:center; font-size:13px; font-weight:800; text-decoration:none; transition:transform .2s,background .2s; }
         .anniversary-actions a:hover { transform:translateY(-2px); }
         .anniversary-register { color:#000040; background:#FFD700; }
         .anniversary-donate { color:#321550; background:#fff; }
         .anniversary-details { color:#fff; border-color:rgba(255,255,255,.6) !important; background:transparent; }
         .anniversary-actions a:focus-visible { outline:3px solid #00FFFF; outline-offset:3px; }
-        @media (max-width:600px) { .anniversary-spotlight { flex-direction:column; align-items:stretch; padding:21px; } .anniversary-copy { flex:0 1 auto; } .anniversary-actions { flex:0 1 auto; width:100%; } .anniversary-agenda { gap:8px 14px; } }
+        @media (max-width:700px) { .anniversary-copy { display:block; } .anniversary-facts { margin-top:7px; text-align:left; } .anniversary-agenda { justify-content:flex-start; } }
+        @media (max-width:600px) { .anniversary-spotlight { padding:15px 17px; } .anniversary-actions { gap:7px; margin-top:9px; padding-top:8px; } .anniversary-actions a { min-height:38px; padding:7px 12px; font-size:12px; } .anniversary-spotlight .anniversary-time { white-space:normal; } }
     </style>
     <script type="application/ld+json">
     {
@@ -747,20 +750,23 @@
     <div class="main-content">
         <section class="anniversary-spotlight" id="upcoming-event" aria-labelledby="anniversary-title">
             <div class="anniversary-copy">
-                <p class="anniversary-kicker">Upcoming virtual event · November 3–5, 2026</p>
-                <h2 id="anniversary-title">Starting Point: EML Tech Studio’s First Anniversary Summit</h2>
-                <p>Three online evenings to meet the studio, explore practical AI for business, and discover what we’re building next.</p>
-                <p class="anniversary-time"><strong>7:00 PM WAT each day</strong> · Streaming as YouTube Premieres</p>
-                <div class="anniversary-agenda" aria-label="Three-day event program">
-                    <span><strong>Nov 3</strong> · Idea</span>
-                    <span><strong>Nov 4</strong> · AI implementation</span>
-                    <span><strong>Nov 5</strong> · Showcase</span>
+                <div class="anniversary-heading">
+                    <p class="anniversary-kicker">Upcoming virtual event · November 3–5, 2026</p>
+                    <h2 id="anniversary-title">Starting Point: EML Tech Studio Turns One</h2>
+                </div>
+                <div class="anniversary-facts">
+                    <p class="anniversary-time"><strong>7:00 PM WAT daily</strong> · Online on YouTube Premieres</p>
+                    <div class="anniversary-agenda" aria-label="Three-day event program">
+                        <span><strong>Nov 3</strong> · Idea</span>
+                        <span><strong>Nov 4</strong> · AI implementation</span>
+                        <span><strong>Nov 5</strong> · Showcase</span>
+                    </div>
                 </div>
             </div>
             <div class="anniversary-actions" aria-label="Event actions">
-                <a class="anniversary-register" href="https://docs.google.com/forms/d/e/1FAIpQLSf9htU2R32WhjCSyr73y4bXhC6UIsvivMCDvy_nyHX3DNpFKg/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer">Register for the event <span aria-hidden="true">↗</span></a>
-                <a class="anniversary-donate" href="https://selar.com/showlove/ets-anniversary" target="_blank" rel="noopener noreferrer">Support with a donation <span aria-hidden="true">↗</span></a>
-                <a class="anniversary-details" href="starting-point.html">View full event details <span aria-hidden="true">→</span></a>
+                <a class="anniversary-register" href="https://docs.google.com/forms/d/e/1FAIpQLSf9htU2R32WhjCSyr73y4bXhC6UIsvivMCDvy_nyHX3DNpFKg/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer">Register <span aria-hidden="true">↗</span></a>
+                <a class="anniversary-donate" href="https://selar.com/showlove/ets-anniversary" target="_blank" rel="noopener noreferrer">Donate <span aria-hidden="true">↗</span></a>
+                <a class="anniversary-details" href="starting-point.html">Event details <span aria-hidden="true">→</span></a>
             </div>
         </section>
         <!-- Video Section -->
