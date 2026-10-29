@@ -16,6 +16,12 @@
       if (!sidebar || !overlay || !menuToggle) return;
 
       const currentPath = window.location.pathname.replace(/\/$/, '') || '/';
+      const isHome = currentPath === '/' || currentPath === '/index.html';
+      const homeLink = sidebar.querySelector('[data-nav-home]');
+      const homeOnlyLink = sidebar.querySelector('[data-home-only]');
+      if (homeLink) homeLink.href = isHome ? '#' : '/index.html';
+      if (homeOnlyLink) homeOnlyLink.hidden = !isHome;
+
       sidebar.querySelectorAll('[data-nav-page]').forEach((link) => {
         const pagePath = link.getAttribute('data-nav-page').replace(/\/$/, '') || '/';
         if (currentPath === pagePath || (currentPath === '/' && pagePath === '/index.html')) {
