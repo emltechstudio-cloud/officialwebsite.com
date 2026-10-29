@@ -569,7 +569,6 @@
             }
         }
     </style>
-    <link rel="stylesheet" href="/site-nav.css">
     <script src="/site-nav.js" defer></script>
     <meta name="description" content="Explore EML Tech Studio services: web development, AI chatbots, business automation, digital marketing, brand design, video creation and custom solutions.">
     <meta name="keywords" content="web development, AI chatbots, business automation, digital marketing, brand design, video content creation">
@@ -584,6 +583,14 @@
 </head>
 <body>
     <div data-eml-site-nav></div>
+    <div class="header">
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation" aria-controls="sidebar" aria-expanded="false">
+            <i class="fas fa-bars" aria-hidden="true"></i>
+        </button>
+        <div class="header-logo">
+            <img alt="EML Tech Studio" src="ETSlogo.png"/>
+        </div>
+    </div>
     <!-- Main Content -->
     <div class="main-content">
         <!-- Page Header -->
@@ -810,7 +817,7 @@
                     <ul class="footer-links">
                         <li><a href="index.html">Home</a></li>
                         <li><a href="services.html">Services</a></li>
-                        <li><a href="https://wa.me/c/2347070811718" target="_blank">Catalogue</a></li>
+                        <li><a href="/app-suite.html" target="_blank">Catalogue</a></li>
                         <li><a href="about.html">About</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
