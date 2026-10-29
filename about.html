@@ -4,14 +4,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="/ETSlogo.png" type="image/png">
-    <meta property="og:image" content="/ETSLogo.png">
+    <meta property="og:image" content="https://emltechstudio.space/ETSlogo.png">
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="400">
     <meta property="og:image:height" content="400">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="/ETSlogo.png">
-    <title>About - EML Tech Studio</title>
-  <link rel="canonical" href="https://emltechstudio.space/about.html" />
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://emltechstudio.space/ETSlogo.png">
+    <title>About EML Tech Studio | How We Work</title>
+  <link rel="canonical" href="https://emltechstudio.space/about.html">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -505,31 +505,21 @@
             }
         }
     </style>
+    <link rel="stylesheet" href="/site-nav.css">
+    <script src="/site-nav.js" defer></script>
+    <meta name="description" content="Learn about EML Tech Studio’s approach to practical digital systems, its development process, payment options, and founder’s perspective.">
+    <meta name="keywords" content="EML Tech Studio, practical digital systems, technology development process, digital solutions, founder perspective">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="About EML Tech Studio | How We Work">
+    <meta property="og:description" content="Learn about EML Tech Studio’s approach to practical digital systems, its development process, payment options, and founder’s perspective.">
+    <meta property="og:url" content="https://emltechstudio.space/about.html">
+    <meta property="og:site_name" content="EML Tech Studio">
+    <meta property="og:image:alt" content="EML Tech Studio brand image">
+    <meta name="twitter:title" content="About EML Tech Studio | How We Work">
+    <meta name="twitter:description" content="Learn about EML Tech Studio’s approach to practical digital systems, its development process, payment options, and founder’s perspective.">
 </head>
 <body>
-    <!-- Sidebar -->
-    <div class="sidebar" id="sidebar">
-        <div class="sidebar-logo"><img src="ETSlogo.png" alt="EML Tech Studio"></div>
-        <ul class="nav-links">
-            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-            <li><a href="services.html"><i class="fas fa-concierge-bell"></i> Services</a></li>
-            <li><a href="https://wa.me/c/2347070811718" target="_blank"><i class="fas fa-store"></i> Catalogue</a></li>
-            <li><a href="about.html" class="active"><i class="fas fa-users"></i> About</a></li>
-            <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
-            <li><a href="app-suite.html"><i class="fas fa-layer-group"></i> App Suite</a></li>
-            <li><a href="youniversity/"><i class="fas fa-graduation-cap"></i> EML Youniversity</a></li>
-            <li><a href="community.html"><i class="fas fa-users"></i> ETS Community</a></li>
-            <li><a href="chatsem.html"><img src="semlogo.png" alt="Chat SEM" style="width: 20px; height: 20px; margin-right: 10px;">ChatSEM</a></li>
-        </ul>
-    </div>
-    <div class="overlay" id="overlay"></div>
-
-    <!-- Header -->
-    <div class="header">
-        <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
-        <div class="header-logo"><img src="ETSlogo.png" alt="EML Tech Studio"></div>
-    </div>
-
+    <div data-eml-site-nav></div>
     <!-- Main Content -->
     <div class="main-content">
         <div class="page-header">
@@ -614,7 +604,7 @@
                     <i class="fas fa-concierge-bell"></i>
                     View Services
                 </a>
-                <a href="https://emltechstudio.space/chatsem" target="_blank" class="cta-btn">
+                <a href="/chatsem.html" target="_blank" class="cta-btn">
                     <i class="fas fa-robot"></i>
                     Chat with SEM
                 </a>
@@ -677,28 +667,6 @@
 </a>
     
 
-    <script>
-        // Toggle sidebar
-        document.getElementById('menuToggle').addEventListener('click', function() {
-            document.getElementById('sidebar').classList.toggle('active');
-            document.getElementById('overlay').classList.toggle('active');
-        });
 
-        // Close sidebar when clicking overlay
-        document.getElementById('overlay').addEventListener('click', function() {
-            document.getElementById('sidebar').classList.remove('active');
-            document.getElementById('overlay').classList.remove('active');
-        });
-
-        // Handle window resize
-        window.addEventListener('resize', function() {
-            if (window.innerWidth >= 1024) {
-                document.getElementById('sidebar').classList.add('active');
-            } else {
-                document.getElementById('sidebar').classList.remove('active');
-                document.getElementById('overlay').classList.remove('active');
-            }
-        });
-    </script>
 </body>
     </html>
