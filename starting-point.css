@@ -105,7 +105,7 @@ h1, h2, h3, p { overflow-wrap: anywhere; }
 .agenda-card p:not(.card-overline) { margin: 0 0 22px; color: #626276; font-size: .92rem; line-height: 1.72; }
 .card-bottom { display: flex; align-items: center; justify-content: space-between; gap: 15px; margin-top: auto; padding-top: 13px; border-top: 1px solid #ececf3; }
 .day-time { color: var(--navy); font-size: .77rem; font-weight: 800; letter-spacing: .05em; }
-.card-arrow { display: grid; width: 28px; height: 28px; place-items: center; border-radius: 50%; color: var(--purple); background: #f6eef9; }
+.card-arrow { display: grid; width: 28px; height: 28px; place-items: center; border-radius: 50%; color: var(--purple); background: #f6eef9; text-decoration: none; }
 .agenda-cta { display: flex; align-items: center; justify-content: space-between; gap: 22px; margin-top: 27px; padding: 21px 24px; border: 1px solid rgba(130,16,159,.16); border-radius: 12px; background: #fff; }
 .agenda-cta p { margin: 0; color: #5c5c72; font-size: .9rem; }
 .agenda-cta strong { color: var(--navy); }

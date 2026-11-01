@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Starting Point Souvenirs | EML Tech Studio</title>
+  <meta name="description" content="Access EML Tech Studio Starting Point event souvenirs and create a Day 3 founding-member card.">
+  <link rel="icon" href="/elogo.jpg" type="image/jpeg">
+  <link rel="stylesheet" href="/starting-point-souvenirs.css">
+</head>
+<body>
+  <header class="portal-header">
+    <a class="portal-brand" href="/starting-point.html" aria-label="Back to Starting Point event page">
+      <img src="/ETSlogo.png" alt="EML Tech Studio" width="684" height="279">
+    </a>
+    <a class="back-link" href="/starting-point.html">Starting Point event <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main class="portal-main">
+    <section class="portal-intro" aria-labelledby="portal-title">
+      <p class="eyebrow">STARTING POINT · NOVEMBER 3–5, 2026</p>
+      <h1 id="portal-title">Your event souvenirs.</h1>
+      <p>Enter your registration email to continue. If we can’t find it, you can join the EML Tech Studio community here and continue right away.</p>
+    </section>
+
+    <section class="access-panel" id="access-panel" aria-labelledby="access-title">
+      <div class="panel-heading">
+        <span class="step-mark" aria-hidden="true">01</span>
+        <div>
+          <p class="eyebrow">QUICK EMAIL CHECK</p>
+          <h2 id="access-title">Continue to your souvenirs</h2>
+        </div>
+      </div>
+      <form id="lookup-form" novalidate>
+        <label for="lookup-email">Email address</label>
+        <div class="lookup-row">
+          <input id="lookup-email" name="email" type="email" autocomplete="email" inputmode="email" maxlength="254" placeholder="you@example.com" required>
+          <button class="button button-primary" type="submit">Continue</button>
+        </div>
+      </form>
+      <p class="form-status" id="lookup-status" role="status" aria-live="polite"></p>
+
+      <form id="registration-form" class="registration-form" hidden>
+        <div class="registration-callout">
+          <strong>We couldn’t find your registration yet.</strong>
+          <span>Tell us a little about yourself to join the ETS community and access the souvenirs.</span>
+        </div>
+        <label for="reg-name">What is your name? <span aria-hidden="true">*</span></label>
+        <input id="reg-name" name="name" type="text" autocomplete="name" minlength="2" maxlength="100" required>
+
+        <label for="reg-email">Email <span aria-hidden="true">*</span></label>
+        <input id="reg-email" name="email" type="email" autocomplete="email" inputmode="email" maxlength="254" required>
+
+        <label for="reg-phone">WhatsApp Phone Number <span aria-hidden="true">*</span></label>
+        <input id="reg-phone" name="whatsapp_phone" type="tel" autocomplete="tel" inputmode="tel" minlength="7" maxlength="32" required>
+
+        <label for="reg-role">Current Role / Primary Focus <span aria-hidden="true">*</span></label>
+        <select id="reg-role" name="role" required>
+          <option value="">Choose one</option>
+          <option>Student</option>
+          <option>Small Business Owner / Vendor</option>
+          <option>Content Creator / Freelancer</option>
+          <option>Tech Enthusiast / Developer</option>
+          <option>Other</option>
+        </select>
+        <input id="reg-role-other" name="role_other" type="text" maxlength="80" placeholder="Please describe your role" aria-label="Other role or primary focus" hidden>
+
+        <label for="reg-referral">How did you hear about this event? <span class="optional">Optional</span></label>
+        <select id="reg-referral" name="referral_source">
+          <option value="">Choose one (optional)</option>
+          <option>WhatsApp</option>
+          <option>Facebook / Instagram</option>
+          <option>TikTok / YouTube</option>
+          <option>Lekee Lekee</option>
+          <option>Friend / Referral</option>
+          <option>Miva Groups</option>
+          <option>Uopeople</option>
+          <option>Other</option>
+        </select>
+        <input id="reg-referral-other" name="referral_other" type="text" maxlength="80" placeholder="Please tell us where you heard about us" aria-label="Other referral source" hidden>
+
+        <p class="privacy-note">We use these details to add you to the EML Tech Studio community and provide Starting Point souvenirs and related event updates. No Google sign-in or email code is required.</p>
+        <button class="button button-primary" type="submit">Join and continue</button>
+        <p class="form-status" id="registration-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="unlocked" id="unlocked-content" hidden aria-labelledby="unlocked-title">
+      <div class="unlocked-heading">
+        <p class="eyebrow">YOU’RE IN</p>
+        <h2 id="unlocked-title">Welcome to the ETS community.</h2>
+        <p>Your souvenirs are below. The Day 3 card is created on this device; your photo is not uploaded.</p>
+      </div>
+
+      <div class="souvenir-list" aria-label="Starting Point souvenir areas">
+        <article class="souvenir-card">
+          <span class="day-tag">DAY 1 · IDEA</span>
+          <h3>Starting Point — Day 1</h3>
+          <p class="souvenir-items" data-day="1">Day 1 souvenirs will appear here.</p>
+          <div class="asset-links" data-assets-day="1"></div>
+        </article>
+        <article class="souvenir-card">
+          <span class="day-tag">DAY 2 · AI IMPLEMENTATION</span>
+          <h3>Starting Point — Day 2</h3>
+          <p class="souvenir-items" data-day="2">Day 2 souvenirs will appear here.</p>
+          <div class="asset-links" data-assets-day="2"></div>
+        </article>
+        <article class="souvenir-card souvenir-card-featured">
+          <span class="day-tag">DAY 3 · ETS COMMUNITY</span>
+          <h3>Your Founding Member Card</h3>
+          <p>Make a shareable community card with your name and photo. Your photo stays in your browser and is never sent to the API.</p>
+          <a class="button button-primary" href="#founding-card">Create your card <span aria-hidden="true">↓</span></a>
+          <div class="asset-links" data-assets-day="3"></div>
+        </article>
+      </div>
+
+      <section class="card-maker" id="founding-card" aria-labelledby="card-title">
+        <div class="card-maker-copy">
+          <p class="eyebrow">A DAY 3 COMMUNITY SOUVENIR</p>
+          <h2 id="card-title">Make it yours.</h2>
+          <p>Enter the name you want to show, choose a photo, then save or share your square card. The picture is processed only on your device.</p>
+          <form id="card-form">
+            <label for="card-name">Name for your card</label>
+            <input id="card-name" name="card_name" type="text" autocomplete="name" maxlength="48" placeholder="Your name" required>
+            <label for="card-photo">Choose your photo</label>
+            <input id="card-photo" name="photo" type="file" accept="image/*" required>
+            <p class="privacy-note">Your photo is not uploaded, stored, or sent to EML Tech Studio.</p>
+            <div class="card-actions">
+              <button class="button button-primary" id="create-card" type="submit">Create my card</button>
+              <button class="button button-secondary" id="download-card" type="button" disabled>Download PNG</button>
+              <button class="button button-secondary" id="share-card" type="button" disabled>Share</button>
+            </div>
+          </form>
+          <p class="form-status" id="card-status" role="status" aria-live="polite"></p>
+        </div>
+        <div class="card-preview-wrap">
+          <div class="preview-frame" id="preview-frame">
+            <div class="preview-placeholder" id="preview-placeholder">
+              <img src="/ETSlogo.png" alt="" width="684" height="279">
+              <span>Your founding-member card preview will appear here.</span>
+            </div>
+            <canvas id="founding-card-canvas" width="1080" height="1080" aria-label="Preview of your founding-member card" hidden></canvas>
+          </div>
+          <p class="preview-caption">Square PNG · ready for a profile picture or sharing</p>
+        </div>
+      </section>
+    </section>
+
+    <section class="closed-panel" id="closed-panel" hidden aria-live="polite">
+      <p class="eyebrow">SOUVENIR WINDOW CLOSED</p>
+      <h2>Thanks for being part of Starting Point.</h2>
+      <p>The souvenir page closed on Sunday, November 8, 2026. Follow EML Tech Studio for what’s next.</p>
+    </section>
+
+    <p class="portal-footer-note">EML Tech Studio · Starting Point 2026 · <a href="/starting-point.html">Return to the event page</a></p>
+  </main>
+  <script src="/starting-point-souvenirs.js" defer></script>
+</body>
+</html>

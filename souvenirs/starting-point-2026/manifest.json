@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "days": [
+    { "day": 1, "items": [] },
+    { "day": 2, "items": [] },
+    { "day": 3, "items": [] }
+  ]
+}
