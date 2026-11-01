@@ -1,11 +1,19 @@
 (() => {
   const API_ROOT = "https://emltechstudio-eml-tech-studio-api.hf.space";
   const PHOTO_MAX_BYTES = 20 * 1024 * 1024;
+  const portalOpensAt = new Date("2026-11-03T19:00:00+01:00");
+  const cardOpensAt = new Date("2026-11-05T19:00:00+01:00");
   const portalClose = new Date("2026-11-08T23:59:59+01:00");
 
   const accessPanel = document.getElementById("access-panel");
   const unlockedContent = document.getElementById("unlocked-content");
   const closedPanel = document.getElementById("closed-panel");
+  const upcomingPanel = document.getElementById("upcoming-panel");
+  const introCopy = document.getElementById("portal-intro-copy");
+  const cardMaker = document.getElementById("founding-card");
+  const cardLocked = document.getElementById("card-locked");
+  const cardCta = document.getElementById("card-cta");
+  const cardCtaLocked = document.getElementById("card-cta-locked");
   const lookupForm = document.getElementById("lookup-form");
   const registrationForm = document.getElementById("registration-form");
   const lookupEmail = document.getElementById("lookup-email");
@@ -33,15 +41,45 @@
   function showClosed() {
     accessPanel.hidden = true;
     unlockedContent.hidden = true;
+    upcomingPanel.hidden = true;
     closedPanel.hidden = false;
   }
 
-  function ensureOpen() {
-    if (Date.now() >= portalClose.getTime()) {
+  function showUpcoming() {
+    accessPanel.hidden = true;
+    unlockedContent.hidden = true;
+    closedPanel.hidden = true;
+    upcomingPanel.hidden = false;
+    introCopy.textContent = "Souvenir access opens Tuesday, November 3 at 7:00 PM WAT. The personalized founding-member card opens on Day 3.";
+  }
+
+  function updatePortalWindow() {
+    const now = Date.now();
+    if (now >= portalClose.getTime()) {
       showClosed();
-      return false;
+      return "closed";
     }
-    return true;
+    if (now < portalOpensAt.getTime()) {
+      showUpcoming();
+      return "upcoming";
+    }
+    upcomingPanel.hidden = true;
+    closedPanel.hidden = true;
+    if (unlockedContent.hidden) accessPanel.hidden = false;
+    introCopy.textContent = "Enter your registration email to continue. If we can’t find it, you can register for the EML Tech Studio community and continue right away.";
+    return "open";
+  }
+
+  function updateCardWindow() {
+    const isAvailable = Date.now() >= cardOpensAt.getTime() && Date.now() < portalClose.getTime();
+    cardMaker.hidden = !isAvailable;
+    cardLocked.hidden = isAvailable;
+    cardCta.hidden = !isAvailable;
+    cardCtaLocked.hidden = isAvailable;
+  }
+
+  function ensureOpen() {
+    return updatePortalWindow() === "open";
   }
 
   function apiErrorMessage(payload, fallback) {
@@ -59,6 +97,7 @@
     let payload = {};
     try { payload = await response.json(); } catch (_) { /* show fallback below */ }
     if (!response.ok) {
+      if (response.status === 403) showUpcoming();
       if (response.status === 410) showClosed();
       throw new Error(apiErrorMessage(payload, "We couldn’t complete that right now. Please try again."));
     }
@@ -70,6 +109,7 @@
     accessPanel.hidden = true;
     unlockedContent.hidden = false;
     if (name && !cardName.value) cardName.value = name;
+    updateCardWindow();
     loadSouvenirManifest();
     unlockedContent.scrollIntoView({ behavior: "smooth", block: "start" });
   }
@@ -350,6 +390,10 @@
   cardForm.addEventListener("submit", async (event) => {
     event.preventDefault();
     if (!ensureOpen()) return;
+    if (Date.now() < cardOpensAt.getTime()) {
+      updateCardWindow();
+      return;
+    }
     const name = cardName.value.trim();
     const file = cardPhoto.files && cardPhoto.files[0];
     if (!name || !file) {
@@ -420,5 +464,9 @@
     }
   });
 
-  if (!ensureOpen()) return;
+  updatePortalWindow();
+  window.setInterval(() => {
+    updatePortalWindow();
+    if (!unlockedContent.hidden) updateCardWindow();
+  }, 30000);
 })();

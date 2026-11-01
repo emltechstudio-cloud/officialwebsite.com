@@ -21,7 +21,7 @@
     <section class="portal-intro" aria-labelledby="portal-title">
       <p class="eyebrow">STARTING POINT · NOVEMBER 3–5, 2026</p>
       <h1 id="portal-title">Your event souvenirs.</h1>
-      <p>Enter your registration email to continue. If we can’t find it, you can join the EML Tech Studio community here and continue right away.</p>
+      <p id="portal-intro-copy">Enter your registration email to continue. If we can’t find it, you can register for the EML Tech Studio community and continue right away.</p>
     </section>
 
     <section class="access-panel" id="access-panel" aria-labelledby="access-title">
@@ -86,6 +86,12 @@
       </form>
     </section>
 
+    <section class="upcoming-panel" id="upcoming-panel" hidden aria-live="polite">
+      <p class="eyebrow">PORTAL OPENS ON DAY 1</p>
+      <h2>Souvenir access opens Tuesday, November 3 at 7:00 PM WAT.</h2>
+      <p>Return during Starting Point to check your registration and access the released souvenirs. The page closes Sunday, November 8 at 11:59 PM WAT.</p>
+    </section>
+
     <section class="unlocked" id="unlocked-content" hidden aria-labelledby="unlocked-title">
       <div class="unlocked-heading">
         <p class="eyebrow">YOU’RE IN</p>
@@ -110,12 +116,19 @@
           <span class="day-tag">DAY 3 · ETS COMMUNITY</span>
           <h3>Your Founding Member Card</h3>
           <p>Make a shareable community card with your name and photo. Your photo stays in your browser and is never sent to the API.</p>
-          <a class="button button-primary" href="#founding-card">Create your card <span aria-hidden="true">↓</span></a>
+          <a class="button button-primary" id="card-cta" href="#founding-card" hidden>Create your card <span aria-hidden="true">↓</span></a>
+          <p class="card-cta-locked" id="card-cta-locked">Available Thursday, November 5 at 7:00 PM WAT.</p>
           <div class="asset-links" data-assets-day="3"></div>
         </article>
       </div>
 
-      <section class="card-maker" id="founding-card" aria-labelledby="card-title">
+      <section class="card-locked" id="card-locked" hidden aria-live="polite">
+        <p class="eyebrow">DAY 3 · ETS COMMUNITY</p>
+        <h2>Your Founding Member Card unlocks Thursday, November 5 at 7:00 PM WAT.</h2>
+        <p>Come back on Day 3 to add your name and photo. The photo stays on your device.</p>
+      </section>
+
+      <section class="card-maker" id="founding-card" aria-labelledby="card-title" hidden>
         <div class="card-maker-copy">
           <p class="eyebrow">A DAY 3 COMMUNITY SOUVENIR</p>
           <h2 id="card-title">Make it yours.</h2>
