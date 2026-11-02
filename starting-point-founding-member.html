@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>ETS Community Founding Member Card | Starting Point 2026</title>
+  <meta name="description" content="Verify your ETS Community membership and create your Starting Point 2026 founding-member card.">
+  <link rel="icon" href="/elogo.jpg" type="image/jpeg">
+  <link rel="stylesheet" href="/starting-point-souvenirs.css">
+  <link rel="stylesheet" href="/starting-point-founding-member.css">
+</head>
+<body>
+  <header class="portal-header">
+    <a class="portal-brand" href="/starting-point.html" aria-label="Back to Starting Point event page">
+      <img src="/ETSlogo.png" alt="EML Tech Studio" width="684" height="279">
+    </a>
+    <a class="back-link" href="/starting-point-souvenirs.html">Back to souvenirs <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main class="portal-main founding-page">
+    <section class="portal-intro" aria-labelledby="page-title">
+      <p class="eyebrow">STARTING POINT 2026 · DAY 3</p>
+      <h1 id="page-title">Your founding-member card.</h1>
+      <p>First confirm your ETS Community membership with the email you used to register. Once confirmed, add your name and photo to create the separate card.</p>
+    </section>
+
+    <section class="access-panel founding-access" id="membership-panel" aria-labelledby="membership-title">
+      <div class="panel-heading">
+        <span class="step-mark">01</span>
+        <div>
+          <p class="eyebrow">COMMUNITY VERIFICATION</p>
+          <h2 id="membership-title">Confirm your member email</h2>
+        </div>
+      </div>
+      <p class="founding-help">This card is available only to an email already recorded in the ETS Community event roster.</p>
+      <form id="member-lookup-form" novalidate>
+        <label for="member-email">Email address</label>
+        <div class="lookup-row">
+          <input id="member-email" name="email" type="email" autocomplete="email" inputmode="email" maxlength="254" placeholder="you@example.com" required>
+          <button class="button button-primary" type="submit">Verify membership</button>
+        </div>
+      </form>
+      <p class="form-status" id="member-status" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="card-maker founding-card-maker" id="founding-card" aria-labelledby="card-title" hidden>
+      <div class="card-maker-copy">
+        <p class="eyebrow">STEP 02 · PERSONALIZE YOUR CARD</p>
+        <h2 id="card-title">Make it official.</h2>
+        <p>Your membership is confirmed. Add the name you want displayed and a photo; everything is processed locally on your device.</p>
+        <form id="card-form">
+          <label for="card-name">Name for your card</label>
+          <input id="card-name" name="card_name" type="text" autocomplete="name" maxlength="48" placeholder="Your name" required>
+          <label for="card-photo">Choose your photo</label>
+          <input id="card-photo" name="photo" type="file" accept="image/*" required>
+          <p class="privacy-note">Your photo is never uploaded, stored, or sent to EML Tech Studio.</p>
+          <div class="card-actions">
+            <button class="button button-primary" id="create-card" type="submit">Generate my card</button>
+            <button class="button button-secondary" id="download-card" type="button" disabled>Download PNG</button>
+            <button class="button button-secondary" id="share-card" type="button" disabled>Share</button>
+          </div>
+        </form>
+        <p class="form-status" id="card-status" role="status" aria-live="polite"></p>
+      </div>
+      <div class="card-preview-wrap">
+        <div class="preview-frame" id="preview-frame">
+          <div class="preview-placeholder" id="preview-placeholder">
+            <img src="/ETSlogo.png" alt="" width="684" height="279">
+            <span>Your founding-member card will appear here after verification.</span>
+          </div>
+          <canvas id="founding-card-canvas" width="1080" height="1080" aria-label="Founding-member card preview" hidden></canvas>
+        </div>
+        <p class="preview-caption">Square PNG · designed for a profile picture or sharing</p>
+      </div>
+    </section>
+
+    <p class="portal-footer-note"><a href="/starting-point-souvenirs.html">Return to the three event souvenirs</a> · <a href="/starting-point.html">Return to Starting Point</a></p>
+  </main>
+  <script src="/starting-point-founding-member.js" defer></script>
+</body>
+</html>

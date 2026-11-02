@@ -1,0 +1,11 @@
+.founding-page { padding-top: 58px; }
+.founding-help { margin: -8px 0 20px; color: var(--muted); font-size: .9rem; }
+.founding-access { max-width: 760px; }
+.founding-card-maker { margin-top: 34px; }
+.founding-card-maker .card-maker-copy > p:not(.eyebrow) { max-width: 530px; }
+.founding-card-maker .preview-frame { width: min(100%, 500px); }
+.founding-card-maker .card-actions { margin-top: 18px; }
+@media (max-width: 520px) {
+  .founding-page { padding-top: 35px; }
+  .founding-card-maker { margin-top: 24px; }
+}

@@ -82,6 +82,7 @@ input:focus, select:focus { border-color: var(--purple); outline: 3px solid rgba
 .asset-link:hover { border-color: var(--purple); background: #f7eef9; }
 
 .card-maker { display: grid; grid-template-columns: minmax(0, .9fr) minmax(300px, 1.1fr); gap: clamp(26px, 5vw, 66px); align-items: center; padding: clamp(22px, 5vw, 46px); border: 1px solid rgba(0,255,255,.24); border-radius: 20px; color: #fff; background: radial-gradient(ellipse at 88% 12%, rgba(130,16,159,.38), transparent 38%), linear-gradient(130deg, #000026, #000040 57%, #160b3b); box-shadow: 0 22px 58px rgba(0,0,64,.16); }
+.legacy-embedded-card { display: none !important; }
 .card-maker .eyebrow { color: var(--cyan); }
 .card-maker h2 { margin: 0; font-size: clamp(2rem, 4.5vw, 3.2rem); letter-spacing: -.06em; line-height: 1; }
 .card-maker-copy > p:not(.eyebrow) { max-width: 500px; margin: 13px 0 20px; color: rgba(255,255,255,.75); font-size: .93rem; }
