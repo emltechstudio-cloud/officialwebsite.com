@@ -14,6 +14,7 @@
   const cardStatus = document.getElementById("card-status");
   const downloadButton = document.getElementById("download-card");
   const shareButton = document.getElementById("share-card");
+  const previewMode = new URLSearchParams(window.location.search).get("preview") === "1";
 
   function setStatus(node, message, state = "") {
     node.textContent = message;
@@ -30,6 +31,12 @@
     const result = await response.json().catch(() => ({}));
     if (!response.ok) throw new Error(result.detail || "We couldn’t confirm your membership. Please try again.");
     return result;
+  }
+
+  if (previewMode) {
+    membershipPanel.hidden = true;
+    cardMaker.hidden = false;
+    setStatus(cardStatus, "Preview mode: membership verification is temporarily bypassed.");
   }
 
   lookupForm.addEventListener("submit", async (event) => {
