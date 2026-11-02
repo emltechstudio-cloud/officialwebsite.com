@@ -436,22 +436,6 @@
                 icon: "https://codeqr.afric.site/icon.svg"
             },
             {
-                name: "HotSpot",
-                tagline: "Instant Deploy",
-                desc: "Deploy HTML sites in seconds. Share a live link with clients and delete it when the work is done.",
-                features: ["1‑Click Deploy", "Temporary Links"],
-                url: "https://hotspot.afric.site",
-                icon: "https://hotspot.afric.site/icon.svg"
-            },
-            {
-                name: "iNet",
-                tagline: "Private Calling",
-                desc: "Encrypted peer‑to‑peer calls and messages. No account needed—just a 6‑digit PIN.",
-                features: ["E2E Encrypted", "No Account", "PIN Connect", "Group Calls"],
-                url: "https://inet.afric.site",
-                icon: "https://inet.afric.site/icon.svg"
-            },
-            {
                 name: "Quotes",
                 tagline: "Documents & Invoices",
                 desc: "Create stunning invoices, receipts, and quotations. AI extracts data from handwritten notes.",
@@ -476,6 +460,22 @@
                 url: "https://emltechstudio.space/youniversity/",
                 installUrl: "https://emltechstudio.space/youniversity/",
                 icon: "https://emltechstudio.space/youniversity/pwa-icon.svg"
+            },
+            {
+                name: "Coming Soon",
+                tagline: "A new EML app is on the way",
+                desc: "We are preparing the next useful tool for the EML community. Check back soon for the launch.",
+                features: ["In development", "Launch announcement soon"],
+                comingSoon: true,
+                icon: "ETSlogo.png"
+            },
+            {
+                name: "Coming Soon",
+                tagline: "Another EML app is on the way",
+                desc: "A second new app is being shaped with care. We will share more details when it is ready.",
+                features: ["In development", "Details coming soon"],
+                comingSoon: true,
+                icon: "ETSlogo.png"
             }
         ];
 
@@ -513,12 +513,10 @@
                     ${app.features.map(f => `<li>${f}</li>`).join('')}
                 </ul>
                 <div class="card-actions">
-                    <a href="${app.url}" target="_blank" rel="noopener" class="card-btn btn-visit">
-                        <i class="fas fa-external-link-alt"></i> Open
-                    </a>
-                    <a href="${app.installUrl || app.url + "/install"}" target="_blank" rel="noopener" class="card-btn btn-install">
-                        <i class="fas fa-download"></i> Install
-                    </a>
+                    ${app.comingSoon
+                        ? '<span class="card-btn btn-visit" aria-label="Coming soon"><i class="fas fa-hourglass-half"></i> Coming soon</span>'
+                        : `<a href="${app.url}" target="_blank" rel="noopener" class="card-btn btn-visit"><i class="fas fa-external-link-alt"></i> Open</a>
+                           <a href="${app.installUrl || app.url + "/install"}" target="_blank" rel="noopener" class="card-btn btn-install"><i class="fas fa-download"></i> Install</a>`}
                 </div>
             </div>
         `).join('');
