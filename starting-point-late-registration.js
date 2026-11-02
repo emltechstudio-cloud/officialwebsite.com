@@ -41,7 +41,7 @@
     submit.disabled = true;
     setStatus("Saving your late registration…");
     try {
-      const response = await fetch(`${API_ROOT}/starting-point/late-registration`, {
+      const response = await fetch(`${API_ROOT}/starting-point/registration`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
