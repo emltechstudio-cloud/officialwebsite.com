@@ -159,7 +159,7 @@
     try {
       const result = await postJson("/starting-point/registration/lookup", { email });
       if (result.status === "registered") {
-        setStatus(lookupStatus, "Registration found. Your souvenirs are ready.", "success");
+        setStatus(lookupStatus, "Community membership confirmed. Your souvenirs are ready.", "success");
         unlock();
         return;
       }
@@ -290,69 +290,78 @@
     context.clearRect(0, 0, width, height);
 
     const background = context.createLinearGradient(0, 0, width, height);
-    background.addColorStop(0, "#000026");
-    background.addColorStop(.54, "#000040");
-    background.addColorStop(1, "#281047");
+    background.addColorStop(0, "#05052b");
+    background.addColorStop(.48, "#000040");
+    background.addColorStop(1, "#34104f");
     context.fillStyle = background;
     context.fillRect(0, 0, width, height);
 
-    const glow = context.createRadialGradient(850, 145, 20, 850, 145, 560);
-    glow.addColorStop(0, "rgba(130,16,159,.55)");
-    glow.addColorStop(1, "rgba(130,16,159,0)");
+    const glow = context.createRadialGradient(190, 760, 20, 190, 760, 520);
+    glow.addColorStop(0, "rgba(0,255,255,.24)");
+    glow.addColorStop(1, "rgba(0,255,255,0)");
     context.fillStyle = glow;
     context.fillRect(0, 0, width, height);
-
-    context.strokeStyle = "rgba(0,255,255,.2)";
-    context.lineWidth = 2;
-    context.beginPath(); context.arc(540, 474, 405, 0, Math.PI * 2); context.stroke();
-    context.strokeStyle = "rgba(255,215,0,.22)";
-    context.beginPath(); context.arc(540, 474, 375, 0, Math.PI * 2); context.stroke();
+    const purpleGlow = context.createRadialGradient(920, 180, 20, 920, 180, 520);
+    purpleGlow.addColorStop(0, "rgba(130,16,159,.7)");
+    purpleGlow.addColorStop(1, "rgba(130,16,159,0)");
+    context.fillStyle = purpleGlow;
+    context.fillRect(0, 0, width, height);
 
     context.save();
-    roundRect(context, 42, 42, 996, 996, 38);
+    roundRect(context, 36, 36, 1008, 1008, 42);
     context.clip();
-    context.strokeStyle = "rgba(0,255,255,.5)";
+    context.strokeStyle = "rgba(0,255,255,.58)";
     context.lineWidth = 4;
-    roundRect(context, 45, 45, 990, 990, 36);
+    roundRect(context, 42, 42, 996, 996, 36);
+    context.stroke();
+    context.strokeStyle = "rgba(255,215,0,.46)";
+    context.lineWidth = 2;
+    roundRect(context, 58, 58, 964, 964, 29);
     context.stroke();
     context.restore();
 
     const logo = new Image();
     logo.src = "/ETSlogo.png";
     await logo.decode();
-    const logoWidth = 334;
+    const logoWidth = 290;
     const logoHeight = logoWidth * logo.naturalHeight / logo.naturalWidth;
     context.save();
-    roundRect(context, (width - 390) / 2, 74, 390, 160, 24);
-    context.fillStyle = "#05051f";
+    roundRect(context, (width - 340) / 2, 70, 340, 126, 20);
+    context.fillStyle = "rgba(5,5,31,.78)";
     context.fill();
-    context.drawImage(logo, (width - logoWidth) / 2, 94, logoWidth, logoHeight);
+    context.drawImage(logo, (width - logoWidth) / 2, 88, logoWidth, logoHeight);
     context.restore();
+
+    context.textAlign = "left";
+    context.fillStyle = "rgba(255,255,255,.62)";
+    context.font = "700 18px 'Segoe UI', Tahoma, sans-serif";
+    context.letterSpacing = "4px";
+    context.fillText("ETS COMMUNITY", 92, 116);
+    context.textAlign = "right";
+    context.fillStyle = "#ffd700";
+    context.font = "800 23px 'Segoe UI', Tahoma, sans-serif";
+    context.letterSpacing = "3px";
+    context.fillText("STARTING POINT", 988, 112);
+    context.fillStyle = "#ffffff";
+    context.font = "800 29px 'Segoe UI', Tahoma, sans-serif";
+    context.fillText("2026", 988, 145);
+    context.letterSpacing = "0px";
 
     context.textAlign = "center";
     context.fillStyle = "#00ffff";
-    context.font = "800 25px 'Segoe UI', Tahoma, sans-serif";
+    context.font = "800 22px 'Segoe UI', Tahoma, sans-serif";
     context.letterSpacing = "5px";
-    context.fillText("STARTING POINT 2026", width / 2, 277);
+    context.fillText("FOUNDING MEMBER", width / 2, 258);
     context.letterSpacing = "0px";
-
-    const pillGradient = context.createLinearGradient(335, 0, 745, 0);
-    pillGradient.addColorStop(0, "#82109f");
-    pillGradient.addColorStop(1, "#4b1677");
-    context.fillStyle = pillGradient;
-    roundRect(context, 333, 309, 414, 66, 33);
-    context.fill();
-    context.fillStyle = "#ffffff";
-    context.font = "800 28px 'Segoe UI', Tahoma, sans-serif";
-    context.letterSpacing = "4px";
-    context.fillText("FOUNDING MEMBER", width / 2, 352);
-    context.letterSpacing = "0px";
+    context.fillStyle = "rgba(255,255,255,.72)";
+    context.font = "500 22px 'Segoe UI', Tahoma, sans-serif";
+    context.fillText("A mark of belonging, contribution and possibility", width / 2, 296);
 
     const portraitX = 540;
-    const portraitY = 552;
+    const portraitY = 530;
     const radius = 166;
-    context.beginPath(); context.arc(portraitX, portraitY, radius + 16, 0, Math.PI * 2); context.fillStyle = "#ffd700"; context.fill();
-    context.beginPath(); context.arc(portraitX, portraitY, radius + 8, 0, Math.PI * 2); context.fillStyle = "#00ffff"; context.fill();
+    context.beginPath(); context.arc(portraitX, portraitY, radius + 18, 0, Math.PI * 2); context.fillStyle = "#ffd700"; context.fill();
+    context.beginPath(); context.arc(portraitX, portraitY, radius + 10, 0, Math.PI * 2); context.fillStyle = "#00ffff"; context.fill();
     context.save();
     context.beginPath(); context.arc(portraitX, portraitY, radius, 0, Math.PI * 2); context.clip();
     fitCover(context, photo, portraitX - radius, portraitY - radius, radius * 2, radius * 2);
@@ -366,21 +375,18 @@
       fontSize -= 2;
       context.font = `750 ${fontSize}px 'Segoe UI', Tahoma, sans-serif`;
     }
-    context.fillText(safeName, width / 2, 801, 920);
+    context.fillText(safeName, width / 2, 773, 920);
 
-    context.fillStyle = "rgba(255,255,255,.78)";
-    context.font = "500 27px 'Segoe UI', Tahoma, sans-serif";
-    drawWrappedText(context, "I’m officially a founding member of the", width / 2, 858, 900, 36, 1);
-    context.fillStyle = "#00ffff";
-    context.font = "800 31px 'Segoe UI', Tahoma, sans-serif";
-    context.fillText("ETS Community", width / 2, 906);
+    context.fillStyle = "rgba(255,255,255,.86)";
+    context.font = "600 29px 'Segoe UI', Tahoma, sans-serif";
+    drawWrappedText(context, "I’m officially an ETS Community Founding Member", width / 2, 836, 900, 39, 2);
 
     context.fillStyle = "#ffd700";
-    context.fillRect(430, 950, 220, 3);
+    context.fillRect(410, 936, 260, 3);
     context.fillStyle = "rgba(255,255,255,.65)";
     context.font = "700 19px 'Segoe UI', Tahoma, sans-serif";
     context.letterSpacing = "3px";
-    context.fillText("IDEAS · PEOPLE · POSSIBILITY", width / 2, 986);
+    context.fillText("IDEAS · PEOPLE · POSSIBILITY", width / 2, 981);
     context.letterSpacing = "0px";
   }
 
