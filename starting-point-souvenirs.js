@@ -132,7 +132,9 @@
         container.replaceChildren();
         day.items.forEach((item) => {
           if (!item || typeof item.title !== "string" || typeof item.url !== "string") return;
-          if (!item.url.startsWith("/souvenirs/starting-point-2026/") || item.url.includes("..")) return;
+          const allowedPage = item.url === "/starting-point-day1-souvenirs.html" || item.url === "/starting-point-founding-member.html";
+          const allowedAsset = item.url.startsWith("/souvenirs/starting-point-2026/") && !item.url.includes("..");
+          if ((!allowedPage && !allowedAsset) || item.url.includes("..")) return;
           const link = document.createElement("a");
           link.className = "asset-link";
           link.href = item.url;
