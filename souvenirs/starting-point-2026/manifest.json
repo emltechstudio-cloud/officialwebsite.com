@@ -6,17 +6,11 @@
       "items": [
         {
           "title": "Open the Day 1 · Idea souvenir",
-          "url": "/starting-point-day1-souvenirs.html"
+          "url": "/souvenirs/starting-point-2026/day-1.html"
         }
       ]
     },
-    {
-      "day": 2,
-      "items": []
-    },
-    {
-      "day": 3,
-      "items": []
-    }
+    { "day": 2, "items": [] },
+    { "day": 3, "items": [] }
   ]
 }
