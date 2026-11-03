@@ -1,8 +1,22 @@
 {
   "schema_version": 1,
   "days": [
-    { "day": 1, "items": [] },
-    { "day": 2, "items": [] },
-    { "day": 3, "items": [] }
+    {
+      "day": 1,
+      "items": [
+        {
+          "title": "Open the Day 1 · Idea souvenir",
+          "url": "/starting-point-day1-souvenirs.html"
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "items": []
+    },
+    {
+      "day": 3,
+      "items": []
+    }
   ]
 }
