@@ -129,10 +129,10 @@
         const container = document.querySelector(`[data-assets-day="${dayNumber}"]`);
         const description = document.querySelector(`[data-day="${dayNumber}"]`);
         if (!container) return;
-        container.replaceChildren();
+        if (day.items.length) container.replaceChildren();
         day.items.forEach((item) => {
           if (!item || typeof item.title !== "string" || typeof item.url !== "string") return;
-          if (!item.url.startsWith("/souvenirs/starting-point-2026/") || item.url.includes("..")) return;
+          if ((!item.url.startsWith("/souvenirs/starting-point-2026/") && item.url !== "/starting-point-day1-souvenirs.html") || item.url.includes("..")) return;
           const link = document.createElement("a");
           link.className = "asset-link";
           link.href = item.url;
@@ -143,7 +143,7 @@
           container.appendChild(link);
         });
         if (description && day.items.length) description.textContent = `${day.items.length} souvenir${day.items.length === 1 ? "" : "s"} available.`;
-        if (description && day.items.length === 0) description.textContent = "Souvenir files will appear here after they are released.";
+        if (description && day.items.length === 0) description.textContent = dayNumber === 1 ? "The Day 1 souvenir is ready." : "Souvenir files will appear here after they are released.";
       });
     } catch (_) {
       // The card maker remains available even if no souvenir files have been added yet.
