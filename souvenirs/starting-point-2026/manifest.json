@@ -5,7 +5,11 @@
       "day": 1,
       "items": [
         {
-          "title": "Open the Day 1 · Idea souvenir",
+          "title": "View the Day 1 · Idea souvenir card",
+          "url": "/souvenirs/starting-point-2026/day-1.html"
+        },
+        {
+          "title": "Download the Day 1 souvenir bag",
           "url": "/starting-point-day1-souvenirs.html"
         }
       ]
