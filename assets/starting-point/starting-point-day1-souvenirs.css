@@ -1,0 +1,49 @@
+:root {
+  --ink: #111629;
+  --muted: #5f667a;
+  --line: rgba(17, 22, 41, .13);
+  --paper: #f8f9fc;
+  --white: #fff;
+  --blue: #2737c7;
+  --violet: #7044d8;
+  --cyan: #11b9cf;
+  --gold: #f1b84b;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; color: var(--ink); background: var(--paper); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.55; }
+body::before { content: ""; display: block; height: 5px; background: linear-gradient(90deg, var(--blue), var(--violet), var(--cyan), var(--gold)); }
+a { color: inherit; }
+.day-header, main, .day-footer { width: min(1180px, calc(100% - 48px)); margin-inline: auto; }
+.day-header { display: flex; align-items: center; justify-content: space-between; padding: 24px 0 18px; }
+.brand img { display: block; width: 145px; height: auto; }
+.event-link { color: var(--blue); font-weight: 700; text-decoration: none; }
+.closing-countdown { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 18px 22px; border: 1px solid var(--line); border-radius: 18px; background: var(--white); box-shadow: 0 12px 35px rgba(33, 42, 87, .06); }
+.countdown-copy { display: flex; align-items: center; gap: 14px; }
+.countdown-mark { width: 12px; height: 12px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 0 7px rgba(17, 185, 207, .12); }
+.countdown-label, .eyebrow { margin: 0 0 5px; color: var(--blue); font-size: .72rem; font-weight: 800; letter-spacing: .14em; }
+.countdown-title { margin: 0; font-weight: 700; }
+.countdown { display: flex; gap: 18px; text-align: center; }
+.countdown div { min-width: 52px; }
+.countdown strong { display: block; font-size: 1.35rem; line-height: 1; }
+.countdown span { color: var(--muted); font-size: .72rem; }
+.hero { display: grid; grid-template-columns: 1.02fr .98fr; align-items: center; gap: clamp(30px, 7vw, 100px); min-height: 570px; padding: 68px 0 78px; }
+.hero-copy h1 { max-width: 650px; margin: 0 0 22px; font-size: clamp(3rem, 7vw, 6.3rem); line-height: .95; letter-spacing: -.065em; }
+.hero-lead { max-width: 610px; margin: 0 0 14px; font-size: clamp(1.15rem, 2vw, 1.45rem); }
+.hero-follow { max-width: 520px; color: var(--muted); }
+.signature-line { margin-top: 32px; color: var(--violet); font-weight: 800; }
+.hero-art { position: relative; display: grid; place-items: center; min-height: 410px; overflow: hidden; border-radius: 42% 58% 52% 48% / 42% 38% 62% 58%; background: radial-gradient(circle at 30% 20%, rgba(17,185,207,.38), transparent 30%), linear-gradient(135deg, #171d55, #3421a0 58%, #8d49dd); box-shadow: 24px 24px 0 rgba(241,184,75,.25); }
+.hero-art::after { content: ""; position: absolute; inset: 13%; border: 1px solid rgba(255,255,255,.32); border-radius: 50%; transform: rotate(-18deg); }
+.bag-art { position: relative; z-index: 1; width: min(82%, 430px); border-radius: 18px; box-shadow: 0 24px 45px rgba(0,0,0,.24); transform: rotate(-5deg); }
+.bag-logo { position: absolute; z-index: 2; display: grid; place-items: center; width: 126px; height: 126px; padding: 18px; border-radius: 50%; background: rgba(255,255,255,.92); box-shadow: 0 9px 26px rgba(0,0,0,.2); }
+.bag-logo img { width: 100%; height: auto; }
+.orbit { position: absolute; width: 72%; height: 42%; border: 1px solid rgba(255,255,255,.36); border-radius: 50%; transform: rotate(24deg); }
+.orbit-two { width: 54%; height: 72%; transform: rotate(-32deg); }
+.spark { position: absolute; color: var(--gold); font-size: 2rem; }.spark-one { top: 17%; right: 14%; }.spark-two { bottom: 17%; left: 13%; color: var(--cyan); }
+.bundle-section { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(28px, 7vw, 90px); align-items: center; padding: 70px 0; border-top: 1px solid var(--line); }
+.bundle-art-wrap { padding: 18px; border-radius: 28px; background: var(--white); box-shadow: 0 16px 44px rgba(33,42,87,.08); }.thank-you-art { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 18px; }.art-caption { display: block; margin: 12px 4px 0; color: var(--muted); font-size: .86rem; }
+.bundle-copy h2, .download-gate h2, .closed-notice h2 { margin: 0 0 15px; font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1.02; letter-spacing: -.045em; }.bundle-description { max-width: 510px; color: var(--muted); }
+.button { display: inline-flex; align-items: center; justify-content: center; gap: 16px; min-height: 48px; padding: 12px 18px; border: 0; border-radius: 999px; font: inherit; font-weight: 800; text-decoration: none; cursor: pointer; }.button-primary { color: var(--white); background: var(--blue); }.button-primary:hover { background: #1d2aa7; }.button:disabled { cursor: not-allowed; opacity: .55; }.button-arrow { font-size: 1.2rem; }.privacy-note { color: var(--muted); font-size: .86rem; }
+.download-gate { padding: 36px; border: 1px solid var(--line); border-radius: 26px; background: var(--white); }.gate-heading { display: flex; gap: 18px; }.gate-number { color: var(--gold); font-size: 2rem; font-weight: 900; }.download-gate form { display: grid; gap: 10px; margin-top: 25px; }.email-row { display: flex; gap: 10px; }.download-gate input, .download-gate select { width: 100%; min-height: 48px; padding: 10px 13px; border: 1px solid var(--line); border-radius: 10px; background: var(--paper); font: inherit; }.email-row input { flex: 1; }.late-registration { max-width: 720px; }.registration-callout { display: grid; gap: 3px; padding: 13px 15px; border-left: 4px solid var(--cyan); background: #edfafd; }.full-button { width: 100%; }.form-status { min-height: 1.5em; color: var(--muted); }.form-status[data-state="error"] { color: #a0243b; }.form-status[data-state="success"] { color: #087450; }
+.closed-notice { padding: 70px 0; }.day-footer { display: flex; justify-content: space-between; gap: 18px; padding: 35px 0 48px; color: var(--muted); font-size: .9rem; }
+@media (max-width: 760px) { .day-header, main, .day-footer { width: min(100% - 30px, 600px); }.day-header { gap: 16px; }.event-link { font-size: .9rem; }.closing-countdown, .bundle-section, .hero { display: block; }.countdown { justify-content: space-between; margin-top: 18px; }.hero { padding: 52px 0 65px; }.hero-art { min-height: 300px; margin-top: 38px; }.bundle-art-wrap { margin-bottom: 30px; }.download-gate { padding: 24px; }.email-row { display: grid; }.day-footer { flex-direction: column; } }
