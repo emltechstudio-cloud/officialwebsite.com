@@ -14,7 +14,9 @@
   const cardStatus = document.getElementById("card-status");
   const downloadButton = document.getElementById("download-card");
   const shareButton = document.getElementById("share-card");
-  const previewMode = new URLSearchParams(window.location.search).get("preview") === "1";
+  const previewNote = document.getElementById("card-preview-note");
+  const previewValue = new URLSearchParams(window.location.search).get("preview");
+  const previewMode = previewValue === "1" || previewValue === "card";
 
   function setStatus(node, message, state = "") {
     node.textContent = message;
@@ -36,6 +38,8 @@
   if (previewMode) {
     membershipPanel.hidden = true;
     cardMaker.hidden = false;
+    previewNote.hidden = false;
+    previewNote.textContent = "Design preview mode: email verification is bypassed here. Your photo stays on this device.";
     setStatus(cardStatus, "Preview mode: membership verification is temporarily bypassed.");
   }
 
