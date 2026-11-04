@@ -11,7 +11,6 @@
   const upcomingPanel = document.getElementById("upcoming-panel");
   const introCopy = document.getElementById("portal-intro-copy");
   const cardMaker = document.getElementById("founding-card");
-  const cardLocked = document.getElementById("card-locked");
   const cardCta = document.getElementById("card-cta");
   const cardCtaLocked = document.getElementById("card-cta-locked");
   const lookupForm = document.getElementById("lookup-form");
@@ -73,7 +72,6 @@
   function updateCardWindow() {
     const isAvailable = Date.now() >= cardOpensAt.getTime() && Date.now() < portalClose.getTime();
     cardMaker.hidden = !isAvailable;
-    cardLocked.hidden = isAvailable;
     cardCta.hidden = !isAvailable;
     cardCtaLocked.hidden = isAvailable;
   }
