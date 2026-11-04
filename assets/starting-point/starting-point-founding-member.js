@@ -15,8 +15,49 @@
   const downloadButton = document.getElementById("download-card");
   const shareButton = document.getElementById("share-card");
   const previewNote = document.getElementById("card-preview-note");
+  const cardWindowNotice = document.getElementById("card-window-notice");
+  const cardWindowLabel = document.getElementById("card-window-label");
+  const cardWindowTitle = document.getElementById("card-window-title");
+  const cardWindowCopy = document.getElementById("card-window-copy");
   const previewValue = new URLSearchParams(window.location.search).get("preview");
   const previewMode = previewValue === "1" || previewValue === "card";
+  const CARD_OPENS_AT = new Date("2026-11-05T19:00:00+01:00").getTime();
+  const CARD_CLOSES_AT = new Date("2026-11-08T23:59:59+01:00").getTime();
+  let membershipVerified = false;
+
+  function updateCardWindow() {
+    const now = Date.now();
+    if (now >= CARD_CLOSES_AT) {
+      membershipPanel.hidden = true;
+      cardMaker.hidden = true;
+      previewNote.hidden = true;
+      cardWindowLabel.textContent = "CARD MAKER CLOSED";
+      cardWindowTitle.textContent = "The Founding Member Card Maker has closed.";
+      cardWindowCopy.textContent = "The card window closed Sunday, November 8 at 11:59 PM WAT.";
+      cardWindowNotice.hidden = false;
+      return false;
+    }
+    if (previewMode) {
+      cardWindowNotice.hidden = true;
+      return true;
+    }
+    if (now < CARD_OPENS_AT) {
+      membershipPanel.hidden = true;
+      cardMaker.hidden = true;
+      cardWindowLabel.textContent = "CARD MAKER OPENS THURSDAY";
+      cardWindowTitle.textContent = "The card maker opens Thursday, November 5 at 7:00 PM WAT.";
+      cardWindowCopy.textContent = "Come back then to verify your community email and make your card.";
+      cardWindowNotice.hidden = false;
+      return false;
+    }
+    cardWindowNotice.hidden = true;
+    membershipPanel.hidden = membershipVerified;
+    cardMaker.hidden = !membershipVerified;
+    return true;
+  }
+
+  let cardWindowOpen = updateCardWindow();
+  window.setInterval(() => { cardWindowOpen = updateCardWindow(); }, 1000);
 
   function setStatus(node, message, state = "") {
     node.textContent = message;
@@ -35,7 +76,7 @@
     return result;
   }
 
-  if (previewMode) {
+  if (previewMode && cardWindowOpen) {
     membershipPanel.hidden = true;
     cardMaker.hidden = false;
     previewNote.hidden = false;
@@ -45,6 +86,7 @@
 
   lookupForm.addEventListener("submit", async (event) => {
     event.preventDefault();
+    if (!updateCardWindow()) return;
     if (!lookupForm.reportValidity()) return;
     const submit = lookupForm.querySelector("button[type=submit]");
     submit.disabled = true;
@@ -54,6 +96,8 @@
       if (result.status !== "registered") {
         throw new Error("That email is not on the ETS Community roster yet. Please register for Starting Point first.");
       }
+      if (!updateCardWindow()) return;
+      membershipVerified = true;
       setStatus(memberStatus, "Community membership confirmed. You can now create your card.", "success");
       membershipPanel.hidden = true;
       cardMaker.hidden = false;
@@ -242,6 +286,7 @@
 
   cardForm.addEventListener("submit", async (event) => {
     event.preventDefault();
+    if (!updateCardWindow()) return;
     const name = cardName.value.trim();
     const file = cardPhoto.files && cardPhoto.files[0];
     if (!name || !file) {
@@ -278,6 +323,7 @@
   }
 
   downloadButton.addEventListener("click", async () => {
+    if (!updateCardWindow()) return;
     if (!cardReady) return;
     const blob = await canvasBlob();
     const url = URL.createObjectURL(blob);
@@ -292,6 +338,7 @@
   });
 
   shareButton.addEventListener("click", async () => {
+    if (!updateCardWindow()) return;
     if (!cardReady) return;
     try {
       const blob = await canvasBlob();
